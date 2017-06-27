@@ -13,6 +13,14 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 
+
+var request = require('request');
+app.get('/api/*', function(req,res) {
+  var newurl = 'http://localhost:3000' + req.originalUrl;
+  console.log(newurl)
+  request(newurl).pipe(res);
+});
+
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
@@ -22,6 +30,6 @@ app.listen(8080, 'localhost', function(err) {
     console.log(err);
     return;
   }
-  
+
   console.log('Listening at http://localhost:8080');
 });

@@ -2,6 +2,7 @@ var path = require('path');
 var express = require('express');
 var webpack = require('webpack');
 var config = require('./webpack.config.dev');
+var api = require('./api/api.js')
 
 var app = express();
 var compiler = webpack(config);
@@ -15,11 +16,7 @@ app.use(require('webpack-hot-middleware')(compiler));
 
 
 var request = require('request');
-app.get('/api/*', function(req,res) {
-  var newurl = 'http://localhost:3000' + req.originalUrl;
-  console.log(newurl)
-  request(newurl).pipe(res);
-});
+app.use('/api/*', api);
 
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));

@@ -8,6 +8,7 @@ import store from '../../store';
 
 import * as actionCreators from '../../actions/actionCreators';
 import HomeView from './HomeView';
+import ServerView from './ServerView';
 
 
 class Home extends React.Component {
@@ -17,7 +18,10 @@ class Home extends React.Component {
 
   render() {
     return(
-      <HomeView props={{message: "Hello!"}}/>
+      <div>
+        <HomeView props={{message: "Hello!"}}/>
+        <ServerView props={{}}/>
+      </div>
     )
   }
 

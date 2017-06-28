@@ -16,7 +16,7 @@ app.use(require('webpack-hot-middleware')(compiler));
 
 
 var request = require('request');
-app.use('/api/*', api);
+app.use('/api', api);
 
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));

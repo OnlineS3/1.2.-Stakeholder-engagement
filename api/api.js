@@ -3,7 +3,11 @@ var express = require('express');
 var router = express.Router();
 console.log("api")
 
-router.get('/users/', function(req, res, next) {
+var categories = require('./categories.js');
+
+router.use('/category', categories);
+
+router.get('/comments/', function(req, res, next) {
   console.log(1)
   res.send({
     "text": "users thingie"

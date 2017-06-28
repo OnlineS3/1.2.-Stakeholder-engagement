@@ -7,5 +7,12 @@ module.exports = function(sequelize, DataTypes) {
   });
 
 
+  //REMOVE THIS IN PRODUCTION
+  Category.sync().then(() => {
+    Category.create({
+      title: "Kategoria",
+      description: "kuvaus"
+    })
+  });
   return Category;
 };

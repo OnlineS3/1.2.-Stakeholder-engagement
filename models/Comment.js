@@ -21,6 +21,9 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: true
       }
     })
+
+    //REMOVE THIS IN PRODUCTION
+    Comment.sync();
   }
 
   return Comment;

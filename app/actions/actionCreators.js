@@ -4,3 +4,11 @@ export const exampleAction = (parameter) => {
     parameter
   }
 }
+export const addCategory = (title, description) => {
+  console.log("addCategoryAction")
+  return {
+    type: 'addCategory',
+    title: title,
+    description: description
+  }
+}

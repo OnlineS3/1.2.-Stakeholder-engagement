@@ -41,6 +41,7 @@
     "react-transform-hmr": "1.0.4",
     "redbox-react": "1.4.2",
     "redux": "3.7.1",
+    "redux-form": "^6.8.0",
     "rimraf": "2.6.1",
     "sass-loader": "6.0.6",
     "sequelize": "^4.2.0",

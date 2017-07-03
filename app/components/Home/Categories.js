@@ -1,11 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 import Category from './Category.js';
+import AddCategoryContainer from './AddCategoryContainer.js';
+import * as actionCreators from '../../actions/actionCreators';
+
 
 class Categories extends React.Component {
   constructor(props){
     super(props);
-    this.state = {text:"testishit"};
+    this.state = {
+      text:"testishit",
+      newTitle:"",
+      newDescription:"",
+                  };
   }
 
   componentDidMount(){
@@ -22,14 +30,32 @@ class Categories extends React.Component {
       })
   }
 
+
   render(){
       return (
       <div>
         <h2>{this.state.text}</h2>
         {this.state.categories}
+        <AddCategoryContainer update={this.addNew}></AddCategoryContainer>
       </div>
     )
   }
 }
 
-export default Categories;
+function mapStateToProps(state) {
+  return {
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addNew: () => {
+      console.log("clidked")
+      dispatch(actionCreators.addCategory(this.state.newTitle, this.state.newDescription));
+    }
+  }
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);

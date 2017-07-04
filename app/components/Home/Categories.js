@@ -17,25 +17,18 @@ class Categories extends React.Component {
   }
 
   componentDidMount(){
-    fetch("api/category/all")
-      .then(res => {console.log("body", res.body); return res;})
-      .then(res => res.json())
-      .then(categories => {
-        return categories.map(category => {
-          return <Category id={category.id} title={category.title} description={category.description}></Category>
-        });
-      }).then(categories => {
-        console.log(categories)
-        this.setState({categories: categories})
-      })
+    this.props.onMount();
   }
 
 
   render(){
+    console.log(this.props)
       return (
       <div>
         <h2>{this.state.text}</h2>
-        {this.state.categories}
+        { this.props.categories && this.props.categories.map((category) => {
+          return <Category id={category.id} title={category.title} description={category.description}></Category>
+        })}
         <AddCategoryContainer update={this.addNew}></AddCategoryContainer>
       </div>
     )
@@ -43,19 +36,18 @@ class Categories extends React.Component {
 }
 
 function mapStateToProps(state) {
+  console.log("state in map state to props", state);
   return {
+    categories: state.categories
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    addNew: () => {
-      console.log("clidked")
-      dispatch(actionCreators.addCategory(this.state.newTitle, this.state.newDescription));
+    onMount() {
+      dispatch(actionCreators.fetchCategories());
     }
   }
 }
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);

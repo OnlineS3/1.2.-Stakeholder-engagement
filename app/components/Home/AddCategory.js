@@ -1,18 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect, dispatch } from 'react-redux';
-import * as actionCreators from '../../actions/actionCreators';
+import { Field, reduxForm } from 'redux-form'
 
-class AddCategory extends React.Component {
-  render() {
-    console.log(this.props)
+var AddCategory = props => {
+    console.log(props)
+    const { handleSubmit } = props;
+    console.log(handleSubmit)
+
     return (
-      <div>
-        <input id="title" type="text" value={this.props.title} onChange={this.props.handleTitleUpdate}></input>
-        <input id="description" type="text" value={this.props.description} onChange={this.props.handleDescriptionUpdate}></input>
-        <button onClick={this.props.addNew}> Add </button>
-      </div>
+      <form onSubmit={handleSubmit}>
+        <Field name="title" component="input" type="text"/>
+        <Field name="description" component="input" type="text"/>
+        <button type="submit"> Add </button>
+      </form>
     )
-  }
 }
+AddCategory = reduxForm({
+  form: 'addCategory'
+})(AddCategory)
 export default AddCategory;

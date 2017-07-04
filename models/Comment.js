@@ -2,6 +2,11 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Comment = sequelize.define("Comment", {
+    uuid: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV1,
+      primaryKey: true
+    },
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     user: DataTypes.STRING
@@ -22,8 +27,8 @@ module.exports = function(sequelize, DataTypes) {
       }
     })
 
-    //REMOVE THIS IN PRODUCTION
-    Comment.sync();
+    //TODO: REMOVE THIS IN PRODUCTION
+    Comment.sync({force: true});
   }
 
   return Comment;

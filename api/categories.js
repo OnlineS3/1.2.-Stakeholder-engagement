@@ -3,9 +3,15 @@ var express = require('express');
 var router = express.Router();
 
 router.post('/new', function(req, res, next) {
-  console.log(1)
-  res.send({
-    "text": "new category"
+  console.dir(req.body)
+  db.Category.create({
+    title: req.body.title,
+    description: req.body.description
+  }).then((category) => {
+    res.send({
+      status:"200 Category added",
+      category
+    });
   });
 });
 

@@ -1,19 +1,33 @@
+import {reset} from 'redux-form';
+
 export const exampleAction = (parameter) => {
   return {
     type: 'EXAMPLE_TYPE',
     parameter
   }
 }
-export const addCategory = (title, description) => {
-  return {
-    type: 'addCategory',
-    title: title,
-    description: description
+export function addCategory(title, description) {
+  return function (dispatch){
+    fetch("api/category/new", {
+      headers: {
+        "content-type": "application/json"
+      },
+      method: "POST",
+      body: JSON.stringify({title, description})
+    })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+      dispatch(addCategorySuccess(res.category));
+    }).then(() => {
+      dispatch(reset('addCategory'));
+    })
   }
 }
-export const addCategorySuccess = () => {
+export const addCategorySuccess = (category) => {
   return {
     type: 'addCategorySuccess',
+    category
   }
 }
 

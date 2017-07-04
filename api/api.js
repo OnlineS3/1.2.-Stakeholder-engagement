@@ -1,9 +1,12 @@
 var db = require('../models/index.js');
 var express = require('express');
+var bodyParser = require('body-parser')
 var router = express.Router();
 console.log("api")
 
 var categories = require('./categories.js');
+
+router.use(bodyParser.json());
 
 router.use('/category', categories);
 

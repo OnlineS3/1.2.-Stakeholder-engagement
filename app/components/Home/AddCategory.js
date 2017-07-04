@@ -4,10 +4,7 @@ import { connect, dispatch } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
 
 var AddCategory = props => {
-    console.log(props)
     const { handleSubmit } = props;
-    console.log(handleSubmit)
-
     return (
       <form onSubmit={handleSubmit}>
         <Field name="title" component="input" type="text"/>

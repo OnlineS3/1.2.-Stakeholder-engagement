@@ -1,6 +1,5 @@
 const example = (state = [], action) => {
-  console.log(action)
-  console.log(state)
+  console.log(action, state)
   return state;
 }
 

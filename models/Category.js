@@ -10,14 +10,5 @@ module.exports = function(sequelize, DataTypes) {
     title: DataTypes.STRING,
     description: DataTypes.STRING
   });
-
-
-  //TODO: REMOVE THIS IN PRODUCTION
-  Category.sync({force: true}).then(() => {
-    Category.create({
-      title: "Kategoria",
-      description: "kuvaus"
-    })
-  });
   return Category;
 };

@@ -1,4 +1,5 @@
 var path = require('path');
+var db = require('./models/index.js');
 var express = require('express');
 var webpack = require('webpack');
 var config = require('./webpack.config.dev');
@@ -29,4 +30,15 @@ app.listen(8888, 'localhost', function(err) {
   }
 
   console.log('Listening at http://localhost:8888');
+});
+
+
+//TODO: REMOVE THIS IN PRODUCTION
+db.Comment.sync({force: true});
+//TODO: REMOVE THIS IN PRODUCTION
+db.Category.sync({force: true}).then(() => {
+  db.Category.create({
+    title: "Kategoria",
+    description: "kuvaus"
+  })
 });

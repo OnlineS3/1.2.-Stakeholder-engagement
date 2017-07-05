@@ -13,6 +13,7 @@ export function addCategory(title, description) {
         "content-type": "application/json"
       },
       method: "POST",
+      credentials: 'include',
       body: JSON.stringify({title, description})
     })
     .then(res => res.json())
@@ -47,7 +48,9 @@ export const gotCategories = (json) => {
 export function fetchCategories() {
   return function (dispatch){
     dispatch(requestCategories());
-    fetch("api/category/all")
+    fetch("api/category/all", {
+      credentials: 'include',
+    })
       .then(res => {console.log("body", res.body); return res;})
       .then(res => res.json())
       .then(categories => {

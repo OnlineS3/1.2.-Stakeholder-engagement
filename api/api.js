@@ -6,7 +6,23 @@ console.log("api")
 
 var categories = require('./categories.js');
 
+/*
+router.all('/', passport.authenticate('auth0', {
+  failureRedirect: '/login'
+})
+*/
 router.use(bodyParser.json());
+router.all('*', function(req, res, next){
+  console.log(res.locals.loggedIn)
+  console.log(req.session.passport)
+  if(res.locals.loggedIn){
+    next();
+  } else {
+    res.send({
+      "response": "not authorised"
+    });
+  }
+})
 
 router.use('/category', categories);
 

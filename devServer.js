@@ -1,4 +1,6 @@
 var path = require('path');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 var db = require('./models/index.js');
 var express = require('express');
 var webpack = require('webpack');
@@ -7,6 +9,7 @@ var api = require('./api/api.js')
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 var request = require('request');
+var clientSecret = require('./clientSecret.js')
 
 var app = express();
 var compiler = webpack(config);
@@ -15,7 +18,7 @@ var compiler = webpack(config);
 const strategy = new Auth0Strategy({
   domain: 'onlines3.eu.auth0.com',
   clientID: 'MR10gvsqqda9MXjppWw4QHKJe789JV7E',
-  clientSecret: 'YOUR_CLIENT_SECRET',
+  clientSecret: clientSecret,
   callbackURL:  'http://localhost:8888/callback'
 }, (accessToken, refreshToken, extraParams, profile, done) => {
   return done(null, profile);
@@ -27,6 +30,14 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
   done(null, user);
 });
+app.use(cookieParser());
+app.use(
+  session({
+    secret: 'shhhhhhhhh',
+    resave: true,
+    saveUninitialized: true
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -37,6 +48,14 @@ app.use(require('webpack-dev-middleware')(compiler, {
 
 app.use(require('webpack-hot-middleware')(compiler));
 
+app.use(function(req, res, next) {
+  res.locals.loggedIn = false;
+  if (req.session.passport && typeof req.session.passport.user != 'undefined') {
+    res.locals.loggedIn = true;
+  }
+  console.log(req.session.passport);
+  next();
+});
 
 app.use('/api', api);
 app.all(
@@ -67,9 +86,11 @@ app.get(
   }
 );
 
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
+app.get('*',
+  function(req, res) {
+    res.sendFile(path.join(__dirname, 'index.html'));
+  }
+);
 
 app.listen(8888, 'localhost', function(err) {
   if (err) {
@@ -83,25 +104,27 @@ app.listen(8888, 'localhost', function(err) {
 
 //TODO: REMOVE THIS IN PRODUCTION
 
-db.sequelize.sync({force: true})
-.then(() => {
-  db.Area.create({
-    name: "Uusimaa"
-  })
-}).then(() => {
-   db.Area.create({
-    name: "Åland"
-  })
-}).then(() => {
-  db.Category.addNew({
-    AreaName: "Uusimaa",
-    title: "Kategoria",
-    description: "kuvaus"
-  })
-}).then(() => {
-  db.Category.addNew({
-    AreaName: "Åland",
-    title: "Kategoria",
-    description: "kuvaus"
-  })
-});
+if(false){
+  db.sequelize.sync({force: true})
+  .then(() => {
+    db.Area.create({
+      name: "Uusimaa"
+    })
+  }).then(() => {
+     db.Area.create({
+      name: "Åland"
+    })
+  }).then(() => {
+    db.Category.addNew({
+      AreaName: "Uusimaa",
+      title: "Kategoria",
+      description: "kuvaus"
+    })
+  }).then(() => {
+    db.Category.addNew({
+      AreaName: "Åland",
+      title: "Kategoria",
+      description: "kuvaus"
+    })
+  });
+}

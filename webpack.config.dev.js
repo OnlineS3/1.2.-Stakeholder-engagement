@@ -5,7 +5,8 @@ module.exports = {
   devtool: 'source-map',
   entry: [
     'webpack-hot-middleware/client',
-    './app/app'
+    './app/app',
+    './node_modules/auth0-js/build/auth0.js'
   ],
   output: {
     path: path.join(__dirname, 'dist'),

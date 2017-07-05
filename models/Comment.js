@@ -27,8 +27,6 @@ module.exports = function(sequelize, DataTypes) {
       }
     })
 
-    //TODO: REMOVE THIS IN PRODUCTION
-    Comment.sync({force: true});
   }
 
   return Comment;

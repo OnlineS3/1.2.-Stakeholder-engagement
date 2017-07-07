@@ -6,6 +6,11 @@ export const exampleAction = (parameter) => {
     parameter
   }
 }
+export const toggleUserMenu = () => {
+  return {
+    type: 'TOGGLE_USER_MENU',
+  }
+}
 export function getUser() {
   return function (dispatch){
     fetch("api/user", {

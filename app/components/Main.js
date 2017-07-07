@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import Header from './Header.js'
 import * as actionCreators from '../actions/actionCreators';
 
 class Main extends React.Component {
@@ -10,8 +11,10 @@ class Main extends React.Component {
   }
 
   render() {
+    console.log(Header)
     return (
       <div>
+        <Header/>
         <h1>
           <Link to="/">Hello world!</Link>
         </h1>

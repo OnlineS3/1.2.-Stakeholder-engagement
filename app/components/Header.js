@@ -3,9 +3,14 @@ import { Link } from 'react-router';
 
 var Header = props => {
     const { logged_in } = props;
-    var user_menu
+    const style = {
+      width: '100%',
+      background: "blue",
+      height: "40px"
+    }
+    var user_menu;
     return (
-      <div>
+      <div style={style}>
 
       </div>
     )

@@ -13,7 +13,6 @@ import Categories from './Categories';
 
 
 class Home extends React.Component {
-
   render() {
     console.log("homeprops:", this.props);
     if(this.props.logged_in){

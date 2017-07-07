@@ -4,13 +4,15 @@ import { reducer as formReducer } from 'redux-form'
 
 import exampleReducer from './example';
 import CategoryReducer from './CategoryReducer';
+import LoggedInReducer from './LoggedInReducer';
 console.log(exampleReducer)
 
 const rootReducer = combineReducers({
-  exampleReducer,
+  logged_in: LoggedInReducer,
   categories: CategoryReducer,
   routing: routerReducer,
-  form: formReducer
+  form: formReducer,
+  exampleReducer,
 });
 
 export default rootReducer;

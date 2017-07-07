@@ -26,6 +26,12 @@ router.all('*', function(req, res, next){
 
 router.use('/category', categories);
 
+router.get('/logged_in/', function(req, res, next) {
+  res.send({
+    "logged_in": res.locals.loggedIn
+  });
+});
+
 router.get('/comments/', function(req, res, next) {
   console.log(1)
   res.send({

@@ -6,6 +6,27 @@ export const exampleAction = (parameter) => {
     parameter
   }
 }
+export function testLogin() {
+  return function (dispatch){
+    fetch("api/logged_in", {
+      headers: {
+      },
+      method: "GET",
+      credentials: 'include',
+    })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+      dispatch(isLoggedIn(res));
+    })
+  }
+}
+export const isLoggedIn = (parameter) => {
+  return {
+    type: 'LOGGED_IN',
+    logged_in: parameter.logged_in
+  }
+}
 export function addCategory(title, description) {
   return function (dispatch){
     fetch("api/category/new", {
@@ -55,7 +76,8 @@ export function fetchCategories() {
       .then(res => res.json())
       .then(categories => {
         console.log(categories)
-        dispatch(gotCategories(categories))
+        if(categories instanceof Array)
+          dispatch(gotCategories(categories))
       })
   }
 }

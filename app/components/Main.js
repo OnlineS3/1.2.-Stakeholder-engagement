@@ -1,7 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import * as actionCreators from '../actions/actionCreators';
 
-const Main = React.createClass({
+class Main extends React.Component {
+
+  componentDidMount() {
+    this.props.onMount();
+  }
+
   render() {
     return (
       <div>
@@ -12,6 +19,21 @@ const Main = React.createClass({
       </div>
     )
   }
-})
+}
 
-export default Main;
+function mapStateToProps(state) {
+  console.log("state in map state to props", state);
+  return {
+    logged_in: state.logged_in
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onMount() {
+      dispatch(actionCreators.testLogin());
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

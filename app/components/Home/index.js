@@ -15,29 +15,42 @@ import Categories from './Categories';
 class Home extends React.Component {
 
   componentDidMount() {
+    this.props.onMount();
   }
 
   render() {
-    return(
-      <div>
-        <HomeView props={{message: "Hello!"}}/>
-        <ServerView props={{}}/>
-        <Categories/>
-      </div>
-    )
+    console.log("homeprops:", this.props);
+    if(this.props.logged_in){
+      return(
+        <div>
+          <HomeView props={{message: "Hello!"}}/>
+          <ServerView props={{}}/>
+          <Categories/>
+        </div>
+      )
+    } else {
+      return(
+        <div>
+          <HomeView props={{message: "Hello!"}}/>
+        </div>
+      )
+    }
   }
 
 }
 
 function mapStateToProps(state) {
   return {
-  	exampleStateAttribute: state.exampleStateAttribute
+  	logged_in: state.logged_in
   }
 }
 
 
 function mapDispatchToProps(dispatch) {
   return {
+    onMount() {
+      dispatch(actionCreators.testLogin());
+    }
   }
 }
 

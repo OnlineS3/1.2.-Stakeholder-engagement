@@ -14,7 +14,7 @@ class Main extends React.Component {
     console.log(Header)
     return (
       <div>
-        <Header/>
+        <Header user={this.props.user}/>
         <h1>
           <Link to="/">Hello world!</Link>
         </h1>
@@ -27,7 +27,8 @@ class Main extends React.Component {
 function mapStateToProps(state) {
   console.log("state in map state to props", state);
   return {
-    logged_in: state.user.logged_in
+    logged_in: state.user.logged_in,
+    user: state.user
   }
 }
 

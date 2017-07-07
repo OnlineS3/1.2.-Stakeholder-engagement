@@ -6,9 +6,10 @@ export const exampleAction = (parameter) => {
     parameter
   }
 }
-export const toggleUserMenu = () => {
+export const toggleMenu = (id) => {
   return {
-    type: 'TOGGLE_USER_MENU',
+    type: 'TOGGLE_MENU',
+    id
   }
 }
 export function getUser() {

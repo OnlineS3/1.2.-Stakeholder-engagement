@@ -1,6 +1,10 @@
-const MenuReducer = (state = false, action) => {
-  if(action.type === "TOGGLE_USER_MENU"){
-    return !state;
+const MenuReducer = (state = {}, action) => {
+
+  if(action.type === "TOGGLE_MENU"){
+    var open = !state[action.id];
+    var newState = Object.assign({}, state);
+    newState[action.id] = open;
+    return newState;
   }
   return state;
 }

@@ -12,7 +12,7 @@ var Header = props => {
     }
     var element;
     if(user.logged_in){
-      element = <UserMenu user={props.user}/>;
+      element = <UserMenu user={user}/>;
     } else {
       element = <LoginButton/>;
     }

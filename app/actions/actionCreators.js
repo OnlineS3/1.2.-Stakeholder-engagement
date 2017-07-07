@@ -6,9 +6,9 @@ export const exampleAction = (parameter) => {
     parameter
   }
 }
-export function testLogin() {
+export function getUser() {
   return function (dispatch){
-    fetch("api/logged_in", {
+    fetch("api/user", {
       headers: {
       },
       method: "GET",
@@ -17,14 +17,14 @@ export function testLogin() {
     .then(res => res.json())
     .then(res => {
       console.log(res);
-      dispatch(isLoggedIn(res));
+      dispatch(gotUser(res));
     })
   }
 }
-export const isLoggedIn = (parameter) => {
+export const gotUser = (user) => {
   return {
-    type: 'LOGGED_IN',
-    logged_in: parameter.logged_in
+    type: 'GOT_USER',
+    user
   }
 }
 export function addCategory(title, description) {

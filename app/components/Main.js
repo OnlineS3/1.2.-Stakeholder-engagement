@@ -24,14 +24,14 @@ class Main extends React.Component {
 function mapStateToProps(state) {
   console.log("state in map state to props", state);
   return {
-    logged_in: state.logged_in
+    logged_in: state.user.logged_in
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     onMount() {
-      dispatch(actionCreators.testLogin());
+      dispatch(actionCreators.getUser());
     }
   }
 }

@@ -8,7 +8,7 @@ import LoggedInReducer from './LoggedInReducer';
 console.log(exampleReducer)
 
 const rootReducer = combineReducers({
-  logged_in: LoggedInReducer,
+  user: LoggedInReducer,
   categories: CategoryReducer,
   routing: routerReducer,
   form: formReducer,

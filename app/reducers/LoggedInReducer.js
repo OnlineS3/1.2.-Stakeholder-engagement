@@ -1,9 +1,7 @@
 const LoggedInReducer = (state = false, action) => {
-  if(action.type === "LOGGED_IN"){
+  if(action.type === "GOT_USER"){
     console.log(state, action)
-    if(action.logged_in)
-      return true;
-    else return false;
+    return action.user;
   }
   return state;
 }

@@ -14,10 +14,6 @@ import Categories from './Categories';
 
 class Home extends React.Component {
 
-  componentDidMount() {
-    this.props.onMount();
-  }
-
   render() {
     console.log("homeprops:", this.props);
     if(this.props.logged_in){
@@ -41,16 +37,13 @@ class Home extends React.Component {
 
 function mapStateToProps(state) {
   return {
-  	logged_in: state.logged_in
+  	logged_in: state.user.logged_in
   }
 }
 
 
 function mapDispatchToProps(dispatch) {
   return {
-    onMount() {
-      dispatch(actionCreators.testLogin());
-    }
   }
 }
 

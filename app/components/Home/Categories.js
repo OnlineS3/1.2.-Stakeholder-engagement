@@ -27,7 +27,7 @@ class Categories extends React.Component {
       <div>
         <h2>{this.state.text}</h2>
         { this.props.categories && this.props.categories.map((category) => {
-          return <Category id={category.id} title={category.title} description={category.description}></Category>
+          return <Category key={category.id} id={category.id} title={category.title} description={category.description}></Category>
         })}
         <AddCategoryContainer update={this.addNew}></AddCategoryContainer>
       </div>

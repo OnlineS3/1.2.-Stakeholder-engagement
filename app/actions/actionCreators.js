@@ -87,3 +87,18 @@ export function fetchCategories() {
       })
   }
 }
+
+export function fetchAreas() {
+  return function (dispatch){
+    fetch("api/areas/all", {
+      credentials: 'include',
+    })
+      .then(res => {console.log("body", res.body); return res;})
+      .then(res => res.json())
+      .then(areas => {
+        console.log(areas)
+        if(areas instanceof Array)
+          dispatch(gotCategories(areas))
+      })
+  }
+}

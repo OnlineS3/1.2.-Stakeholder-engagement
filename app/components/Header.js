@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import UserMenu from './UserMenu.js'
+import AreaMenu from './AreaMenu.js'
 import LoginButton from './LoginButton.js'
 
 var Header = props => {
@@ -19,6 +20,7 @@ var Header = props => {
 
     return (
       <div style={style}>
+        <AreaMenu/>
         {element}
       </div>
     )

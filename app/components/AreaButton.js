@@ -10,12 +10,12 @@ class AreaButton extends React.Component{
     console.log(this.props);
     this.props.handleClick.bind(this);
   }
-  
+
   render (){
     function clicked(){
-      console.log(this.props.menu_id)
-      this.props.handleClick(this.props.menu_id);
+      this.props.handleClick(this.props.area);
     }
+    clicked = clicked.bind(this);
 
     return (
       <DropdownMenuItem onClick={clicked}>
@@ -32,9 +32,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleClick: (menu_id) => {
-      console.log("clicked", menu_id)
-      dispatch(actionCreators.toggleMenu(menu_id));
+    handleClick: (area) => {
+      console.log("clicked", area)
+      dispatch(actionCreators.changeArea(area));
     }
   }
 }

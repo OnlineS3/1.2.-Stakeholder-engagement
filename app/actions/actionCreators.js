@@ -12,6 +12,12 @@ export const toggleMenu = (id) => {
     id
   }
 }
+export const changeArea = (area) => {
+  return {
+    type: 'TOGGLE_AREA',
+    area
+  }
+}
 export function getUser() {
   return function (dispatch){
     fetch("api/user", {

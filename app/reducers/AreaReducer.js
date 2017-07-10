@@ -25,6 +25,10 @@ const AreaReducer = (state = [], action) => {
       }
     }
     return areas;
+  } else if(action.type === "TOGGLE_AREA") {
+    var areas = state.concat();
+    areas.selected = {name: action.area};
+    return areas;
   } else {
     if(state.length === 0) state.selected = null;
     return state;

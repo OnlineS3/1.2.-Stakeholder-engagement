@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { connect, dispatch } from 'react-redux';
 import * as actionCreators from '../actions/actionCreators';
 import DropdownMenu from './Dropdownmenu.js'
+import AreaButton from './AreaButton.js'
 
 class AreaMenu extends React.Component{
 
@@ -20,10 +21,11 @@ class AreaMenu extends React.Component{
 
     var id = "areamenu"
     var areas = this.props.areas.map(area => {
-      <AreaButton area={area}/>
+      console.log(area)
+      return <AreaButton area={area.name}/>
     })
     var title;
-    if (this.props.area) title = this.props.area;
+    if (this.props.area) title = this.props.area.name;
     else title = "No categories";
     return (
       <DropdownMenu menu_id={id} title={title}>

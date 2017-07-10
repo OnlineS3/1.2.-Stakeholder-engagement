@@ -5,7 +5,8 @@ module.exports = function(sequelize, DataTypes) {
     name: {
       type: DataTypes.STRING,
       primaryKey: true
-    }
+    },
+    description: DataTypes.STRING
   });
   return Area;
 };

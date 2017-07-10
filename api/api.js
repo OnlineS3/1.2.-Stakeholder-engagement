@@ -5,6 +5,7 @@ var router = express.Router();
 console.log("api")
 
 var categories = require('./categories.js');
+var areas = require('./areas.js');
 
 /*
 router.all('/', passport.authenticate('auth0', {
@@ -36,6 +37,7 @@ router.all('*', function(req, res, next){
 })
 
 router.use('/category', categories);
+router.use('/area', areas);
 
 
 
@@ -45,6 +47,7 @@ router.get('/comments/', function(req, res, next) {
     "text": "users thingie"
   });
 });
+
 
 router.get('*', function(req, res, next) {
   console.log(3)

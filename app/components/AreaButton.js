@@ -1,12 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { connect, dispatch } from 'react-redux';
+import * as actionCreators from '../actions/actionCreators';
+import DropdownMenuItem from './DropdownmenuItem.js'
 
 class AreaButton extends React.Component{
-  render{
+  constructor(props){
+    super(props);
+    console.log(this.props);
+    this.props.handleClick.bind(this);
+  }
+  
+  render (){
     function clicked(){
       console.log(this.props.menu_id)
       this.props.handleClick(this.props.menu_id);
     }
+
     return (
       <DropdownMenuItem onClick={clicked}>
         {this.props.area}
@@ -28,4 +38,4 @@ function mapDispatchToProps(dispatch) {
     }
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(DropdownMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(AreaButton);

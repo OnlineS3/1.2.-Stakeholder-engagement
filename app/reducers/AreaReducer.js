@@ -21,7 +21,7 @@ const AreaReducer = (state = [], action) => {
       if((i = areas.indexOf(state.selected)) !== -1){
         areas.selected = areas[i];
       } else {
-        areas.selected = null;
+        areas.selected = areas[0];
       }
     }
     return areas;

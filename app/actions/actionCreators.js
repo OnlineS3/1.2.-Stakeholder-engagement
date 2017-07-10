@@ -90,7 +90,7 @@ export function fetchCategories() {
 
 export function fetchAreas() {
   return function (dispatch){
-    fetch("api/areas/all", {
+    fetch("api/area/all", {
       credentials: 'include',
     })
       .then(res => {console.log("body", res.body); return res;})
@@ -98,7 +98,13 @@ export function fetchAreas() {
       .then(areas => {
         console.log(areas)
         if(areas instanceof Array)
-          dispatch(gotCategories(areas))
+          dispatch(gotAreas(areas))
       })
+  }
+}
+export const gotAreas = (areas) => {
+  return {
+    type: 'gotAreas',
+    areas
   }
 }

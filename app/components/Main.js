@@ -27,7 +27,6 @@ class Main extends React.Component {
 function mapStateToProps(state) {
   console.log("state in map state to props", state);
   return {
-    logged_in: state.user.logged_in,
     user: state.user
   }
 }

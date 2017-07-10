@@ -110,6 +110,11 @@ if(false){
     db.Area.create({
       name: "Uusimaa"
     })
+  })
+  .then(() => {
+    db.Area.create({
+      name: "Pohjanmaa"
+    })
   }).then(() => {
      db.Area.create({
       name: "Åland"
@@ -126,5 +131,7 @@ if(false){
       title: "Kategoria",
       description: "kuvaus"
     })
+  }).then(() => {
+    
   });
 }

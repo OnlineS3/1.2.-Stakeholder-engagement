@@ -1,14 +1,20 @@
-const CategoryReducer = (state = [], action) => {
+const CategoryReducer = (state = {}, action) => {
   if(action.type === "addCategorySuccess"){
     console.log(state, action)
     var categories;
     if(state)
-      categories = state.concat();
-    else categories = [];
-    categories.push(action.category);
+      categories = JSON.parse(JSON.stringify(state));
+    else {
+      categories = {};
+    }
+    if(categories[action.area]){
+      categories[action.area].push(action.category);
+    } else {
+      categories[action.area] = [action.category];
+    }
     return categories;
   } else if(action.type === "gotCategories") {
-    var categories = action.categories.map(category => Object.assign(category, {status: "ok"}));
+    var categories = Object.assign({}, action.categories);
     return categories;
   } else {
     return state;

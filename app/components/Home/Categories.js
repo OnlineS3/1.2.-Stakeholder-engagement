@@ -36,9 +36,9 @@ class Categories extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log("state in map state to props", state);
+  console.log("state in categories map state to props", state);
   return {
-    categories: state.categories
+    categories: state.areas.selected ? state.categories[state.areas.selected.name] : []
   }
 }
 

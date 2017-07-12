@@ -14,7 +14,7 @@ class AddCategoryContainer extends React.Component {
 
 function mapStateToProps(state) {
     return {
-
+      selectedArea: state.areas.selected
     }
   }
 

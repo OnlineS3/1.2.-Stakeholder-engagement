@@ -104,7 +104,7 @@ app.listen(8888, 'localhost', function(err) {
 
 //TODO: REMOVE THIS IN PRODUCTION
 
-if(!true){
+if(true){
   db.sequelize.sync({force: true})
   .then(() => {
     db.Area.create({
@@ -133,12 +133,12 @@ if(!true){
     })
   }).then(() => {
     db.Permission.create({
-      area: "Uusimaa",
+      AreaName: "Uusimaa",
       user_id: "auth0|5936949e71a6ab763a62ad62"
     })
   }).then(() => {
     db.Permission.create({
-      area: "Pohjanmaa",
+      AreaName: "Pohjanmaa",
       user_id: "auth0|5936949e71a6ab763a62ad62"
     })
   });

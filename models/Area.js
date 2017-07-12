@@ -8,5 +8,13 @@ module.exports = function(sequelize, DataTypes) {
     },
     description: DataTypes.STRING
   });
+  Area.associate = function(models) {
+    // Using additional options like CASCADE etc for demonstration
+    // Can also simply do Task.belongsTo(models.User);
+    Area.hasMany(models.Permission, {
+    });
+    Area.hasMany(models.Category, {
+    });
+  }
   return Area;
 };

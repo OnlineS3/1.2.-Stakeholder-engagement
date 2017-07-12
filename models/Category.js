@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
         if(isNaN(id)) id = 0;
         console.log(id);
         return Category.create({
-            id,
+            id: id+1,
             AreaName,
             title,
             description

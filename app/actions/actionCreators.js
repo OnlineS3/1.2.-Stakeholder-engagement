@@ -40,28 +40,33 @@ export const gotUser = (user) => {
   }
 }
 export function addCategory(title, description) {
-  return function (dispatch){
+  return function (dispatch, getState){
     fetch("api/category/new", {
       headers: {
         "content-type": "application/json"
       },
       method: "POST",
       credentials: 'include',
-      body: JSON.stringify({title, description})
+      body: JSON.stringify({title, description, area: getState().areas.selected.name})
     })
     .then(res => res.json())
     .then(res => {
       console.log(res);
-      dispatch(addCategorySuccess(res.category));
+      if(res.category){
+        dispatch(addCategorySuccess(res.category, res.area));
+      } else {
+        //TODO: display error
+      }
     }).then(() => {
       dispatch(reset('addCategory'));
     })
   }
 }
-export const addCategorySuccess = (category) => {
+export const addCategorySuccess = (category, area) => {
   return {
     type: 'addCategorySuccess',
-    category
+    category,
+    area
   }
 }
 
@@ -88,8 +93,7 @@ export function fetchCategories() {
       .then(res => res.json())
       .then(categories => {
         console.log(categories)
-        if(categories instanceof Array)
-          dispatch(gotCategories(categories))
+        dispatch(gotCategories(categories))
       })
   }
 }

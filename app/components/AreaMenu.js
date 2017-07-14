@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect, dispatch } from 'react-redux';
+import Modal from 'react-modal';
 import * as actionCreators from '../actions/actionCreators';
 import DropdownMenu from './Dropdownmenu.js'
 import AreaButton from './AreaButton.js'
@@ -34,7 +35,14 @@ class AreaMenu extends React.Component{
       <div style={style}>
         {this.props.area && this.props.area.admin &&
           <HeaderButton>
-            <p> Invite users to area </p>
+            <Modal
+              isOpen={this.props.inviteModalOpen}
+              onRequestClose={this.props.closeJoinModal}
+              contentLabel="Invite users"
+            >
+              <p> Invite code: </p>
+            </Modal>
+            <p onClick={this.props.openJoinModal}> Invite users to area </p>
           </HeaderButton>
         }
         <DropdownMenu menu_id={id} title={title}>
@@ -49,7 +57,8 @@ class AreaMenu extends React.Component{
 function mapStateToProps(state) {
     return {
       area: state.areas.selected,
-      areas: state.areas
+      areas: state.areas,
+      inviteModalOpen: state.modals.inviteUsers
     }
   }
 
@@ -58,6 +67,12 @@ function mapDispatchToProps(dispatch) {
     onMount () {
       console.log("mount area")
       dispatch(actionCreators.fetchAreas());
+    },
+    openJoinModal () {
+      dispatch(actionCreators.openModal("inviteUsers"));
+    },
+    closeJoinModal () {
+      dispatch(actionCreators.closeModal("inviteUsers"));
     }
   }
 }

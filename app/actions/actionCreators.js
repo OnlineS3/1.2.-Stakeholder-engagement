@@ -146,3 +146,16 @@ export const gotAreas = (areas) => {
     areas
   }
 }
+
+export const openModal = (modal) => {
+  return {
+    type: 'openModal',
+    modal
+  }
+}
+export const closeModal = (modal) => {
+  return {
+    type: 'closeModal',
+    modal
+  }
+}

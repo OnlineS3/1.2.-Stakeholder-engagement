@@ -7,6 +7,7 @@ import CategoryReducer from './CategoryReducer';
 import AreaReducer from './AreaReducer';
 import LoggedInReducer from './LoggedInReducer';
 import MenuReducer from './MenuReducer';
+import ModalReducer from './ModalReducer';
 console.log(exampleReducer)
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   categories: CategoryReducer,
   areas: AreaReducer,
   menuOpen: MenuReducer,
+  modals: ModalReducer,
   routing: routerReducer,
   form: formReducer,
   exampleReducer,

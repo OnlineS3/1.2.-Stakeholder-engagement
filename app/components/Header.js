@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import UserMenu from './UserMenu.js'
 import AreaMenu from './AreaMenu.js'
-import LoginButton from './LoginButton.js'
+import HeaderButton from './HeaderButton.js'
 
 var Header = props => {
     const { user } = props;
@@ -15,7 +15,9 @@ var Header = props => {
     if(user.logged_in){
       element = <UserMenu user={user}/>;
     } else {
-      element = <LoginButton/>;
+      element = <HeaderButton>
+                  <a href="/login"> Login </a>
+                </HeaderButton>;
     }
 
     return (

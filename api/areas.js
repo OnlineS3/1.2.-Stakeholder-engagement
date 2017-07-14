@@ -16,7 +16,8 @@ router.post('/new', function(req, res, next) {
     res.send({
       status:"200 area added",
       area: {
-        name: permission.dataValues.AreaName
+        name: permission.dataValues.AreaName,
+        admin: true
       }
     });
   });
@@ -28,7 +29,8 @@ router.get('/all', function(req, res, next) {
     return permissions.map(permission => {
       console.log(permission)
       return {
-        name: permission.dataValues.AreaName
+        name: permission.dataValues.AreaName,
+        admin: permission.dataValues.admin
       };
     })
   }).then(areas => {

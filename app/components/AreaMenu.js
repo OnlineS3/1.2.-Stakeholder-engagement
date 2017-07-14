@@ -4,6 +4,7 @@ import { connect, dispatch } from 'react-redux';
 import * as actionCreators from '../actions/actionCreators';
 import DropdownMenu from './Dropdownmenu.js'
 import AreaButton from './AreaButton.js'
+import HeaderButton from './HeaderButton.js'
 import AddAreaContainer from './Home/AddAreaContainer.js'
 
 class AreaMenu extends React.Component{
@@ -28,11 +29,19 @@ class AreaMenu extends React.Component{
     var title;
     if (this.props.area) title = this.props.area.name;
     else title = "No categories";
+
     return (
-      <DropdownMenu menu_id={id} title={title}>
-        {areas}
-        <AddAreaContainer></AddAreaContainer>
-      </DropdownMenu>
+      <div style={style}>
+        {this.props.area && this.props.area.admin &&
+          <HeaderButton>
+            <p> Invite users to area </p>
+          </HeaderButton>
+        }
+        <DropdownMenu menu_id={id} title={title}>
+          {areas}
+          <AddAreaContainer></AddAreaContainer>
+        </DropdownMenu>
+      </div>
     )
   }
 }

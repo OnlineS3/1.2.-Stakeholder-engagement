@@ -97,7 +97,29 @@ export function fetchCategories() {
       })
   }
 }
-
+export function addArea(name) {
+  return function (dispatch, getState){
+    fetch("api/area/new", {
+      headers: {
+        "content-type": "application/json"
+      },
+      method: "POST",
+      credentials: 'include',
+      body: JSON.stringify({name})
+    })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+      if(res.area){
+        dispatch(addAreaSuccess(res.area));
+      } else {
+        //TODO: display error
+      }
+    }).then(() => {
+      dispatch(reset('addArea'));
+    })
+  }
+}
 export function fetchAreas() {
   return function (dispatch){
     fetch("api/area/all", {
@@ -110,6 +132,12 @@ export function fetchAreas() {
         if(areas instanceof Array)
           dispatch(gotAreas(areas))
       })
+  }
+}
+export const addAreaSuccess = (area) => {
+  return {
+    type: 'addAreaSuccess',
+    area
   }
 }
 export const gotAreas = (areas) => {

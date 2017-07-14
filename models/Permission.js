@@ -5,8 +5,8 @@ module.exports = function(sequelize, DataTypes) {
     user_id: {
       type: DataTypes.STRING
     },
-    type: {
-      type: DataTypes.STRING
+    admin: {
+      type: DataTypes.BOOLEAN
     },
     /*
     AreaName: {

@@ -5,16 +5,19 @@ var router = express.Router();
 router.post('/new', function(req, res, next) {
   console.dir(req.body)
   db.Area.create({
-    name: req.body.name,
-    description: req.body.description
+    name: req.body.name
   }).then((area) => {
-    db.Permission.create({
-      area: req.body.name,
-      user_id: req.session.passport.user._json.sub
+    return db.Permission.create({
+      AreaName: req.body.name,
+      user_id: req.session.passport.user._json.sub,
+      admin: true
     })
-  }).then((area) => {
+  }).then((permission) => {
     res.send({
       status:"200 area added",
+      area: {
+        name: permission.dataValues.AreaName
+      }
     });
   });
 });

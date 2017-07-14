@@ -4,6 +4,7 @@ import { connect, dispatch } from 'react-redux';
 import * as actionCreators from '../actions/actionCreators';
 import DropdownMenu from './Dropdownmenu.js'
 import AreaButton from './AreaButton.js'
+import AddAreaContainer from './Home/AddAreaContainer.js'
 
 class AreaMenu extends React.Component{
 
@@ -30,6 +31,7 @@ class AreaMenu extends React.Component{
     return (
       <DropdownMenu menu_id={id} title={title}>
         {areas}
+        <AddAreaContainer></AddAreaContainer>
       </DropdownMenu>
     )
   }

@@ -5,7 +5,7 @@ var router = express.Router();
 router.post('/new', function(req, res, next) {
   console.dir(req.body)
   db.Permission.find({
-    where: {user_id: req.session.passport.user._json.sub, AreaName: req.body.area},
+    where: {user_id: req.session.passport.user._json.sub, AreaName: req.body.area, admin: true},
   }).then(permission => {
     if(permission){
       db.Category.addNew({

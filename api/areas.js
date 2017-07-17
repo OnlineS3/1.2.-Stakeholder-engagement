@@ -33,16 +33,76 @@ router.get('/all', function(req, res, next) {
   db.Permission.findAll({where: {user_id: req.session.passport.user._json.sub}, include: db.Area}).then(permissions => {
     return permissions.map(permission => {
       console.log(permission)
-      return {
-        name: permission.dataValues.AreaName,
-        admin: permission.dataValues.admin,
-        inviteLink: encrypter.encrypt('user|'+permission.Area.dataValues.uuid),
-        adminInviteLink: encrypter.encrypt('admin|'+permission.Area.dataValues.uuid)
-      };
+      if(permission.dataValues.admin){
+        return {
+          name: permission.dataValues.AreaName,
+          admin: permission.dataValues.admin,
+          inviteLink: encrypter.encrypt('user|'+permission.Area.dataValues.uuid),
+          adminInviteLink: encrypter.encrypt('admin|'+permission.Area.dataValues.uuid)
+        };
+      } else {
+        return {
+          name: permission.dataValues.AreaName,
+          admin: permission.dataValues.admin
+        };
+      }
     })
   }).then(areas => {
     res.send(areas);
   })
+});
+
+router.post('/join', function(req, res, next) {
+  req.body.key;
+  var string = encrypter.decrypt(req.body.key).split('|');
+  var admin = string[0] === 'admin';
+  var uuid = string[1];
+  db.Area.find({where: {uuid: uuid}}).then(area => {
+    if(area){
+        db.Permission.find({
+          where: {
+            AreaName: area.dataValues.name
+          }
+        }).then(permission => {
+          return new Promise((resolve, reject) => {
+            if(permission){
+              if(admin){
+                return permission.updateAttributes({admin: true}).then(permission => {
+                  resolve({area, permission})
+                });
+              } else { //already has permission
+                return Promise.resolve().then(() => {
+                  resolve({area, permission});
+                });
+              }
+            } else {
+              return db.Permission.create({AreaName: area.dataValues.name, admin:admin}).then(permission => {
+                resolve({area, permission});
+              })
+            }
+          })
+        }).then((results) => {
+          if(results.permission.dataValues.admin){
+            return {
+              name: results.permission.dataValues.AreaName,
+              admin: results.permission.dataValues.admin,
+              inviteLink: encrypter.encrypt('user|'+results.permission.Area.dataValues.uuid),
+              adminInviteLink: encrypter.encrypt('admin|'+results.permission.Area.dataValues.uuid)
+            };
+          } else {
+            return {
+              name: results.permission.dataValues.AreaName,
+              admin: results.permission.dataValues.admin
+            };
+          }
+        }).then(area => {
+          res.send(area);
+        })
+    } else {
+      //TODO: error response
+    }
+  })
+
 });
 
 module.exports = router;

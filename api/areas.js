@@ -4,7 +4,7 @@ var router = express.Router();
 var encrypter = require('../encrypter.js');
 
 router.post('/new', function(req, res, next) {
-  console.dir(req.body)
+  //console.dir(req.body)
   db.Area.create({
     name: req.body.name
   }).then((area) => {
@@ -29,7 +29,7 @@ router.post('/new', function(req, res, next) {
 });
 
 router.get('/all', function(req, res, next) {
-  console.dir(req.session.passport.user)
+  //console.dir(req.session.passport.user)
   db.Permission.findAll({where: {user_id: req.session.passport.user._json.sub}, include: db.Area}).then(permissions => {
     return permissions.map(permission => {
       console.log(permission)
@@ -53,7 +53,7 @@ router.get('/all', function(req, res, next) {
 });
 
 router.post('/join', function(req, res, next) {
-  req.body.key;
+  console.log(req.body.key);
   var string = encrypter.decrypt(req.body.key).split('|');
   var admin = string[0] === 'admin';
   var uuid = string[1];
@@ -61,7 +61,8 @@ router.post('/join', function(req, res, next) {
     if(area){
         db.Permission.find({
           where: {
-            AreaName: area.dataValues.name
+            AreaName: area.dataValues.name,
+            user_id: req.session.passport.user._json.sub
           }
         }).then(permission => {
           return new Promise((resolve, reject) => {
@@ -76,29 +77,41 @@ router.post('/join', function(req, res, next) {
                 });
               }
             } else {
-              return db.Permission.create({AreaName: area.dataValues.name, admin:admin}).then(permission => {
+              return db.Permission.create({
+                user_id:req.session.passport.user._json.sub,
+                AreaName: area.dataValues.name,
+                admin:admin
+              }).then(permission => {
                 resolve({area, permission});
               })
             }
           })
         }).then((results) => {
+          console.dir(results)
           if(results.permission.dataValues.admin){
             return {
-              name: results.permission.dataValues.AreaName,
-              admin: results.permission.dataValues.admin,
-              inviteLink: encrypter.encrypt('user|'+results.permission.Area.dataValues.uuid),
-              adminInviteLink: encrypter.encrypt('admin|'+results.permission.Area.dataValues.uuid)
+              status:"200 area added",
+              area: {
+                name: results.permission.dataValues.AreaName,
+                admin: results.permission.dataValues.admin,
+                inviteLink: encrypter.encrypt('user|'+results.area.dataValues.uuid),
+                adminInviteLink: encrypter.encrypt('admin|'+results.area.dataValues.uuid)
+              }
             };
           } else {
             return {
-              name: results.permission.dataValues.AreaName,
-              admin: results.permission.dataValues.admin
+              status:"200 area added",
+              area: {
+                name: results.permission.dataValues.AreaName,
+                admin: results.permission.dataValues.admin
+              }
             };
           }
         }).then(area => {
           res.send(area);
         })
     } else {
+      res.send({response: "invalid key"});
       //TODO: error response
     }
   })

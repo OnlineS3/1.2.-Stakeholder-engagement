@@ -26,7 +26,7 @@ router.get('/user/', function(req, res, next) {
 
 router.all('*', function(req, res, next){
   console.log(res.locals.loggedIn)
-  console.log(req.session.passport)
+  //console.log(req.session.passport)
   if(res.locals.loggedIn){
     next();
   } else {

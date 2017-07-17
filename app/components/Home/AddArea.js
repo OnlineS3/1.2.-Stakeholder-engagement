@@ -7,6 +7,7 @@ var AddArea = props => {
     const { handleSubmit } = props;
     return (
       <form onSubmit={handleSubmit}>
+        New area name:
         <Field name="name" component="input" type="text"/>
         <button type="submit"> Add </button>
       </form>

@@ -5,13 +5,13 @@ var DropdownMenuItem = props => {
     const style = {
       background: "grey",
       fontFamily: "sans",
-      float: "right",
       height: "100%",
     }
 
     return (
       <div style={style} onClick={props.onClick}>
         {props.children}
+        <br/>
       </div>
     )
 }

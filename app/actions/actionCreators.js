@@ -134,6 +134,29 @@ export function fetchAreas() {
       })
   }
 }
+export function joinArea(key) {
+  return function (dispatch, getState){
+    fetch("api/area/join", {
+      headers: {
+        "content-type": "application/json"
+      },
+      method: "POST",
+      credentials: 'include',
+      body: JSON.stringify({key})
+    })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+      if(res.area){
+        dispatch(addAreaSuccess(res.area));
+      } else {
+        //TODO: display error
+      }
+    }).then(() => {
+      dispatch(reset('joinArea'));
+    })
+  }
+}
 export const addAreaSuccess = (area) => {
   return {
     type: 'addAreaSuccess',

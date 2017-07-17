@@ -8,6 +8,7 @@ import DropdownMenuItem from './DropdownMenuItem.js'
 import AreaButton from './AreaButton.js'
 import HeaderButton from './HeaderButton.js'
 import AddAreaContainer from './Home/AddAreaContainer.js'
+import JoinAreaContainer from './Home/JoinAreaContainer.js'
 
 class AreaMenu extends React.Component{
 
@@ -34,6 +35,20 @@ class AreaMenu extends React.Component{
 
     return (
       <div style={style}>
+        <Modal
+          isOpen={this.props.addModalOpen}
+          onRequestClose={this.props.closeAddModal}
+          contentLabel="Create a new area"
+        >
+          <AddAreaContainer></AddAreaContainer>
+        </Modal>
+        <Modal
+          isOpen={this.props.joinModalOpen}
+          onRequestClose={this.props.closeJoinModal}
+          contentLabel="Join area"
+        >
+          <JoinAreaContainer></JoinAreaContainer>
+        </Modal>
         {this.props.area && this.props.area.admin &&
           <HeaderButton>
             <Modal
@@ -53,16 +68,13 @@ class AreaMenu extends React.Component{
         }
         <DropdownMenu menu_id={id} title={title}>
           {areas}
-          <AddAreaContainer></AddAreaContainer>
-          <DropdownMenuItem>
-            <Modal
-              isOpen={this.props.joinModalOpen}
-              onRequestClose={this.props.closeJoinModal}
-              contentLabel="Join area"
-            >
+          <DropdownMenuItem onClick={this.props.openAddModal}>
 
-            </Modal>
-            <p onClick={this.props.openJoinModal}> Join an area </p>
+            Create a new area
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={this.props.openJoinModal}>
+
+            Join an area
           </DropdownMenuItem>
         </DropdownMenu>
       </div>
@@ -75,7 +87,8 @@ function mapStateToProps(state) {
       area: state.areas.selected,
       areas: state.areas,
       inviteModalOpen: state.modals.inviteUsers,
-      joinModalOpen: state.modals.joinArea
+      joinModalOpen: state.modals.joinArea,
+      addModalOpen: state.modals.addArea
     }
   }
 
@@ -90,6 +103,12 @@ function mapDispatchToProps(dispatch) {
     },
     closeJoinModal () {
       dispatch(actionCreators.closeModal("joinArea"));
+    },
+    openAddModal () {
+      dispatch(actionCreators.openModal("addArea"));
+    },
+    closeAddModal () {
+      dispatch(actionCreators.closeModal("addArea"));
     },
     openInviteModal () {
       dispatch(actionCreators.openModal("inviteUsers"));

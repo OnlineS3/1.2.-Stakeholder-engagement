@@ -40,7 +40,12 @@ class AreaMenu extends React.Component{
               onRequestClose={this.props.closeJoinModal}
               contentLabel="Invite users"
             >
-              <p> Invite code: </p>
+              <p> Share this invitation code with users you want to participate in the area: </p>
+              <p> {this.props.area.inviteLink}</p>
+              <br/>
+              <p> Share this invitation code with admins you want to help manage the area: </p>
+              <p> {this.props.area.adminInviteLink}</p>
+
             </Modal>
             <p onClick={this.props.openJoinModal}> Invite users to area </p>
           </HeaderButton>

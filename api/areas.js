@@ -87,7 +87,6 @@ router.post('/join', function(req, res, next) {
             }
           })
         }).then((results) => {
-          console.dir(results)
           if(results.permission.dataValues.admin){
             return {
               status:"200 area added",

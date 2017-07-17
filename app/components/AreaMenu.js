@@ -3,7 +3,8 @@ import { Link } from 'react-router';
 import { connect, dispatch } from 'react-redux';
 import Modal from 'react-modal';
 import * as actionCreators from '../actions/actionCreators';
-import DropdownMenu from './Dropdownmenu.js'
+import DropdownMenu from './DropdownMenu.js'
+import DropdownMenuItem from './DropdownMenuItem.js'
 import AreaButton from './AreaButton.js'
 import HeaderButton from './HeaderButton.js'
 import AddAreaContainer from './Home/AddAreaContainer.js'
@@ -37,7 +38,7 @@ class AreaMenu extends React.Component{
           <HeaderButton>
             <Modal
               isOpen={this.props.inviteModalOpen}
-              onRequestClose={this.props.closeJoinModal}
+              onRequestClose={this.props.closeInviteModal}
               contentLabel="Invite users"
             >
               <p> Share this invitation code with users you want to participate in the area: </p>
@@ -47,12 +48,22 @@ class AreaMenu extends React.Component{
               <p> {this.props.area.adminInviteLink}</p>
 
             </Modal>
-            <p onClick={this.props.openJoinModal}> Invite users to area </p>
+            <p onClick={this.props.openInviteModal}> Invite users to area </p>
           </HeaderButton>
         }
         <DropdownMenu menu_id={id} title={title}>
           {areas}
           <AddAreaContainer></AddAreaContainer>
+          <DropdownMenuItem>
+            <Modal
+              isOpen={this.props.joinModalOpen}
+              onRequestClose={this.props.closeJoinModal}
+              contentLabel="Join area"
+            >
+
+            </Modal>
+            <p onClick={this.props.openJoinModal}> Join an area </p>
+          </DropdownMenuItem>
         </DropdownMenu>
       </div>
     )
@@ -63,7 +74,8 @@ function mapStateToProps(state) {
     return {
       area: state.areas.selected,
       areas: state.areas,
-      inviteModalOpen: state.modals.inviteUsers
+      inviteModalOpen: state.modals.inviteUsers,
+      joinModalOpen: state.modals.joinArea
     }
   }
 
@@ -74,9 +86,15 @@ function mapDispatchToProps(dispatch) {
       dispatch(actionCreators.fetchAreas());
     },
     openJoinModal () {
-      dispatch(actionCreators.openModal("inviteUsers"));
+      dispatch(actionCreators.openModal("joinArea"));
     },
     closeJoinModal () {
+      dispatch(actionCreators.closeModal("joinArea"));
+    },
+    openInviteModal () {
+      dispatch(actionCreators.openModal("inviteUsers"));
+    },
+    closeInviteModal () {
       dispatch(actionCreators.closeModal("inviteUsers"));
     }
   }

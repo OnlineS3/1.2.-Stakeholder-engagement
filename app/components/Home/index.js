@@ -20,7 +20,7 @@ class Home extends React.Component {
         <div>
           <HomeView props={{message: "Hello!"}}/>
           <ServerView props={{}}/>
-          <Categories/>
+          <Categories params={this.props.params}/>
         </div>
       )
     } else {

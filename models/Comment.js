@@ -2,6 +2,10 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Comment = sequelize.define("Comment", {
+    id: {
+      type: DataTypes.INTEGER,
+      unique: false
+    },
     uuid: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV1,
@@ -27,6 +31,31 @@ module.exports = function(sequelize, DataTypes) {
       }
     })
 
+  }
+
+  Comment.addNew = function(comment){
+    var {CategoryUuid = "", CommentUuid = "", title = "", description = "", user = ""} = comment;
+    if(CategoryUuid === "" && CommentUuid === ""){
+      return Promise.reject("comment needs either parent category or comment");
+    }
+    return sequelize.transaction(function(t) {
+      var idNum;
+      if(CategoryUuid !== ""){
+        idNum = Comment.max('id', {where: {CategoryUuid}}, {transaction: t})
+      } else {
+        idNum = Comment.max('id', {where: {CommentUuid}}, {transaction: t})
+      }
+      return idNum.then((id) => {
+        if(isNaN(id)) id = 0;
+        console.log(id);
+        return Comment.create({
+            id: id+1,
+            title,
+            description,
+            user
+          }, {transaction: t});
+        })
+      });
   }
 
   return Comment;

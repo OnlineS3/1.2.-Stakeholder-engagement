@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect, dispatch } from 'react-redux';
 import * as actionCreators from '../actions/actionCreators';
-import DropdownMenuItem from './DropdownmenuItem.js'
+import DropdownMenuItem from './DropdownMenuItem.js'
 
 class AreaButton extends React.Component{
   constructor(props){
@@ -19,7 +19,9 @@ class AreaButton extends React.Component{
 
     return (
       <DropdownMenuItem onClick={clicked}>
-        {this.props.area}
+        <Link to={`/${this.props.area}`}>
+          {this.props.area}
+        </Link>
       </DropdownMenuItem>
     )
   }
@@ -34,7 +36,7 @@ function mapDispatchToProps(dispatch) {
   return {
     handleClick: (area) => {
       console.log("clicked", area)
-      dispatch(actionCreators.changeArea(area));
+      //dispatch(actionCreators.changeArea(area));
     }
   }
 }

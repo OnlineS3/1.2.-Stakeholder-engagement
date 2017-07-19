@@ -20,9 +20,6 @@ class Home extends React.Component {
       return(
         <div>
           <Header user={this.props.user} params={this.props.params}/>
-
-          <HomeView props={{message: "Hello!"}}/>
-          <ServerView props={{}}/>
           <Categories params={this.props.params}/>
         </div>
       )
@@ -30,7 +27,7 @@ class Home extends React.Component {
       console.log("outputting home view")
       return(
         <div>
-          <HomeView props={{message: "Hello!"}}/>
+          <Header user={this.props.user} params={this.props.params}/>
         </div>
       )
     }

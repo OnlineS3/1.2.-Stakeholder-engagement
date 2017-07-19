@@ -7,6 +7,8 @@ const MenuReducer = (state = {}, action) => {
     return newState;
   } else if (action.type === "openModal"){
     return {}; //opening a modal closes all menus
+  } else if (action.type === "TOGGLE_AREA"){
+    return {}; //changing the area closes all menus
   }
   return state;
 }

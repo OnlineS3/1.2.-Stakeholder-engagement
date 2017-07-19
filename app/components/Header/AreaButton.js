@@ -36,7 +36,7 @@ function mapDispatchToProps(dispatch) {
   return {
     handleClick: (area) => {
       console.log("clicked", area)
-      //dispatch(actionCreators.changeArea(area));
+      dispatch(actionCreators.changeArea(area));
     }
   }
 }

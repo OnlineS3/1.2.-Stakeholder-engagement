@@ -5,7 +5,7 @@ import AreaMenu from './AreaMenu.js'
 import HeaderButton from './HeaderButton.js'
 
 var Header = props => {
-    const { user } = props;
+    const { user, params } = props;
     const style = {
       width: '100%',
       background: "blue",
@@ -22,7 +22,7 @@ var Header = props => {
 
     return (
       <div style={style}>
-        <AreaMenu/>
+        <AreaMenu params={params}/>
         {element}
       </div>
     )

@@ -25,12 +25,16 @@ class AreaMenu extends React.Component{
     }
 
     var id = "areamenu"
-    var areas = this.props.areas.map(area => {
+    var areas = Object.values(this.props.areas).map(area => {
       console.log(area)
       return <AreaButton area={area.name}/>
     })
-    var title;
-    if (this.props.area) title = this.props.area.name;
+    var title, area;
+    if (this.props.params && this.props.params.areaName){
+       title = this.props.params.areaName;
+       if(this.props.areas)
+         area = this.props.areas[this.props.params.areaName]
+    }
     else title = "No categories";
 
     return (
@@ -49,7 +53,7 @@ class AreaMenu extends React.Component{
         >
           <JoinAreaContainer></JoinAreaContainer>
         </Modal>
-        {this.props.area && this.props.area.admin &&
+        {area && area.admin &&
           <HeaderButton>
             <Modal
               isOpen={this.props.inviteModalOpen}
@@ -57,10 +61,10 @@ class AreaMenu extends React.Component{
               contentLabel="Invite users"
             >
               <p> Share this invitation code with users you want to participate in the area: </p>
-              <p> {this.props.area.inviteLink}</p>
+              <p> {area.inviteLink}</p>
               <br/>
               <p> Share this invitation code with admins you want to help manage the area: </p>
-              <p> {this.props.area.adminInviteLink}</p>
+              <p> {area.adminInviteLink}</p>
 
             </Modal>
             <p onClick={this.props.openInviteModal}> Invite users to area </p>
@@ -84,7 +88,6 @@ class AreaMenu extends React.Component{
 
 function mapStateToProps(state) {
     return {
-      area: state.areas.selected,
       areas: state.areas,
       inviteModalOpen: state.modals.inviteUsers,
       joinModalOpen: state.modals.joinArea,

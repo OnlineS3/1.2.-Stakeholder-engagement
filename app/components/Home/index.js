@@ -10,6 +10,7 @@ import * as actionCreators from '../../actions/actionCreators';
 import HomeView from './HomeView';
 import ServerView from './ServerView';
 import Categories from './Categories';
+import Header from '../Header';
 
 
 class Home extends React.Component {
@@ -18,6 +19,8 @@ class Home extends React.Component {
     if(this.props.logged_in){
       return(
         <div>
+          <Header user={this.props.user} params={this.props.params}/>
+
           <HomeView props={{message: "Hello!"}}/>
           <ServerView props={{}}/>
           <Categories params={this.props.params}/>

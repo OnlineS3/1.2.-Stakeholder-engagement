@@ -1,31 +1,21 @@
-const AreaReducer = (state = [], action) => {
+const AreaReducer = (state = {}, action) => {
   if(action.type === "addAreaSuccess"){
     console.log(state, action)
     var areas;
     if(state)
-      areas = state.concat();
+      areas = Object.assign({}, state);
     else {
-       areas = [];
+       areas = {};
     }
-    areas.push(action.area);
-    areas.selected = action.area;
+    areas[action.area.name] = action.area;
     return areas;
   } else if(action.type === "gotAreas") {
-    var areas = action.areas;
-    if(areas.length === 0){
-      areas.selected = null;
-    } else if (areas.length === 1){
-      areas.selected = areas[0];
-    } else {
-      var i;
-      if((i = areas.indexOf(state.selected)) !== -1){
-        areas.selected = areas[i];
-      } else {
-        areas.selected = areas[0];
-      }
-    }
+    var areas = {};
+    action.areas.forEach(area => {
+      areas[area.name] = area;
+    });
     return areas;
-  } else if(action.type === "TOGGLE_AREA") {
+  }/* else if(action.type === "TOGGLE_AREA") {
     var areas = state.concat();
     var admin = false;
     areas.forEach(area => {
@@ -35,8 +25,8 @@ const AreaReducer = (state = [], action) => {
       }
     })
     return areas;
-  } else {
-    if(state.length === 0) state.selected = null;
+  }*/ else {
+    //if(state.length === 0) state.selected = null;
     return state;
   }
 }

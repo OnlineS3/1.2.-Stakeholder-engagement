@@ -21,7 +21,8 @@ class Categories extends React.Component {
     var categories, admin;
     if(this.props.params && this.props.params.areaName){
       categories = this.props.categories[this.props.params.areaName];
-      admin = this.props.areas[this.props.params.areaName].admin;
+      if(this.props.areas && this.props.areas[this.props.params.areaName])
+        admin = this.props.areas[this.props.params.areaName].admin;
     } else {
       categories = null;
       admin = false;

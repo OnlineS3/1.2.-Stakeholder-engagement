@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import Header from './Header.js'
+import Header from './Header'
 import * as actionCreators from '../actions/actionCreators';
 
 class Main extends React.Component {

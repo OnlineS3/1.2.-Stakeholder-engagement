@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect, dispatch } from 'react-redux';
-import * as actionCreators from '../actions/actionCreators';
-import DropdownMenuItem from './DropdownMenuItem.js'
+import * as actionCreators from 'app/actions/actionCreators';
+import DropdownMenuItem from '../DropdownMenu/DropdownMenuItem.js'
 
 class AreaButton extends React.Component{
   constructor(props){

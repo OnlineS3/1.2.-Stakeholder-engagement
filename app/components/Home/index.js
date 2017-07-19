@@ -27,6 +27,7 @@ class Home extends React.Component {
         </div>
       )
     } else {
+      console.log("outputting home view")
       return(
         <div>
           <HomeView props={{message: "Hello!"}}/>

@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect, dispatch } from 'react-redux';
 import Modal from 'react-modal';
-import * as actionCreators from '../actions/actionCreators';
-import DropdownMenu from './DropdownMenu.js'
-import DropdownMenuItem from './DropdownMenuItem.js'
+import * as actionCreators from 'app/actions/actionCreators';
+import DropdownMenu from '../DropdownMenu'
+import DropdownMenuItem from '../DropdownMenu/DropdownMenuItem.js'
 import AreaButton from './AreaButton.js'
 import HeaderButton from './HeaderButton.js'
-import AddAreaContainer from './Home/AddAreaContainer.js'
-import JoinAreaContainer from './Home/JoinAreaContainer.js'
+import AddAreaContainer from './AddAreaContainer.js'
+import JoinAreaContainer from './JoinAreaContainer.js'
 
 class AreaMenu extends React.Component{
 
@@ -54,32 +54,31 @@ class AreaMenu extends React.Component{
           <JoinAreaContainer></JoinAreaContainer>
         </Modal>
         {area && area.admin &&
-          <HeaderButton>
-            <Modal
-              isOpen={this.props.inviteModalOpen}
-              onRequestClose={this.props.closeInviteModal}
-              contentLabel="Invite users"
-            >
-              <p> Share this invitation code with users you want to participate in the area: </p>
-              <p> {area.inviteLink}</p>
-              <br/>
-              <p> Share this invitation code with admins you want to help manage the area: </p>
-              <p> {area.adminInviteLink}</p>
-
-            </Modal>
-            <p onClick={this.props.openInviteModal}> Invite users to area </p>
-          </HeaderButton>
+          <Modal
+            isOpen={this.props.inviteModalOpen}
+            onRequestClose={this.props.closeInviteModal}
+            contentLabel="Invite users"
+          >
+            <p> Share this invitation code with users you want to participate in the area: </p>
+            <p> {area.inviteLink}</p>
+            <br/>
+            <p> Share this invitation code with admins you want to help manage the area: </p>
+            <p> {area.adminInviteLink}</p>
+          </Modal>
         }
         <DropdownMenu menu_id={id} title={title}>
           {areas}
           <DropdownMenuItem onClick={this.props.openAddModal}>
-
             Create a new area
           </DropdownMenuItem>
           <DropdownMenuItem onClick={this.props.openJoinModal}>
-
             Join an area
           </DropdownMenuItem>
+          {area && area.admin &&
+            <DropdownMenuItem onClick={this.props.openInviteModal}>
+              Invite users to {area.name}
+            </DropdownMenuItem>
+          }
         </DropdownMenu>
       </div>
     )

@@ -6,6 +6,10 @@ module.exports = {
   entry: [
     './app/app'
   ],
+  resolve: {
+    root: path.resolve('./app/app'),
+    extensions: ['', '.js']
+  },
   output: {
     path: path.join(__dirname, 'dist/static'),
     filename: 'bundle.js',

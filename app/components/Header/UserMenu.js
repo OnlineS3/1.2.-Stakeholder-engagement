@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect, dispatch } from 'react-redux';
-import DropdownMenu from './DropdownMenu.js'
-import DropdownMenuItem from './DropdownMenuItem.js'
+import DropdownMenu from '../DropdownMenu'
+import DropdownMenuItem from '../DropdownMenu/DropdownMenuItem.js'
 
 var LoginMenu = props => {
     var id = "usermenu"

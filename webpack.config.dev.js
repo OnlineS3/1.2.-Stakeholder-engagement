@@ -8,6 +8,12 @@ module.exports = {
     './app/app',
     './node_modules/auth0-js/build/auth0.js'
   ],
+  resolve: {
+    alias:{
+      app: path.resolve('./app/')
+    },
+    extensions: ['.js']
+  },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',

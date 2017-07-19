@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect, dispatch } from 'react-redux';
-import * as actionCreators from '../actions/actionCreators';
+import * as actionCreators from 'app/actions/actionCreators';
 
 class DropdownMenu extends React.Component {
   toggle(e){

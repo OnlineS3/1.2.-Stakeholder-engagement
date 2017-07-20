@@ -19,7 +19,6 @@ class Home extends React.Component {
     if(this.props.logged_in){
       return(
         <div>
-          <Header user={this.props.user} params={this.props.params}/>
           <Categories params={this.props.params}/>
         </div>
       )
@@ -27,7 +26,6 @@ class Home extends React.Component {
       console.log("outputting home view")
       return(
         <div>
-          <Header user={this.props.user} params={this.props.params}/>
         </div>
       )
     }

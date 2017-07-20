@@ -14,6 +14,8 @@ class Main extends React.Component {
     console.log(Header)
     return (
       <div>
+        <Header user={this.props.user} params={this.props.params}/>
+
         {React.cloneElement(this.props.children, this.props)}
       </div>
     )

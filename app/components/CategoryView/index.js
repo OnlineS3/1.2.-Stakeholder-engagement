@@ -17,9 +17,16 @@ class CategoryView extends React.Component {
 
   render(){
     console.log(this.props)
+    var id = this.props.params.categoryId;
+    var name = this.props.params.areaName;
+    var category;
+    if(this.props.categories[name])
+      category = this.props.categories[name][id - 1];
+    console.log(this.props, id, name)
       return (
       <div>
-        <h2>{this.props.params.categoryId} {this.props.title}</h2>
+        <h2>{id} {category && category.title}</h2>
+        <p> {category && category.description} </p>
         { this.props.comments && this.props.comments.map((comment) => {
           return <CommentElement
               key={comment.id}
@@ -36,7 +43,8 @@ class CategoryView extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    comments: state.areas.selected ? state.categories[state.areas.selected.name] : []
+    categories: state.categories,
+    comments: state.comments
   }
 }
 

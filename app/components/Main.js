@@ -33,6 +33,7 @@ function mapDispatchToProps(dispatch) {
   return {
     onMount() {
       dispatch(actionCreators.getUser());
+      dispatch(actionCreators.fetchCategories());
     }
   }
 }

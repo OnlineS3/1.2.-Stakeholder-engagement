@@ -6,6 +6,7 @@ console.log("api")
 
 var categories = require('./categories.js');
 var areas = require('./areas.js');
+var comments = require('./comments.js');
 
 /*
 router.all('/', passport.authenticate('auth0', {
@@ -39,15 +40,7 @@ router.all('*', function(req, res, next){
 router.use('/category', categories);
 router.use('/area', areas);
 
-
-
-router.get('/comments/', function(req, res, next) {
-  console.log(1)
-  res.send({
-    "text": "users thingie"
-  });
-});
-
+router.use('/comments', comments)
 
 router.get('*', function(req, res, next) {
   console.log(3)

@@ -20,7 +20,7 @@ export const changeArea = (area) => {
 }
 export function getUser() {
   return function (dispatch){
-    fetch("api/user", {
+    fetch("/api/user", {
       headers: {
       },
       method: "GET",
@@ -41,7 +41,7 @@ export const gotUser = (user) => {
 }
 export function addCategory(title, description) {
   return function (dispatch, getState){
-    fetch("api/category/new", {
+    fetch("/api/category/new", {
       headers: {
         "content-type": "application/json"
       },
@@ -86,7 +86,7 @@ export const gotCategories = (json) => {
 export function fetchCategories() {
   return function (dispatch){
     dispatch(requestCategories());
-    fetch("api/category/all", {
+    fetch("/api/category/all", {
       credentials: 'include',
     })
       .then(res => {console.log("body", res.body); return res;})
@@ -99,7 +99,7 @@ export function fetchCategories() {
 }
 export function addArea(name) {
   return function (dispatch, getState){
-    fetch("api/area/new", {
+    fetch("/api/area/new", {
       headers: {
         "content-type": "application/json"
       },
@@ -122,7 +122,7 @@ export function addArea(name) {
 }
 export function fetchAreas() {
   return function (dispatch){
-    fetch("api/area/all", {
+    fetch("/api/area/all", {
       credentials: 'include',
     })
       .then(res => {console.log("body", res.body); return res;})
@@ -136,7 +136,7 @@ export function fetchAreas() {
 }
 export function joinArea(key) {
   return function (dispatch, getState){
-    fetch("api/area/join", {
+    fetch("/api/area/join", {
       headers: {
         "content-type": "application/json"
       },
@@ -160,8 +160,12 @@ export function joinArea(key) {
 
 export function fetchComments(areaName, categoryId) {
   return function (dispatch){
-    fetch("api/comments", {
+    fetch("/api/comments", {
+      headers: {
+        "content-type": "application/json"
+      },
       credentials: 'include',
+      method: "POST",
       body: JSON.stringify({areaName, categoryId})
     })
       .then(res => res.json())

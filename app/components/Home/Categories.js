@@ -59,7 +59,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onMount() {
-      dispatch(actionCreators.fetchCategories());
     }
   }
 }

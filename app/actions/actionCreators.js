@@ -157,6 +157,21 @@ export function joinArea(key) {
     })
   }
 }
+
+export function fetchComments(areaName, categoryId) {
+  return function (dispatch){
+    fetch("api/comments", {
+      credentials: 'include',
+      body: JSON.stringify({areaName, categoryId})
+    })
+      .then(res => res.json())
+      .then(comments => {
+        console.log(comments)
+        dispatch(gotComments(areaName, categoryId, comments))
+      })
+  }
+}
+
 export const addAreaSuccess = (area) => {
   return {
     type: 'addAreaSuccess',

@@ -17,8 +17,11 @@ const router = (
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <Route path="/:areaName" component={Home}></Route>
+        <Route path="/:areaName" component={Home}>
+          <IndexRoute name="area" component={Home}></IndexRoute>
+        </Route>
         <IndexRoute name="home" component={Home}></IndexRoute>
+        <Route path="/:areaName/:categoryId" component={CategoryView}></Route>
       </Route>
       <Route path="/category/" component={App}>
         <IndexRoute name="category" component={CategoryView}></IndexRoute>

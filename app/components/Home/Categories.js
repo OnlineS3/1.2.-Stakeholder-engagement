@@ -35,7 +35,8 @@ class Categories extends React.Component {
               key={category.id}
               id={category.id}
               title={category.title}
-              description={category.description}>
+              description={category.description}
+              url={`/${this.props.params.areaName}/${category.id}`}>
               </CategoryElement>
         })}
         {admin &&

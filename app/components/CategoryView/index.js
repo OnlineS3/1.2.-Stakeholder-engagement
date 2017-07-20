@@ -12,14 +12,14 @@ class CategoryView extends React.Component {
   }
 
   componentDidMount(){
-    this.props.onMount(this.props.params.category);
+    this.props.onMount(this.props.params.areaName, this.props.params.categoryId);
   }
 
   render(){
     console.log(this.props)
       return (
       <div>
-        <h2>{this.props.id} {this.props.title}</h2>
+        <h2>{this.props.params.categoryId} {this.props.title}</h2>
         { this.props.comments && this.props.comments.map((comment) => {
           return <CommentElement
               key={comment.id}
@@ -42,8 +42,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onMount(category) {
-      dispatch(actionCreators.fetchComments(category));
+    onMount(areaName, categoryId) {
+      dispatch(actionCreators.fetchComments(areaName, categoryId));
     }
   }
 }

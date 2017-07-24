@@ -5,9 +5,12 @@ import * as actionCreators from '../../actions/actionCreators';
 import AddComment from './AddComment.js'
 
 class AddCommentContainer extends React.Component {
+  submit(values) {
+    this.props.submitForm(values, this.props.params.areaName, this.props.params.categoryId)
+  }
   render() {
     return (
-      <AddComment></AddComment>
+      <AddComment handleSubmit={submit}></AddComment>
     )
   }
 }
@@ -20,9 +23,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onSubmit: (values) => {
+    onSubmit: (values, area, category) => {
       console.log("clidked")
-      dispatch(actionCreators.addComment(values.title, values.description));
+      dispatch(actionCreators.addComment(values.title, values.description, area, category));
     }
   }
 }

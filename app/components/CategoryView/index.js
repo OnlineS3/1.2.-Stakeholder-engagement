@@ -35,7 +35,7 @@ class CategoryView extends React.Component {
               description={comment.description}>
             </CommentElement>
         })}
-          <AddCommentContainer update={this.addNew}></AddCommentContainer>
+          <AddCommentContainer update={this.addNew} params={this.props.params}></AddCommentContainer>
       </div>
     )
   }

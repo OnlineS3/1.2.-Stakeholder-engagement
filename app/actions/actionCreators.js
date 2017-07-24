@@ -175,6 +175,29 @@ export function fetchComments(areaName, categoryId) {
       })
   }
 }
+export function addComment(area, category, title, description) {
+  return function (dispatch, getState){
+    fetch("/api/comment/new", {
+      headers: {
+        "content-type": "application/json"
+      },
+      method: "POST",
+      credentials: 'include',
+      body: JSON.stringify({title, description, area, category})
+    })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+      if(res.comment){
+        dispatch(addCommentSuccess(res));
+      } else {
+        //TODO: display error
+      }
+    }).then(() => {
+      dispatch(reset('addComment'));
+    })
+  }
+}
 
 export const addAreaSuccess = (area) => {
   return {

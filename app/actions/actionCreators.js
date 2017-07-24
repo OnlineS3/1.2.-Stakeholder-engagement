@@ -158,15 +158,15 @@ export function joinArea(key) {
   }
 }
 
-export function fetchComments(areaName, categoryId) {
+export function fetchComments(area, category) {
   return function (dispatch){
-    fetch("/api/comment", {
+    fetch("/api/comment/category", {
       headers: {
         "content-type": "application/json"
       },
       credentials: 'include',
       method: "POST",
-      body: JSON.stringify({areaName, categoryId})
+      body: JSON.stringify({area, category})
     })
       .then(res => res.json())
       .then(comments => {

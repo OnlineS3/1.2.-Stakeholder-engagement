@@ -57,27 +57,29 @@ router.post('/new', function(req, res, next) {
   })
 });
 
-router.get('/all', function(req, res, next) {
+router.post('/category', function(req, res, next) {
   db.Permission.findAll({
-    where: {user_id: req.session.passport.user._json.sub},
-    include: [{
-      model: db.Area,
-      include: [db.Category]
-    }]
-  }).then(permissions => {
+    where: {user_id: req.session.passport.user._json.sub, AreaName: req.body.area},
+  }).then(permission => {
     var response = {};
-    permissions.forEach(permission => {
-      Object.assign(response, {
-        [permission.Area.dataValues.name]: permission.Area.Categories.map(category => {
-            return {
-              id: category.dataValues.id,
-              title: category.dataValues.title,
-              description: category.dataValues.description
-            };
-          })
+    if(permission){
+      db.Comment.findAll({
+        include: [{
+          model: db.Category,
+          where: {id: req.body.category},
+          include: [{
+            model: db.Area,
+            where: {name: req.body.area}
+          }]
+        }]
+      }).then(comments => {
+        res.send(comments);
+      })
+    } else {
+      res.send({
+        status:"403 Forbidden",
       });
-    })
-    res.send(response)
+    }
   })
 });
 

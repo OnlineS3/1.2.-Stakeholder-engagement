@@ -73,7 +73,15 @@ router.post('/category', function(req, res, next) {
           }]
         }]
       }).then(comments => {
-        res.send(comments);
+        res.send(comments.map(comment => {
+          return {
+            id: comment.id,
+            title: comment.title,
+            description: comment.description,
+            category: comment.Category.id,
+            area: comment.Category.Area.name
+          }
+        }));
       })
     } else {
       res.send({

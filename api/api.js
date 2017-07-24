@@ -40,7 +40,7 @@ router.all('*', function(req, res, next){
 router.use('/category', categories);
 router.use('/area', areas);
 
-router.use('/comments', comments)
+router.use('/comment', comments)
 
 router.get('*', function(req, res, next) {
   console.log(3)

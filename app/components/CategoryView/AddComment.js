@@ -3,7 +3,8 @@ import { Link } from 'react-router';
 import { connect, dispatch } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
 
-var AddCategory = props => {
+var AddComment = props => {
+  console.log("AddComment props: ", props)
     const { handleSubmit } = props;
     return (
       <form onSubmit={handleSubmit}>
@@ -13,7 +14,7 @@ var AddCategory = props => {
       </form>
     )
 }
-AddCategory = reduxForm({
+AddComment = reduxForm({
   form: 'addCategory'
-})(AddCategory)
-export default AddCategory;
+})(AddComment)
+export default AddComment;

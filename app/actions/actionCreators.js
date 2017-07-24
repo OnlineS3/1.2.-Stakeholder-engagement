@@ -160,7 +160,7 @@ export function joinArea(key) {
 
 export function fetchComments(areaName, categoryId) {
   return function (dispatch){
-    fetch("/api/comments", {
+    fetch("/api/comment", {
       headers: {
         "content-type": "application/json"
       },

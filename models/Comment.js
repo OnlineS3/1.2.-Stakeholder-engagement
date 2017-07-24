@@ -33,26 +33,35 @@ module.exports = function(sequelize, DataTypes) {
 
   }
 
-  Comment.addNew = function(comment){
-    var {CategoryUuid = "", CommentUuid = "", title = "", description = "", user = ""} = comment;
-    if(CategoryUuid === "" && CommentUuid === ""){
-      return Promise.reject("comment needs either parent category or comment");
+  Comment.addNew = function(comment, db){
+    var {CategoryId = "", AreaName = "", CommentId = "", title = "", description = "", user = ""} = comment;
+    if(CategoryId === "" || AreaName === ""){
+      return Promise.reject("comment needs parent category and area");
     }
     return sequelize.transaction(function(t) {
-      var idNum;
-      if(CategoryUuid !== ""){
-        idNum = Comment.max('id', {where: {CategoryUuid}}, {transaction: t})
-      } else {
-        idNum = Comment.max('id', {where: {CommentUuid}}, {transaction: t})
-      }
-      return idNum.then((id) => {
+      return db.Category.find(
+        {where: {AreaName: AreaName, id: CategoryId}}, {transaction: t}
+      ).then(category => {
+        return category.uuid;
+      }).then(CategoryUuid => {
+        return new Promise((resolve, reject) => {
+          Comment.max('id', {where: {CategoryUuid}}, {transaction: t}).then(id => {
+            resolve({id, CategoryUuid});
+          }).catch(err => {
+            reject(err);
+          })
+        })
+      }).then(values => {
+        var {id, CategoryUuid} = values;
         if(isNaN(id)) id = 0;
         console.log(id);
         return Comment.create({
             id: id+1,
             title,
             description,
-            user
+            user,
+            CategoryUuid,
+            CommentId
           }, {transaction: t});
         })
       });

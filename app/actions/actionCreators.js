@@ -185,7 +185,7 @@ export function gotComments(AreaName, CategoryId, comments){
   }
 }
 
-export function addComment(area, category, title, description) {
+export function addComment(area, category, title, description, parentId) {
   return function (dispatch, getState){
     fetch("/api/comment/new", {
       headers: {
@@ -193,7 +193,7 @@ export function addComment(area, category, title, description) {
       },
       method: "POST",
       credentials: 'include',
-      body: JSON.stringify({title, description, area, category})
+      body: JSON.stringify({title, description, area, category, parentId})
     })
     .then(res => res.json())
     .then(res => {
@@ -204,7 +204,7 @@ export function addComment(area, category, title, description) {
         //TODO: display error
       }
     }).then(() => {
-      dispatch(reset('addComment'));
+      dispatch(reset(`addComment[${parentId}]`));
     })
   }
 }

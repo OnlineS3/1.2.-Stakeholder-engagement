@@ -32,15 +32,17 @@ class CategoryView extends React.Component {
       <div>
         <h2>{id} {category && category.title}</h2>
         <p> {category && category.description} </p>
-        { this.props.comments && comments.filter(comment => comment).map((comment) => {
+        { this.props.comments && comments.filter(comment => comment && !comment.parentId).map((comment) => {
           return <CommentElement
               key={comment.id}
               id={comment.id}
               title={comment.title}
-              description={comment.description}>
+              description={comment.description}
+              depth={0}
+              >
             </CommentElement>
         })}
-          <AddCommentContainer update={this.addNew} params={this.props.params}></AddCommentContainer>
+          <AddCommentContainer id={0} area={this.props.params.areaName} category={this.props.params.categoryId}></AddCommentContainer>
       </div>
     )
   }

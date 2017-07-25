@@ -7,7 +7,7 @@ var AddComment = props => {
   console.log("AddComment props: ", props)
     const { handleSubmit } = props;
     return (
-      <form onSubmit={handleSubmit}>
+      <form form={props.form} key={props.id} onSubmit={handleSubmit}>
         <Field name="title" component="input" type="text"/>
         <Field name="description" component="input" type="text"/>
         <button type="submit"> Add </button>

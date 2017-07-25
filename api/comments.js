@@ -39,7 +39,8 @@ router.post('/new', function(req, res, next) {
         CategoryId: req.body.category,
         title: req.body.title,
         description: req.body.description,
-        user: req.session.passport.user._json.sub
+        parentId: req.body.parentId,
+        user: req.session.passport.user._json.sub,
       }, db).then((comment) => {
         res.send({
           title: comment.dataValues.title,

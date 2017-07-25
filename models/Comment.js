@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
   }
 
   Comment.addNew = function(comment, db){
-    var {CategoryId = "", AreaName = "", CommentId = "", title = "", description = "", user = ""} = comment;
+    var {CategoryId = "", AreaName = "", ParenetId = "", title = "", description = "", user = ""} = comment;
     if(CategoryId === "" || AreaName === ""){
       return Promise.reject("comment needs parent category and area");
     }
@@ -55,13 +55,14 @@ module.exports = function(sequelize, DataTypes) {
         var {id, CategoryUuid} = values;
         if(isNaN(id)) id = 0;
         console.log(id);
+        if(parentId >= id) return Promise.reject("invalid parent");
         return Comment.create({
             id: id+1,
             title,
             description,
             user,
             CategoryUuid,
-            CommentId
+            CommentId: parentId
           }, {transaction: t});
         })
       });

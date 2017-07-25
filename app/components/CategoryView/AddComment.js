@@ -15,6 +15,6 @@ var AddComment = props => {
     )
 }
 AddComment = reduxForm({
-  form: 'addCategory'
+  form: 'addComment'
 })(AddComment)
 export default AddComment;

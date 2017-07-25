@@ -198,7 +198,7 @@ export function addComment(area, category, title, description) {
     .then(res => res.json())
     .then(res => {
       console.log(res);
-      if(res.comment){
+      if(res){
         dispatch(addCommentSuccess(area, category, res));
       } else {
         //TODO: display error

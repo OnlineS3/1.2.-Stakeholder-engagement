@@ -32,7 +32,7 @@ class CategoryView extends React.Component {
       <div>
         <h2>{id} {category && category.title}</h2>
         <p> {category && category.description} </p>
-        { this.props.comments && comments.map((comment) => {
+        { this.props.comments && comments.filter(comment => comment).map((comment) => {
           return <CommentElement
               key={comment.id}
               id={comment.id}

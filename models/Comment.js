@@ -13,7 +13,8 @@ module.exports = function(sequelize, DataTypes) {
     },
     title: DataTypes.STRING,
     description: DataTypes.STRING,
-    user: DataTypes.STRING
+    user: DataTypes.STRING,
+    parent: DataTypes.INTEGER
   });
 
   Comment.associate = function(models) {
@@ -34,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
   }
 
   Comment.addNew = function(comment, db){
-    var {CategoryId = "", AreaName = "", ParenetId = "", title = "", description = "", user = ""} = comment;
+    var {CategoryId = "", AreaName = "", parentId = "", title = "", description = "", user = ""} = comment;
     if(CategoryId === "" || AreaName === ""){
       return Promise.reject("comment needs parent category and area");
     }
@@ -55,14 +56,15 @@ module.exports = function(sequelize, DataTypes) {
         var {id, CategoryUuid} = values;
         if(isNaN(id)) id = 0;
         console.log(id);
-        if(parentId >= id) return Promise.reject("invalid parent");
+        if(parentId && parentId > id) return Promise.reject(`invalid parent id ${parentId}`);
+        if(!parentId) parentId = 0;
         return Comment.create({
             id: id+1,
             title,
             description,
             user,
             CategoryUuid,
-            CommentId: parentId
+            parent: parentId
           }, {transaction: t});
         })
       });

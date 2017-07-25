@@ -47,7 +47,8 @@ router.post('/new', function(req, res, next) {
           description: comment.dataValues.description,
           id: comment.dataValues.id,
           CategoryId: req.body.category,
-          AreaName: req.body.category
+          AreaName: req.body.category,
+          parentId: req.body.parentId
         })
       })
     } else {
@@ -80,7 +81,8 @@ router.post('/category', function(req, res, next) {
             title: comment.title,
             description: comment.description,
             category: comment.Category.id,
-            area: comment.Category.Area.name
+            area: comment.Category.Area.name,
+            parentId: comment.parent
           }
         }));
       })

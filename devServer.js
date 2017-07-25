@@ -52,9 +52,12 @@ app.use(function(req, res, next) {
   res.locals.loggedIn = false;
   if (req.session.passport && typeof req.session.passport.user != 'undefined') {
     res.locals.loggedIn = true;
+    db.User.refreshUser(req.session.passport.user.nickname, req.session.passport.user._raw.sub).then(() => {
+      next();
+    });
+  } else {
+    next();
   }
-  console.log(req.session.passport);
-  next();
 });
 
 app.use('/api', api);
@@ -104,7 +107,7 @@ app.listen(8888, 'localhost', function(err) {
 
 //TODO: REMOVE THIS IN PRODUCTION
 
-if(!true){
+if(true){
   db.sequelize.sync({force: true})
   .then(() => {
     db.Area.create({
@@ -130,6 +133,11 @@ if(!true){
       AreaName: "Åland",
       title: "Kategoria",
       description: "kuvaus"
+    })
+  }).then(() => {
+    db.User.create({
+      user_id: "auth0|5936949e71a6ab763a62ad62",
+      username: "Henrik Aarnio"
     })
   }).then(() => {
     db.Permission.create({

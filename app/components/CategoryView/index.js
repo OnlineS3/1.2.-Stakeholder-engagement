@@ -22,12 +22,17 @@ class CategoryView extends React.Component {
     var category;
     if(this.props.categories[name])
       category = this.props.categories[name][id - 1];
+
+    var comments;
+    if(this.props.comments[this.props.params.areaName])
+      comments = this.props.comments[this.props.params.areaName][this.props.params.categoryId];
+    else comments = [];
     console.log(this.props, id, name)
       return (
       <div>
         <h2>{id} {category && category.title}</h2>
         <p> {category && category.description} </p>
-        { this.props.comments && this.props.comments.map((comment) => {
+        { this.props.comments && comments.map((comment) => {
           return <CommentElement
               key={comment.id}
               id={comment.id}

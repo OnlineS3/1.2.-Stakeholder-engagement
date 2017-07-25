@@ -171,10 +171,20 @@ export function fetchComments(area, category) {
       .then(res => res.json())
       .then(comments => {
         console.log(comments)
-        dispatch(gotComments(areaName, categoryId, comments))
+        dispatch(gotComments(area, category, comments))
       })
   }
 }
+
+export function gotComments(AreaName, CategoryId, comments){
+  return {
+    type: 'gotComments',
+    comments: comments,
+    AreaName,
+    CategoryId
+  }
+}
+
 export function addComment(area, category, title, description) {
   return function (dispatch, getState){
     fetch("/api/comment/new", {
@@ -189,13 +199,21 @@ export function addComment(area, category, title, description) {
     .then(res => {
       console.log(res);
       if(res.comment){
-        dispatch(addCommentSuccess(res));
+        dispatch(addCommentSuccess(area, category, res));
       } else {
         //TODO: display error
       }
     }).then(() => {
       dispatch(reset('addComment'));
     })
+  }
+}
+export const addCommentSuccess = (AreaName, CategoryId, comment) => {
+  return {
+    type: 'addCommentSuccess',
+    AreaName,
+    CategoryId,
+    comment
   }
 }
 

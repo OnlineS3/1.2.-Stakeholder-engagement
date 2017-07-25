@@ -42,6 +42,7 @@ class CategoryView extends React.Component {
               comments={comments}
               area={name}
               category={id}
+              user={comment.user}
               >
             </CommentElement>
         })}

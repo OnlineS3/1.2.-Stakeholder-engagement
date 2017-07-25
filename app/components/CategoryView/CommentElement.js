@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import AddCommentContainer from './AddCommentContainer.js';
 
-const CommentElement = ({id, title, description, depth, area, category, comments}) => {
+const CommentElement = ({id, title, description, depth, area, category, comments, user}) => {
   const style = {
     background: depth%2 === 0 ? "grey" : "lightgrey",
     "margin-left": "10px",
@@ -11,7 +11,10 @@ const CommentElement = ({id, title, description, depth, area, category, comments
 
   return (
     <div style={style}>
-      <h3> {title}</h3>
+      <div className="row">
+        <div className="col col-4">{title}</div>
+        <div className="col col-2 pull-right text-right">{user}</div>
+      </div>
       <p> {description} </p>
       { comments && comments.filter(comment => comment && comment.parentId && (comment.parentId === id)).map((comment) => {
         return <CommentElement
@@ -23,6 +26,7 @@ const CommentElement = ({id, title, description, depth, area, category, comments
             comments={comments}
             area={area}
             category={category}
+            user={comment.user}
             >
           </CommentElement>
       })}

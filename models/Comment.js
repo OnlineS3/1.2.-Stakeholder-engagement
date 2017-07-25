@@ -13,7 +13,6 @@ module.exports = function(sequelize, DataTypes) {
     },
     title: DataTypes.STRING,
     description: DataTypes.STRING,
-    user: DataTypes.STRING,
     parent: DataTypes.INTEGER
   });
 
@@ -30,6 +29,10 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: {
         allowNull: true
       }
+    })
+    Comment.belongsTo(models.User, {
+      foreignKey: 'user_id',
+      targetKey: 'user_id'
     })
 
   }
@@ -62,7 +65,7 @@ module.exports = function(sequelize, DataTypes) {
             id: id+1,
             title,
             description,
-            user,
+            user_id: user,
             CategoryUuid,
             parent: parentId
           }, {transaction: t});

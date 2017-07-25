@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   User.refreshUser = function(username, user_id){
-    return User.create({
+    return User.upsert({
       user_id,
       username
     });

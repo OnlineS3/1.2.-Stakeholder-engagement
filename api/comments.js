@@ -16,7 +16,9 @@ router.post('/', function(req, res, next) {
             model: db.Area,
             where: {name: req.body.areaName}
           }]
-        }]
+        },
+        db.User
+        ]
       }).then((comments) => {
         console.log(comments)
       })
@@ -48,7 +50,8 @@ router.post('/new', function(req, res, next) {
           id: comment.dataValues.id,
           CategoryId: req.body.category,
           AreaName: req.body.category,
-          parentId: req.body.parentId
+          parentId: req.body.parentId,
+          user: req.session.passport.user.nickname
         })
       })
     } else {
@@ -73,7 +76,9 @@ router.post('/category', function(req, res, next) {
             model: db.Area,
             where: {name: req.body.area}
           }]
-        }]
+        },
+        db.User
+        ]
       }).then(comments => {
         res.send(comments.map(comment => {
           return {
@@ -82,7 +87,8 @@ router.post('/category', function(req, res, next) {
             description: comment.description,
             category: comment.Category.id,
             area: comment.Category.Area.name,
-            parentId: comment.parent
+            parentId: comment.parent,
+            user: comment.User.username
           }
         }));
       })

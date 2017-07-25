@@ -8,12 +8,15 @@ const CommentElement = ({id, title, description, depth, area, category, comments
     "margin-left": "10px",
     "max-width": "700px"
   }
+  const headerStyle = {
+    
+  }
 
   return (
     <div style={style}>
       <div className="row">
         <div className="col col-4">{title}</div>
-        <div className="col col-2 pull-right text-right">{user}</div>
+        <div className="col col-2 push-6 text-right">{user}</div>
       </div>
       <p> {description} </p>
       { comments && comments.filter(comment => comment && comment.parentId && (comment.parentId === id)).map((comment) => {

@@ -112,7 +112,7 @@ app.listen(8888, 'localhost', function(err) {
 
 //TODO: REMOVE THIS IN PRODUCTION
 
-if(true){
+if(!true){
   db.sequelize.sync({force: true})
   .then(() => {
     db.Area.create({

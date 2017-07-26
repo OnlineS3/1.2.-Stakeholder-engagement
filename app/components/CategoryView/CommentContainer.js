@@ -11,6 +11,10 @@ class CommentContainer extends React.Component {
       this.props.toggleReplybox(this.props.area, this.props.category, this.props.id);
     }
     showReply = showReply.bind(this);
+    function deleteComment() {
+      this.props.deleteComment(this.props.area, this.props.category, this.props.id);
+    }
+    deleteComment = deleteComment.bind(this);
     return (
       <CommentElement
         key={this.props.id}
@@ -21,9 +25,11 @@ class CommentContainer extends React.Component {
         comments={this.props.comments}
         area={this.props.area}
         category={this.props.category}
-        user={this.props.user}
+        author={this.props.author}
         replyVisible={this.props.replyVisible}
         showReply={showReply}
+        user={this.props.user}
+        deleteComment={deleteComment}
       ></CommentElement>
     )
   }
@@ -31,7 +37,8 @@ class CommentContainer extends React.Component {
 
 function mapStateToProps(state) {
     return {
-      "replyOpen": state.comments
+      "replyOpen": state.comments,
+      "user": state.user
     }
   }
 
@@ -39,6 +46,9 @@ function mapDispatchToProps(dispatch) {
   return {
     toggleReplybox(area, category, id) {
       dispatch(actionCreators.toggleReplybox(area, category, id));
+    },
+    deleteComment(area, category, id) {
+      dispatch(actionCreators.deleteComment(area, category, id));
     }
   }
 }

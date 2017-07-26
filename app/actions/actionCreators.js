@@ -208,6 +208,27 @@ export function addComment(area, category, title, description, parentId) {
     })
   }
 }
+export function deleteComment(area, category, id) {
+  return function (dispatch, getState){
+    fetch("/api/comment/delete", {
+      headers: {
+        "content-type": "application/json"
+      },
+      method: "POST",
+      credentials: 'include',
+      body: JSON.stringify({area, category, id})
+    })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+      if(res){
+        dispatch(deleteCommentSuccess(area, category, id));
+      } else {
+        //TODO: display error
+      }
+    })
+  }
+}
 export const addCommentSuccess = (AreaName, CategoryId, comment) => {
   return {
     type: 'addCommentSuccess',

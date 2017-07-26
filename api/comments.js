@@ -62,6 +62,34 @@ router.post('/new', function(req, res, next) {
   })
 });
 
+router.post('/delete', function(req, res, next) {
+  db.Permission.find({
+    where: {user_id: req.session.passport.user._json.sub, AreaName: req.body.area},
+  }).then(permission => {
+    console.log(permission)
+    if("permission", permission){
+      db.Comment.delete(
+        req.body.area, req.body.category, req.body.id,
+        req.session.passport.user._json.sub, permission.admin, db
+      ).then((success) => {
+        if(success){
+          res.send({
+            status:"200 OK"
+          });
+        } else {
+          res.send({
+            status:"403 Forbidden"
+          });
+        }
+      })
+    } else {
+      res.send({
+        status:"403 Forbidden",
+      });
+    }
+  })
+});
+
 router.post('/category', function(req, res, next) {
   db.Permission.findAll({
     where: {user_id: req.session.passport.user._json.sub, AreaName: req.body.area},

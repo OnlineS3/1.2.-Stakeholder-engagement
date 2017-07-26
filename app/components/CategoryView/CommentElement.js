@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import AddCommentContainer from './AddCommentContainer.js';
 import CommentContainer from './CommentContainer.js';
 
-const CommentElement = ({id, title, description, depth, area, category, comments, user, showReply, replyVisible}) => {
+const CommentElement = ({id, title, description, depth, area, category, comments, author, showReply, replyVisible, user, deleteComment}) => {
   const style = {
     background: depth%2 === 0 ? "#CCCCCC" : "#F4F4F4",
     "margin-left": "10px",
@@ -38,7 +38,7 @@ const CommentElement = ({id, title, description, depth, area, category, comments
     <div style={style} className="col-12">
       <div style={headerStyle} className="row">
         <div className="col col-4">{title}</div>
-        <div className="col col-2 push-6 text-right">{user}</div>
+        <div className="col col-2 push-6 text-right">{author}</div>
       </div>
       <div className="row">
         <div className="col">
@@ -54,7 +54,7 @@ const CommentElement = ({id, title, description, depth, area, category, comments
             depth={depth+1}
             area={area}
             category={category}
-            user={comment.user}
+            author={comment.user}
             comments={comments}
             replyVisible={comment.replyVisible}
             >
@@ -62,6 +62,9 @@ const CommentElement = ({id, title, description, depth, area, category, comments
       })}
       <div style={headerStyle} className="row">
         <div className="col-2" onClick={showReply}> { replyVisible ? "Cancel" : "Reply" } </div>
+        { (user.nickname === author) &&
+          <div className="col-2 push-8" onClick={deleteComment}> Delete comment </div>
+        }
       </div>
       {replyVisible &&
         <div>

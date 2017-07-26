@@ -73,5 +73,36 @@ module.exports = function(sequelize, DataTypes) {
       });
   }
 
+  Comment.delete = function(area, category, id, user, admin, db){
+    return Comment.find({
+      where:{
+        id: id
+      },
+      include: [
+        {
+          model: db.Category,
+          where: {id: category},
+          required:true,
+          include: [
+            {
+              model: db.Area,
+              required: true,
+              where: {name: area}
+            }
+          ]
+        }
+      ]
+    }).then(comment => {
+      if(!comment) return Promise.resolve(true);
+      if(comment.user_id === user || admin){
+        return comment.destroy().then(() => {
+          return true;
+        })
+      } else {
+        return Promise.resolve(false);
+      }
+    })
+  }
+
   return Comment;
 };

@@ -29,25 +29,29 @@ class CategoryView extends React.Component {
     else comments = [];
     console.log(this.props, id, name)
       return (
-      <div>
-        <h2>{id} {category && category.title}</h2>
-        <p> {category && category.description} </p>
-        { this.props.comments && comments.filter(comment => comment && comment.parentId === 0).map((comment) => {
-          return <CommentContainer
-              key={comment.id}
-              id={comment.id}
-              title={comment.title}
-              description={comment.description}
-              depth={0}
-              area={name}
-              category={id}
-              user={comment.user}
-              comments={comments}
-              replyVisible={comment.replyVisible}
-              >
-            </CommentContainer>
-        })}
+      <div className="row">
+          <div className="col-12">
+            <h2>{id} {category && category.title}</h2>
+            <p> {category && category.description} </p>
+          </div>
+        <div className="col-8">
+          { this.props.comments && comments.filter(comment => comment && comment.parentId === 0).map((comment) => {
+            return <CommentContainer
+                key={comment.id}
+                id={comment.id}
+                title={comment.title}
+                description={comment.description}
+                depth={0}
+                area={name}
+                category={id}
+                user={comment.user}
+                comments={comments}
+                replyVisible={comment.replyVisible}
+                >
+              </CommentContainer>
+          })}
           <AddCommentContainer id={0} parentId={0} area={this.props.params.areaName} category={this.props.params.categoryId}></AddCommentContainer>
+        </div>
       </div>
     )
   }

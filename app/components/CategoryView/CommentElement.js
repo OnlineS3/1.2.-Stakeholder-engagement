@@ -5,13 +5,16 @@ import CommentContainer from './CommentContainer.js';
 
 const CommentElement = ({id, title, description, depth, area, category, comments, user, showReply, replyVisible}) => {
   const style = {
-    background: depth%2 === 0 ? "grey" : "lightgrey",
+    background: depth%2 === 0 ? "#CCCCCC" : "#F4F4F4",
     "margin-left": "10px",
+    "margin-right": "5px",
     "margin-top": "5px",
-    "max-width": "700px"
+    "margin-bottom": "3px",
+    flex: "0 1 auto"
   }
-  const headerStyle = {
 
+  const headerStyle = {
+    background: "#888888"
   }
   var reply;
   if(replyVisible){
@@ -30,8 +33,10 @@ const CommentElement = ({id, title, description, depth, area, category, comments
   }
 
   return (
-    <div style={style}>
-      <div className="row">
+    <div className="row">
+
+    <div style={style} className="col-12">
+      <div style={headerStyle} className="row">
         <div className="col col-4">{title}</div>
         <div className="col col-2 push-6 text-right">{user}</div>
       </div>
@@ -55,7 +60,9 @@ const CommentElement = ({id, title, description, depth, area, category, comments
             >
           </CommentContainer>
       })}
-      <div className="col-2" onClick={showReply}> { replyVisible ? "Cancel" : "Reply" } </div>
+      <div style={headerStyle} className="row">
+        <div className="col-2" onClick={showReply}> { replyVisible ? "Cancel" : "Reply" } </div>
+      </div>
       {replyVisible &&
         <div>
           <div className="row">
@@ -65,6 +72,7 @@ const CommentElement = ({id, title, description, depth, area, category, comments
           </div>
         </div>
       }
+    </div>
     </div>
   )
 }

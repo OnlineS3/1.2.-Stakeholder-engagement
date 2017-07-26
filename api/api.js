@@ -21,7 +21,8 @@ router.get('/user/', function(req, res, next) {
     user = req.session.passport.user;
   res.send({
     "logged_in": res.locals.loggedIn,
-    "username": user.displayName
+    "username": user.displayName,
+    "nickname": user.nickname
   });
 });
 

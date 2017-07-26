@@ -35,6 +35,19 @@ const CommentReducer = (state = {}, action) => {
     })
 
     return comments;
+  } else if(action.type === "toggleReplybox") {
+    if(state)
+      comments = JSON.parse(JSON.stringify(state));
+    else {
+      comments = {};
+    }
+    if(comments[action.area] && comments[action.area][action.category]){
+      var comment = comments[action.area][action.category][action.id];
+      if(comment){
+        comment.replyVisible = !comment.replyVisible;
+      }
+    }
+    return comments;
   } else {
     return state;
   }

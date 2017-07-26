@@ -242,3 +242,11 @@ export const closeModal = (modal) => {
     modal
   }
 }
+export const toggleReplybox = (area, category, id) => {
+  return {
+    type: 'toggleReplybox',
+    area,
+    category,
+    id
+  }
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import CommentElement from './CommentElement.js';
+import CommentContainer from './CommentContainer.js';
 import AddCommentContainer from './AddCommentContainer.js';
 import * as actionCreators from '../../actions/actionCreators';
 
@@ -33,18 +33,19 @@ class CategoryView extends React.Component {
         <h2>{id} {category && category.title}</h2>
         <p> {category && category.description} </p>
         { this.props.comments && comments.filter(comment => comment && comment.parentId === 0).map((comment) => {
-          return <CommentElement
+          return <CommentContainer
               key={comment.id}
               id={comment.id}
               title={comment.title}
               description={comment.description}
               depth={0}
-              comments={comments}
               area={name}
               category={id}
               user={comment.user}
+              comments={comments}
+              replyVisible={comment.replyVisible}
               >
-            </CommentElement>
+            </CommentContainer>
         })}
           <AddCommentContainer id={0} parentId={0} area={this.props.params.areaName} category={this.props.params.categoryId}></AddCommentContainer>
       </div>

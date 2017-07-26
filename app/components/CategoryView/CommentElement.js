@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import AddCommentContainer from './AddCommentContainer.js';
 import CommentContainer from './CommentContainer.js';
 
-const CommentElement = ({id, title, description, depth, area, category, comments, user}) => {
+const CommentElement = ({id, title, description, depth, area, category, comments, user, showReply, replyVisible}) => {
   const style = {
     background: depth%2 === 0 ? "grey" : "lightgrey",
     "margin-left": "10px",
@@ -12,6 +12,21 @@ const CommentElement = ({id, title, description, depth, area, category, comments
   }
   const headerStyle = {
 
+  }
+  var reply;
+  if(replyVisible){
+    reply = (
+    <div>
+      <div className="row">
+      </div>
+      <div className="row">
+        <div className="col">
+          <AddCommentContainer parentId={id} id={id} area={area} category={category}></AddCommentContainer>
+        </div>
+      </div>
+    </div>)
+  } else {
+    reply = <div className="col-2" onClick={showReply}> Reply </div>
   }
 
   return (
@@ -32,18 +47,24 @@ const CommentElement = ({id, title, description, depth, area, category, comments
             title={comment.title}
             description={comment.description}
             depth={depth+1}
-            comments={comments}
             area={area}
             category={category}
             user={comment.user}
+            comments={comments}
+            replyVisible={comment.replyVisible}
             >
           </CommentContainer>
       })}
-      <div className="row">
-        <div className="col">
-          <AddCommentContainer parentId={id} id={id} area={area} category={category}></AddCommentContainer>
+      <div className="col-2" onClick={showReply}> { replyVisible ? "Cancel" : "Reply" } </div>
+      {replyVisible &&
+        <div>
+          <div className="row">
+            <div className="col">
+              <AddCommentContainer parentId={id} id={id} area={area} category={category}></AddCommentContainer>
+            </div>
+          </div>
         </div>
-      </div>
+      }
     </div>
   )
 }

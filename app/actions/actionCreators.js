@@ -237,6 +237,14 @@ export const addCommentSuccess = (AreaName, CategoryId, comment) => {
     comment
   }
 }
+export const deleteCommentSuccess = (AreaName, CategoryId, id) => {
+  return {
+    type: 'deleteCommentSuccess',
+    AreaName,
+    CategoryId,
+    id
+  }
+}
 
 export const addAreaSuccess = (area) => {
   return {

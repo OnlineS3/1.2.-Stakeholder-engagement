@@ -19,6 +19,16 @@ const CommentReducer = (state = {}, action) => {
 
     comments[action.AreaName][action.CategoryId][action.comment.id] = action.comment;
     return comments;
+  } else if(action.type === "deleteCommentSuccess"){
+    var comments;
+    if(state)
+      comments = JSON.parse(JSON.stringify(state));
+    else {
+      comments = {};
+    }
+    addIfMissing(comments, action.AreaName, action.CategoryId);
+    delete comments[action.AreaName][action.CategoryId][action.id];
+    return comments;
   } else if(action.type === "gotComments") {
     console.log(action)
     //var categories = Object.assign({}, action.categories);

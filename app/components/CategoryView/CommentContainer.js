@@ -29,6 +29,7 @@ class CommentContainer extends React.Component {
         replyVisible={this.props.replyVisible}
         showReply={showReply}
         user={this.props.user}
+        time={this.props.time}
         deleteComment={deleteComment}
       ></CommentElement>
     )

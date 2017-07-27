@@ -2,33 +2,6 @@ var db = require('../models/index.js');
 var express = require('express');
 var router = express.Router();
 
-router.post('/', function(req, res, next) {
-  console.dir(req.body)
-  db.Permission.find({
-    where: {user_id: req.session.passport.user._json.sub, AreaName: req.body.areaName},
-  }).then(permission => {
-    if(permission){
-      db.Comment.findAll({
-        include:[{
-          model: db.Category,
-          where: {id: req.body.categoryId},
-          include: [{
-            model: db.Area,
-            where: {name: req.body.areaName}
-          }]
-        },
-        db.User
-        ]
-      }).then((comments) => {
-        console.log(comments)
-      })
-    } else {
-      res.send({
-        status:"403 Forbidden",
-      });
-    }
-  })
-});
 
 router.post('/new', function(req, res, next) {
   db.Permission.find({
@@ -116,7 +89,8 @@ router.post('/category', function(req, res, next) {
             category: comment.Category.id,
             area: comment.Category.Area.name,
             parentId: comment.parent,
-            user: comment.User.username
+            user: comment.User.username,
+            time: comment.createdAt
           }
         }));
       })

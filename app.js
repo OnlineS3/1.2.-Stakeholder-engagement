@@ -3,6 +3,15 @@ var express = require('express');
 var config = require('./webpack.config.prod');
 var api = require('./api/api.js')
 
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+var db = require('./models/index.js');
+const passport = require('passport');
+const Auth0Strategy = require('passport-auth0');
+var request = require('request');
+var clientSecret = require('./clientSecret.js')
+
+
 var app = express();
 var port = process.env.port || 80
 

@@ -70,10 +70,10 @@ router.post('/vote', function(req, res, next) {
   }).then(permission => {
     console.log(permission)
     if("permission", permission){
-      db.Vote.add({
+      db.Vote.add(
         req.body.area, req.body.category, req.body.id,
-        req.session.passport.user._json.sub, db, up: req.body.up
-      }).then((success) => {
+        req.session.passport.user._json.sub, db, req.body.up
+      ).then((success) => {
         if(success){
           res.send({
             status:"200 OK"

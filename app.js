@@ -63,6 +63,11 @@ app.get(
   }
 );
 
+app.get('/static/bundle.js',
+  function(req, res) {
+    res.sendFile(path.join(__dirname, '/static/bundle.js'));
+  }
+);
 app.get('/css',
   function(req, res) {
     res.sendFile(path.join(__dirname, '/css/bootstrap-grid.min.css'));

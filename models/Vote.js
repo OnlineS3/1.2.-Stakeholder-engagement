@@ -2,15 +2,43 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Vote = sequelize.define("Vote", {
-    user_id: {
-      type: DataTypes.STRING
-    },
-
+    up: DataTypes.BOOLEAN
   });
   Vote.associate = function(models) {
+    Vote.belongsTo(models.User, {
+      foreignKey: 'user_id',
+      targetKey: 'user_id'
+    })
     Vote.belongsTo(models.Comment, {
     })
   }
 
+  Vote.add = function(area, category, id, user, db, up){
+    return db.Comment.find({
+      where:{
+        id: id
+      },
+      include: [
+        {
+          model: db.Category,
+          where: {id: category},
+          required:true,
+          include: [
+            {
+              model: db.Area,
+              required: true,
+              where: {name: area}
+            }
+          ]
+        }
+      ]
+    }).then(comment => {
+      return Vote.upsert({
+        user_id: user,
+        CommentUuid: comment.uuid,
+        up
+      })
+    })
+  }
   return Vote;
 };

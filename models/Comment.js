@@ -34,6 +34,7 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: 'user_id',
       targetKey: 'user_id'
     })
+    Comment.hasMany(models.Vote);
 
   }
 

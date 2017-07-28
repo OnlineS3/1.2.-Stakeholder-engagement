@@ -7,8 +7,10 @@ module.exports = {
     './app/app'
   ],
   resolve: {
-    root: path.resolve('./app/app'),
-    extensions: ['', '.js']
+    alias:{
+      app: path.resolve('./app/')
+    },
+    extensions: ['.js']
   },
   output: {
     path: path.join(__dirname, 'dist/static'),

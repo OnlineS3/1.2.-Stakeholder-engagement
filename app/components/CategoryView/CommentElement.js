@@ -54,11 +54,17 @@ const CommentElement = ({
     <div style={style} className="col-12">
       <div style={headerStyle} className="row">
         <div className="col col-4">{title}</div>
-        <div className="col col-4">
-          <span className="pull-right">{new Date(time).toLocaleString()}</span>
-        </div>
-        <div className="col col-4">
-          <span className="pull-right"> {author} </span>
+        <div className="col col-4 push-4">
+          <div className="row">
+            <div className="col">
+              <span className="float-right"> {author} </span>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <span className="float-right">{new Date(time).toLocaleString()}</span>
+            </div>
+          </div>
         </div>
       </div>
       <div className="row">

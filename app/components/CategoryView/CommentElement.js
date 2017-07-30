@@ -3,7 +3,23 @@ import { Link } from 'react-router';
 import AddCommentContainer from './AddCommentContainer.js';
 import CommentContainer from './CommentContainer.js';
 
-const CommentElement = ({id, title, description, depth, area, category, comments, author, showReply, replyVisible, user, deleteComment, time}) => {
+const CommentElement = ({
+  id,
+  title,
+  description,
+  depth,
+  area,
+  category,
+  comments,
+  author,
+  showReply,
+  replyVisible,
+  user,
+  deleteComment,
+  time,
+  voteUp,
+  voteDown
+}) => {
   const style = {
     background: depth%2 === 0 ? "#CCCCCC" : "#F4F4F4",
     "margin-left": "10px",
@@ -46,7 +62,19 @@ const CommentElement = ({id, title, description, depth, area, category, comments
         </div>
       </div>
       <div className="row">
-        <div className="col">
+        <div className="col col-2">
+          <div className="row" onClick={voteUp}>
+            <div className="col">
+              Up
+            </div>
+          </div>
+          <div className="row" onClick={voteDown}>
+            <div className="col">
+              Down
+            </div>
+          </div>
+        </div>
+        <div className="col col-10">
           <p> {description} </p>
         </div>
       </div>

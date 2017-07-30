@@ -15,6 +15,14 @@ class CommentContainer extends React.Component {
       this.props.deleteComment(this.props.area, this.props.category, this.props.id);
     }
     deleteComment = deleteComment.bind(this);
+    function voteUp() {
+      this.props.vote(this.props.area, this.props.category, this.props.id, true);
+    }
+    voteUp = voteUp.bind(this);
+    function voteDown() {
+      this.props.vote(this.props.area, this.props.category, this.props.id, false);
+    }
+    voteDown = voteDown.bind(this);
     return (
       <CommentElement
         key={this.props.id}
@@ -31,6 +39,8 @@ class CommentContainer extends React.Component {
         user={this.props.user}
         time={this.props.time}
         deleteComment={deleteComment}
+        voteUp={voteUp}
+        voteDown={voteDown}
       ></CommentElement>
     )
   }
@@ -50,6 +60,9 @@ function mapDispatchToProps(dispatch) {
     },
     deleteComment(area, category, id) {
       dispatch(actionCreators.deleteComment(area, category, id));
+    },
+    vote(area, category, id, up) {
+      dispatch(actionCreators.vote(area, category, id, up));
     }
   }
 }

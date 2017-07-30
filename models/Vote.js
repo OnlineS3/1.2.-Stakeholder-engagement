@@ -33,10 +33,24 @@ module.exports = function(sequelize, DataTypes) {
         }
       ]
     }).then(comment => {
-      return Vote.upsert({
+      return Vote.find({
         user_id: user,
-        CommentUuid: comment.uuid,
-        up
+        CommentUuid: comment.uuid
+      }).then(vote => {
+        if(vote){
+          Vote.upsert({
+            id: vote.id,
+            user_id: user,
+            CommentUuid: comment.uuid,
+            up
+          })
+        } else {
+          Vote.create({
+            user_id: user,
+            CommentUuid: comment.uuid,
+            up
+          })
+        }
       })
     })
   }

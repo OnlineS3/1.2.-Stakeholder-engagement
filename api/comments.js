@@ -25,7 +25,7 @@ router.post('/new', function(req, res, next) {
           AreaName: req.body.category,
           parentId: req.body.parentId,
           user: req.session.passport.user.nickname,
-          time: comment.dataValues.updateAt
+          time: comment.dataValues.updatedAt
         })
       })
     } else {
@@ -119,7 +119,7 @@ router.post('/category', function(req, res, next) {
             area: comment.Category.Area.name,
             parentId: comment.parent,
             user: comment.User.username,
-            time: comment.updateAt
+            time: comment.updatedAt
           }
         }));
       })

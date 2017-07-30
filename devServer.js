@@ -91,7 +91,7 @@ app.get(
 
 app.get('/css',
   function(req, res) {
-    res.sendFile(path.join(__dirname, '/css/bootstrap-grid.min.css'));
+    res.sendFile(path.join(__dirname, '/css/bootstrap.min.css'));
   }
 );
 app.get('*',

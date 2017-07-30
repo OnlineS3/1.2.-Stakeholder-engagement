@@ -246,6 +246,28 @@ export const deleteCommentSuccess = (AreaName, CategoryId, id) => {
   }
 }
 
+export function vote(area, category, id, up) {
+  return function (dispatch, getState){
+    fetch("/api/comment/vote", {
+      headers: {
+        "content-type": "application/json"
+      },
+      method: "POST",
+      credentials: 'include',
+      body: JSON.stringify({area, category, id, up})
+    })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+      if(res){
+        dispatch(voteSuccess(area, category, id, up));
+      } else {
+        //TODO: display error
+      }
+    })
+  }
+}
+
 export const addAreaSuccess = (area) => {
   return {
     type: 'addAreaSuccess',

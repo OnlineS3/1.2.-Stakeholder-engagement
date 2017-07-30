@@ -25,7 +25,8 @@ router.post('/new', function(req, res, next) {
           AreaName: req.body.category,
           parentId: req.body.parentId,
           user: req.session.passport.user.nickname,
-          time: comment.dataValues.updatedAt
+          time: comment.dataValues.updatedAt,
+          score: 0
         })
       })
     } else {
@@ -99,18 +100,36 @@ router.post('/category', function(req, res, next) {
     var response = {};
     if(permission){
       db.Comment.findAll({
+        attributes: [
+          'id', 'title', 'description', 'updatedAt', 'parent',
+            [db.sequelize.fn('SUM', db.sequelize.col('Votes.up')), 'numUp'],
+            [db.sequelize.fn('COUNT', db.sequelize.col('Votes.id')), 'totalVotes']
+        ],
+        group: ['Comment.uuid', 'Category.id', 'Category->Area.uuid'],
         include: [{
           model: db.Category,
           where: {id: req.body.category},
+          attributes: [
+            'id'
+          ],
           include: [{
-            model: db.Area,
-            where: {name: req.body.area}
-          }]
-        },
-        db.User
-        ]
+              model: db.Area,
+              attributes: [
+                'name'
+              ],
+              where: {name: req.body.area}
+            }]
+          },
+          {
+            model: db.Vote,
+            attributes: []
+          },
+          db.User
+        ],
+
       }).then(comments => {
         res.send(comments.map(comment => {
+          console.dir(comment)
           return {
             id: comment.id,
             title: comment.title,
@@ -119,7 +138,8 @@ router.post('/category', function(req, res, next) {
             area: comment.Category.Area.name,
             parentId: comment.parent,
             user: comment.User.username,
-            time: comment.updatedAt
+            time: comment.updatedAt,
+            score: Number(comment.dataValues.numUp) * 2 - Number(comment.dataValues.totalVotes)
           }
         }));
       })

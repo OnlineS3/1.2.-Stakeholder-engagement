@@ -10,7 +10,7 @@ var HeaderButton = props => {
     }
 
     return (
-      <div style={style}>
+      <div className="col-2" style={style}>
         {props.children}
       </div>
     )

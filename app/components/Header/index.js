@@ -28,6 +28,21 @@ var Header = props => {
         <div className="col-2 push-8">
           {element}
         </div>
+        <HeaderButton>
+          <Link to="/about">
+            About
+          </Link>
+        </HeaderButton>
+        <HeaderButton>
+          <Link to="/guide">
+            Guide
+          </Link>
+        </HeaderButton>
+        <HeaderButton>
+          <Link to="/">
+            Access to application
+          </Link>
+        </HeaderButton>
       </div>
     )
 }

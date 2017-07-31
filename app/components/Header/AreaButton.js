@@ -18,7 +18,7 @@ class AreaButton extends React.Component{
 
     return (
       <DropdownMenuItem onClick={clicked}>
-        <Link to={`/${this.props.area}`}>
+        <Link to={`/area/${this.props.area}`}>
           {this.props.area}
         </Link>
       </DropdownMenuItem>

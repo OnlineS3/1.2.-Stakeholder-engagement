@@ -13,9 +13,13 @@ var Header = props => {
     }
     var element;
     if(user.logged_in){
-      element = <UserMenu user={user}/>;
+      element = (
+        <div className="col-2 push-2">
+          <UserMenu user={user}/>;
+        </div>
+      )
     } else {
-      element = <HeaderButton>
+      element = <HeaderButton style={{width: "100%"}}>
                   <a href="/login"> Login </a>
                 </HeaderButton>;
     }
@@ -41,9 +45,8 @@ var Header = props => {
             Access to application
           </Link>
         </HeaderButton>
-        <div className="col-2 push-2">
+
           {element}
-        </div>
       </div>
     )
 }

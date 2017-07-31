@@ -89,9 +89,14 @@ app.get('/static/bundle.js',
     res.sendFile(path.join(__dirname, '/static/bundle.js'));
   }
 );
+app.get('/static/*',
+  function(req, res) {
+    res.sendFile(path.join(__dirname, req.url));
+  }
+);
 app.get('/css',
   function(req, res) {
-    res.sendFile(path.join(__dirname, '/css/bootstrap-grid.min.css'));
+    res.sendFile(path.join(__dirname, '/css/bootstrap.min.css'));
   }
 );
 app.get('*',

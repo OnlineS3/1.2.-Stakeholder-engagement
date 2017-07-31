@@ -8,7 +8,6 @@ var LoginMenu = props => {
     var id = "usermenu"
     const style = {
       background: "grey",
-      fontFamily: "sans",
       width: "100%",
       height: "100%"
     }

@@ -24,14 +24,12 @@ class DropdownMenu extends React.Component {
     toggle = toggle.bind(this);
     const style = {
       background: "grey",
-      fontFamily: "sans",
       float: this.props.justify?this.props.justify:"right",
       height: "100%",
       width: "100%",
     }
     const styleOpen = {
       background: "grey",
-      fontFamily: "sans",
       marginTop: "40px"
     }
     const absolute = {

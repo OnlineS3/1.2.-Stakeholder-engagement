@@ -19,7 +19,6 @@ class AreaMenu extends React.Component{
   render() {
     const style = {
       background: "grey",
-      fontFamily: "sans",
       width: "100%",
       height: "100%"
     }
@@ -35,7 +34,7 @@ class AreaMenu extends React.Component{
        if(this.props.areas)
          area = this.props.areas[this.props.params.areaName]
     }
-    else title = "No categories";
+    else title = "Select area";
 
     return (
       <div style={style}>
@@ -66,7 +65,7 @@ class AreaMenu extends React.Component{
             <p> {area.adminInviteLink}</p>
           </Modal>
         }
-        <DropdownMenu menu_id={id} title={title} justify={"left"}>
+        <DropdownMenu menu_id={id} title={<h3>{title}</h3>} justify={"left"}>
           {areas}
           <DropdownMenuItem onClick={this.props.openAddModal}>
             Create a new area

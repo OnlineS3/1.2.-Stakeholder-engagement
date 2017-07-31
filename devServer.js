@@ -52,12 +52,8 @@ app.use(function(req, res, next) {
   res.locals.loggedIn = false;
   if (req.session.passport && typeof req.session.passport.user != 'undefined') {
     res.locals.loggedIn = true;
-    db.User.refreshUser(req.session.passport.user.nickname, req.session.passport.user._json.sub).then(() => {
-      next();
-    });
-  } else {
-    next();
   }
+  next();
 });
 
 app.use('/api', api);
@@ -85,7 +81,13 @@ app.get(
     failureRedirect: '/'
   }),
   function(req, res) {
-    res.redirect(req.session.returnTo || '/');
+    if (req.session.passport && typeof req.session.passport.user != 'undefined') {
+      db.User.refreshUser(req.session.passport.user.nickname, req.session.passport.user._json.sub).then(() => {
+        res.redirect(req.session.returnTo || '/');
+      }).catch(() => {
+        res.redirect(req.session.returnTo || '/');
+      });
+    }
   }
 );
 

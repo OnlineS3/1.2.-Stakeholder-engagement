@@ -23,6 +23,7 @@ class About extends React.Component {
           <p>
           Stakeholder engagement tool enables widely inviting stakeholders to collaborate and letting them share and comment on regional issues. This way, stakeholders may participate proactively and bring forward their specific viewpoints.
           </p>
+          <img src="/static/img/background.png"/>
 
         <h3>The application</h3>
           <p>
@@ -31,16 +32,19 @@ class About extends React.Component {
           <p>
           Beside the comments and input from stakeholders, there is also a voting mechanism in the application. Thus, stakeholders may vote up and down the ideas and documents, which provides the facilitators also a quick way to see which posts have gotten most interest from the stakeholders.
           </p>
+          <img src="/static/img/application.png"/>
 
         <h3>Benefits to stakeholders</h3>
         <p>
         Figure 3 illustrates the key benefits Stakeholder engagement tool provides to stakeholders of a region conducting the RIS3 process. Firstly, it facilitates greater stakeholder engagement and enables greater and more open stakeholder engagement. Secondly, the tool allows stakeholders and facilitators to deliberate issues and ideas together. Thus, stakeholders’ opinions matter and they get the feeling of having impact on regional policy-making. Lastly, the Stakeholder engagement tool promotes long term collaboration and refinement of regional issues and ideas. At its best, this establishes a long term relationship and collaboration between stakeholders and policy-makers.
         </p>
+          <img src="/static/img/benefits.png"/>
 
         <h3>Key issues and requirements</h3>
         <p>
           The tool enables users to create discussion boards and upload ideas and documents to be commented and voted on.
         </p>
+          <img src="/static/img/issues.png"/>
 
       </div>
 

@@ -39,7 +39,7 @@ class Categories extends React.Component {
               </CategoryElement>
         })}
         {admin &&
-          <AddCategoryContainer update={this.addNew}></AddCategoryContainer>
+          <AddCategoryContainer params={this.props.params} update={this.addNew}></AddCategoryContainer>
         }
       </div>
     )

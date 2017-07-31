@@ -6,23 +6,26 @@ import AddCategory from './AddCategory.js'
 
 class AddCategoryContainer extends React.Component {
   render() {
+    var onSubmit = (values) => {
+      this.props.onSubmit(values, this.props.params.areaName);
+    }
+    onSubmit = onSubmit.bind();
     return (
-      <AddCategory></AddCategory>
+      <AddCategory onSubmit={onSubmit}></AddCategory>
     )
   }
 }
 
 function mapStateToProps(state) {
     return {
-      selectedArea: state.areas.selected
     }
   }
 
 function mapDispatchToProps(dispatch) {
   return {
-    onSubmit: (values) => {
-      dispatch(actionCreators.addCategory(values.title, values.description));
+    onSubmit: (values, areaName) => {
+      dispatch(actionCreators.addCategory(values.title, values.description, areaName));
     }
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(AddCategory);
+export default connect(mapStateToProps, mapDispatchToProps)(AddCategoryContainer);

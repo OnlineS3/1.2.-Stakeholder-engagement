@@ -38,7 +38,7 @@ export const gotUser = (user) => {
     user
   }
 }
-export function addCategory(title, description) {
+export function addCategory(title, description, areaName) {
   return function (dispatch, getState){
     fetch("/api/category/new", {
       headers: {
@@ -46,7 +46,7 @@ export function addCategory(title, description) {
       },
       method: "POST",
       credentials: 'include',
-      body: JSON.stringify({title, description, area: getState().areas.selected.name})
+      body: JSON.stringify({title, description, area: areaName})
     })
     .then(res => res.json())
     .then(res => {

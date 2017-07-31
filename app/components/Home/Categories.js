@@ -27,14 +27,38 @@ class Categories extends React.Component {
       admin = false;
     }
 
+    var header = (
+      <div className="row">
+        <div className="col">
+          <h2>Categories</h2>
+        </div>
+      </div>
+    )
+
+    if(this.props.params.areaName){
+      if(!categories || categories.length === 0){
+        header = (
+          <div className="row">
+            <div className="col">
+              <h2>No categories in selected area</h2>
+            </div>
+          </div>
+        )
+      }
+    } else {
+      header = (
+        <div className="row">
+          <div className="col">
+            <h2></h2>
+          </div>
+        </div>
+      )
+    }
+
     return (
       <div className="row">
         <div className="col">
-          <div className="row">
-            <div className="col">
-              <h2>Categories</h2>
-            </div>
-          </div>
+          {header}
           {admin &&
             <div className="row">
               <div className="col">

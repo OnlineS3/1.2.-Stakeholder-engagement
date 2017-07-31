@@ -42,6 +42,7 @@ class CommentContainer extends React.Component {
         deleteComment={deleteComment}
         voteUp={voteUp}
         voteDown={voteDown}
+        sortby={this.props.sortby}
       ></CommentElement>
     )
   }
@@ -50,7 +51,8 @@ class CommentContainer extends React.Component {
 function mapStateToProps(state) {
     return {
       "replyOpen": state.comments,
-      "user": state.user
+      "user": state.user,
+      "sortby": state.sortby
     }
   }
 

@@ -19,7 +19,8 @@ const CommentElement = ({
   time,
   score,
   voteUp,
-  voteDown
+  voteDown,
+  sortby
 }) => {
   const style = {
     background: depth%2 === 0 ? "#CCCCCC" : "#F4F4F4",
@@ -47,6 +48,17 @@ const CommentElement = ({
     </div>)
   } else {
     reply = <div className="col-2" onClick={showReply}> Reply </div>
+  }
+
+  var sortFunction;
+  if(this.props.sortby === "score"){
+    sortFunction = (comment1, comment2) => {
+      return Number(comment2.score) - Number(comment1.score)
+    }
+  } else {
+    sortFunction = (comment1, comment2) => {
+      return new Date(comment2.time).getTime() - new Date(comment1.time).getTime()
+    }
   }
 
   return (
@@ -90,7 +102,7 @@ const CommentElement = ({
           <p> {description} </p>
         </div>
       </div>
-      { comments && comments.filter(comment => comment && comment.parentId && (comment.parentId === id)).map((comment) => {
+      { comments && comments.filter(comment => comment && comment.parentId && (comment.parentId === id)).sort(sortFunction).map((comment) => {
         return <CommentContainer
             key={comment.id}
             id={comment.id}

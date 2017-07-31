@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import CommentContainer from './CommentContainer.js';
 import AddCommentContainer from './AddCommentContainer.js';
 import * as actionCreators from '../../actions/actionCreators';
+import SortByButton from './SortByButton.js';
 
 
 class CategoryView extends React.Component {
@@ -27,6 +28,18 @@ class CategoryView extends React.Component {
     if(this.props.comments[this.props.params.areaName])
       comments = this.props.comments[this.props.params.areaName][this.props.params.categoryId];
     else comments = [];
+
+    var sortFunction;
+    if(this.props.sortby === "score"){
+      sortFunction = (comment1, comment2) => {
+        return Number(comment1.score) - Number(comment2.score)
+      }
+    } else {
+      sortFunction = (comment1, comment2) => {
+        return new Date(comment1.time).getTime() - new Date(comment2.time).getTime()
+      }
+    }
+
     console.log(this.props, id, name)
       return (
       <div className="row">
@@ -35,7 +48,12 @@ class CategoryView extends React.Component {
             <p> {category && category.description} </p>
           </div>
         <div className="col-8">
-          { this.props.comments && comments.filter(comment => comment && comment.parentId === 0).map((comment) => {
+          <div className="row">
+            <div className="col">
+              <SortByButton></SortByButton>
+            </div>
+          </div>
+          { this.props.comments && comments.filter(comment => comment && comment.parentId === 0).sort(sortFunction).map((comment) => {
             return <CommentContainer
                 key={comment.id}
                 id={comment.id}
@@ -62,7 +80,8 @@ class CategoryView extends React.Component {
 function mapStateToProps(state) {
   return {
     categories: state.categories,
-    comments: state.comments
+    comments: state.comments,
+    sortby: state.sortby
   }
 }
 

@@ -301,3 +301,10 @@ export const toggleReplybox = (area, category, id) => {
     id
   }
 }
+
+export const sortBy = (type) => {
+  return {
+    type: 'sortBy',
+    attribute: type
+  }
+}

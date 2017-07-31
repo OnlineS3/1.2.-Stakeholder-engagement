@@ -9,6 +9,7 @@ import CommentReducer from './CommentReducer';
 import LoggedInReducer from './LoggedInReducer';
 import MenuReducer from './MenuReducer';
 import ModalReducer from './ModalReducer';
+import SortbyReducer from './SortbyReducer';
 console.log(exampleReducer)
 
 const rootReducer = combineReducers({
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   modals: ModalReducer,
   routing: routerReducer,
   form: formReducer,
+  sortby: SortbyReducer,
   exampleReducer,
 });
 

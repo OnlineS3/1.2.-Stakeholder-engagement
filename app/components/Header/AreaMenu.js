@@ -20,8 +20,8 @@ class AreaMenu extends React.Component{
     const style = {
       background: "grey",
       fontFamily: "sans",
-      float: "right",
-      height: "100%",
+      width: "100%",
+      height: "100%"
     }
 
     var id = "areamenu"
@@ -66,7 +66,7 @@ class AreaMenu extends React.Component{
             <p> {area.adminInviteLink}</p>
           </Modal>
         }
-        <DropdownMenu menu_id={id} title={title}>
+        <DropdownMenu menu_id={id} title={title} justify={"left"}>
           {areas}
           <DropdownMenuItem onClick={this.props.openAddModal}>
             Create a new area

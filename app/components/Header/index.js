@@ -21,9 +21,13 @@ var Header = props => {
     }
 
     return (
-      <div style={style}>
-        <AreaMenu params={params}/>
-        {element}
+      <div className="row" style={style}>
+        <div className="col-2">
+          <AreaMenu params={params}/>
+        </div>
+        <div className="col-2 push-8">
+          {element}
+        </div>
       </div>
     )
 }

@@ -25,22 +25,28 @@ class DropdownMenu extends React.Component {
     const style = {
       background: "grey",
       fontFamily: "sans",
-      float: "right",
+      float: this.props.justify?this.props.justify:"right",
       height: "100%",
+      width: "100%",
     }
     const styleOpen = {
       background: "grey",
       fontFamily: "sans",
-      marginTop: "40px",
-      height: "100%"
+      marginTop: "40px"
+    }
+    const absolute = {
+      position: "absolute",
+      "zIndex": 100
     }
     if(this.props.open(this.props.menu_id)){
       return (
-        <div style={style}>
-          <div style={style}  onClick={toggle}>
-            {this.props.title}
-          </div>
-          <div style={styleOpen}>
+        <div className="row">
+          <div style={absolute} className="col">
+            <div className="row"  onClick={toggle}>
+              <div className="col">
+                {this.props.title}
+              </div>
+            </div>
             {this.props.children}
           </div>
         </div>

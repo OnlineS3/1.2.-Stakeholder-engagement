@@ -6,12 +6,21 @@ import DropdownMenuItem from '../DropdownMenu/DropdownMenuItem.js'
 
 var LoginMenu = props => {
     var id = "usermenu"
+    const style = {
+      background: "grey",
+      fontFamily: "sans",
+      width: "100%",
+      height: "100%"
+    }
+
     return (
-      <DropdownMenu menu_id={id} title={props.user.username}>
-        <DropdownMenuItem>
-          <a href="/logout"> Logout </a>
-        </DropdownMenuItem>
-      </DropdownMenu>
+      <div style={style}>
+        <DropdownMenu menu_id={id} title={props.user.username}>
+          <DropdownMenuItem>
+            <a href="/logout"> Logout </a>
+          </DropdownMenuItem>
+        </DropdownMenu>
+      </div>
     )
 }
 

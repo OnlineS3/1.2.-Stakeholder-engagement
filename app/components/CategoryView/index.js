@@ -48,6 +48,11 @@ class CategoryView extends React.Component {
         <div className="col-8">
           <div className="row">
             <div className="col">
+              <h3> Comments and suggestions related to this area </h3>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
               <SortByButton></SortByButton>
             </div>
           </div>

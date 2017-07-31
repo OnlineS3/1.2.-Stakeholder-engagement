@@ -38,6 +38,7 @@ class CommentContainer extends React.Component {
         showReply={showReply}
         user={this.props.user}
         time={this.props.time}
+        score={this.props.score}
         deleteComment={deleteComment}
         voteUp={voteUp}
         voteDown={voteDown}

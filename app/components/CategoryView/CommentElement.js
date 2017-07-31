@@ -17,6 +17,7 @@ const CommentElement = ({
   user,
   deleteComment,
   time,
+  score,
   voteUp,
   voteDown
 }) => {
@@ -74,6 +75,11 @@ const CommentElement = ({
               Up
             </div>
           </div>
+          <div className="row">
+            <div className="col">
+              {score?score:0}
+            </div>
+          </div>
           <div className="row" onClick={voteDown}>
             <div className="col">
               Down
@@ -95,6 +101,7 @@ const CommentElement = ({
             category={category}
             author={comment.user}
             time={comment.time}
+            score={comment.score}
             comments={comments}
             replyVisible={comment.replyVisible}
             >

@@ -51,7 +51,7 @@ const CommentElement = ({
   }
 
   var sortFunction;
-  if(this.props.sortby === "score"){
+  if(sortby === "score"){
     sortFunction = (comment1, comment2) => {
       return Number(comment2.score) - Number(comment1.score)
     }

@@ -28,7 +28,23 @@ class Categories extends React.Component {
     }
 
     return (
-      <div>
+      <div className="row">
+        <div className="col">
+          <div className="row">
+            <div className="col">
+              <h2>Categories</h2>
+            </div>
+          </div>
+          {admin &&
+            <div className="row">
+              <div className="col">
+                <p>These categories let you divide issues to discuss with shareholders into concrete sub-areas. <br/>
+                  For example transportation, urban planning, or education
+                </p>
+              </div>
+            </div>
+          }
+
         { categories && categories.map((category) => {
           return <CategoryElement
               key={category.id}
@@ -41,6 +57,7 @@ class Categories extends React.Component {
         {admin &&
           <AddCategoryContainer params={this.props.params} update={this.addNew}></AddCategoryContainer>
         }
+        </div>
       </div>
     )
   }

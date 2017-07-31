@@ -25,9 +25,7 @@ var Header = props => {
         <div className="col-2">
           <AreaMenu params={params}/>
         </div>
-        <div className="col-2 push-8">
-          {element}
-        </div>
+
         <HeaderButton>
           <Link to="/about">
             About
@@ -43,6 +41,9 @@ var Header = props => {
             Access to application
           </Link>
         </HeaderButton>
+        <div className="col-2 push-2">
+          {element}
+        </div>
       </div>
     )
 }

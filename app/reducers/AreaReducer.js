@@ -1,6 +1,5 @@
 const AreaReducer = (state = {}, action) => {
   if(action.type === "addAreaSuccess"){
-    console.log(state, action)
     var areas;
     if(state)
       areas = Object.assign({}, state);

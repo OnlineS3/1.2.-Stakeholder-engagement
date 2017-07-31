@@ -25,7 +25,6 @@ class AreaMenu extends React.Component{
 
     var id = "areamenu"
     var areas = Object.values(this.props.areas).map(area => {
-      console.log(area)
       return <AreaButton area={area.name}/>
     })
     var title, area;
@@ -96,7 +95,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onMount () {
-      console.log("mount area")
       dispatch(actionCreators.fetchAreas());
     },
     openJoinModal () {

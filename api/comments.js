@@ -7,7 +7,6 @@ router.post('/new', function(req, res, next) {
   db.Permission.find({
     where: {user_id: req.session.passport.user._json.sub, AreaName: req.body.area},
   }).then(permission => {
-    console.log(permission)
     if("permission", permission){
       db.Comment.addNew({
         AreaName: req.body.area,
@@ -41,7 +40,6 @@ router.post('/delete', function(req, res, next) {
   db.Permission.find({
     where: {user_id: req.session.passport.user._json.sub, AreaName: req.body.area},
   }).then(permission => {
-    console.log(permission)
     if("permission", permission){
       db.Comment.delete(
         req.body.area, req.body.category, req.body.id,
@@ -69,7 +67,6 @@ router.post('/vote', function(req, res, next) {
   db.Permission.find({
     where: {user_id: req.session.passport.user._json.sub, AreaName: req.body.area},
   }).then(permission => {
-    console.log(permission)
     if("permission", permission){
       db.Vote.add(
         req.body.area, req.body.category, req.body.id,
@@ -129,7 +126,6 @@ router.post('/category', function(req, res, next) {
 
       }).then(comments => {
         res.send(comments.map(comment => {
-          console.dir(comment)
           return {
             id: comment.id,
             title: comment.title,

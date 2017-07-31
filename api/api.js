@@ -2,7 +2,6 @@ var db = require('../models/index.js');
 var express = require('express');
 var bodyParser = require('body-parser')
 var router = express.Router();
-console.log("api")
 
 var categories = require('./categories.js');
 var areas = require('./areas.js');
@@ -27,7 +26,7 @@ router.get('/user/', function(req, res, next) {
 });
 
 router.all('*', function(req, res, next){
-  console.log(res.locals.loggedIn)
+  //console.log(res.locals.loggedIn)
   //console.log(req.session.passport)
   if(res.locals.loggedIn){
     next();
@@ -44,7 +43,6 @@ router.use('/area', areas);
 router.use('/comment', comments)
 
 router.get('*', function(req, res, next) {
-  console.log(3)
   res.send({
     "response": "endpoint not valid"
   });

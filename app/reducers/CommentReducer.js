@@ -8,7 +8,6 @@ const CommentReducer = (state = {}, action) => {
       }
   }
   if(action.type === "addCommentSuccess"){
-    console.log(state, action)
     var comments;
     if(state)
       comments = JSON.parse(JSON.stringify(state));
@@ -30,7 +29,6 @@ const CommentReducer = (state = {}, action) => {
     delete comments[action.AreaName][action.CategoryId][action.id];
     return comments;
   } else if(action.type === "gotComments") {
-    console.log(action)
     //var categories = Object.assign({}, action.categories);
     var comments;
     if(state)

@@ -59,7 +59,6 @@ module.exports = function(sequelize, DataTypes) {
       }).then(values => {
         var {id, CategoryUuid} = values;
         if(isNaN(id)) id = 0;
-        console.log(id);
         if(parentId && parentId > id) return Promise.reject(`invalid parent id ${parentId}`);
         if(!parentId) parentId = 0;
         return Comment.create({

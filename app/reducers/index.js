@@ -10,7 +10,6 @@ import LoggedInReducer from './LoggedInReducer';
 import MenuReducer from './MenuReducer';
 import ModalReducer from './ModalReducer';
 import SortbyReducer from './SortbyReducer';
-console.log(exampleReducer)
 
 const rootReducer = combineReducers({
   user: LoggedInReducer,

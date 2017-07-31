@@ -20,7 +20,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onSubmit: (values) => {
-      console.log("clidked")
       dispatch(actionCreators.addArea(values.name));
     }
   }

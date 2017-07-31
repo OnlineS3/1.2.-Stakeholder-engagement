@@ -32,7 +32,6 @@ router.get('/all', function(req, res, next) {
   //console.dir(req.session.passport.user)
   db.Permission.findAll({where: {user_id: req.session.passport.user._json.sub}, include: db.Area}).then(permissions => {
     return permissions.map(permission => {
-      console.log(permission)
       if(permission.dataValues.admin){
         return {
           name: permission.dataValues.AreaName,
@@ -53,7 +52,6 @@ router.get('/all', function(req, res, next) {
 });
 
 router.post('/join', function(req, res, next) {
-  console.log(req.body.key);
   var string = encrypter.decrypt(req.body.key).split('|');
   var admin = string[0] === 'admin';
   var uuid = string[1];

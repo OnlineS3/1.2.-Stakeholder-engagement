@@ -7,7 +7,6 @@ import DropdownMenuItem from '../DropdownMenu/DropdownMenuItem.js'
 class AreaButton extends React.Component{
   constructor(props){
     super(props);
-    console.log(this.props);
     this.props.handleClick.bind(this);
   }
 
@@ -35,7 +34,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     handleClick: (area) => {
-      console.log("clicked", area)
       dispatch(actionCreators.changeArea(area));
     }
   }

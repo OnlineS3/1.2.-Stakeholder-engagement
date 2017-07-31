@@ -15,7 +15,6 @@ import Header from '../Header';
 
 class Home extends React.Component {
   render() {
-    console.log("homeprops:", this.props);
     if(this.props.logged_in){
       return(
         <div>
@@ -23,7 +22,6 @@ class Home extends React.Component {
         </div>
       )
     } else {
-      console.log("outputting home view")
       return(
         <div>
         </div>

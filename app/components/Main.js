@@ -11,7 +11,6 @@ class Main extends React.Component {
   }
 
   render() {
-    console.log(Header)
     return (
       <div>
         <Header user={this.props.user} params={this.props.params}/>
@@ -23,7 +22,6 @@ class Main extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log("state in map state to props", state);
   return {
     user: state.user
   }

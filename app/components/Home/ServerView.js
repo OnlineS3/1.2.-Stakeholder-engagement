@@ -9,7 +9,6 @@ class ServerView extends React.Component {
 
   componentDidMount(){
     fetch("/api/users")
-      .then(res => {console.log("body", res.body); return res;})
       .then(res => res.json())
       .then(text => this.setState(text))
   }

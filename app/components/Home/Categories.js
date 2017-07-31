@@ -17,7 +17,6 @@ class Categories extends React.Component {
 
 
   render(){
-    console.log(this.props)
     var categories, admin;
     if(this.props.params && this.props.params.areaName){
       categories = this.props.categories[this.props.params.areaName];
@@ -48,7 +47,6 @@ class Categories extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log("state in categories map state to props", state);
   return {
     categories: state.categories,
     areas: state.areas

@@ -4,7 +4,6 @@ import { connect, dispatch } from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
 
 var AddComment = props => {
-  console.log("AddComment props: ", props)
     const { handleSubmit } = props;
     const fieldStyle = {
       width: "100%"

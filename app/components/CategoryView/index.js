@@ -17,7 +17,6 @@ class CategoryView extends React.Component {
   }
 
   render(){
-    console.log(this.props)
     var id = this.props.params.categoryId;
     var name = this.props.params.areaName;
     var category;
@@ -32,15 +31,14 @@ class CategoryView extends React.Component {
     var sortFunction;
     if(this.props.sortby === "score"){
       sortFunction = (comment1, comment2) => {
-        return Number(comment1.score) - Number(comment2.score)
+        return Number(comment2.score) - Number(comment1.score)
       }
     } else {
       sortFunction = (comment1, comment2) => {
-        return new Date(comment1.time).getTime() - new Date(comment2.time).getTime()
+        return new Date(comment2.time).getTime() - new Date(comment1.time).getTime()
       }
     }
 
-    console.log(this.props, id, name)
       return (
       <div className="row">
           <div className="col-12">

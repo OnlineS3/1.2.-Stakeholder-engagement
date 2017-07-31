@@ -28,7 +28,6 @@ export function getUser() {
     })
     .then(res => res.json())
     .then(res => {
-      console.log(res);
       dispatch(gotUser(res));
     })
   }
@@ -51,7 +50,6 @@ export function addCategory(title, description) {
     })
     .then(res => res.json())
     .then(res => {
-      console.log(res);
       if(res.category){
         dispatch(addCategorySuccess(res.category, res.area));
       } else {
@@ -89,10 +87,8 @@ export function fetchCategories() {
     fetch("/api/category/all", {
       credentials: 'include',
     })
-      .then(res => {console.log("body", res.body); return res;})
       .then(res => res.json())
       .then(categories => {
-        console.log(categories)
         dispatch(gotCategories(categories))
       })
   }
@@ -109,7 +105,6 @@ export function addArea(name) {
     })
     .then(res => res.json())
     .then(res => {
-      console.log(res);
       if(res.area){
         dispatch(addAreaSuccess(res.area));
       } else {
@@ -125,10 +120,8 @@ export function fetchAreas() {
     fetch("/api/area/all", {
       credentials: 'include',
     })
-      .then(res => {console.log("body", res.body); return res;})
       .then(res => res.json())
       .then(areas => {
-        console.log(areas)
         if(areas instanceof Array)
           dispatch(gotAreas(areas))
       })
@@ -146,7 +139,6 @@ export function joinArea(key) {
     })
     .then(res => res.json())
     .then(res => {
-      console.log(res);
       if(res.area){
         dispatch(addAreaSuccess(res.area));
       } else {
@@ -170,7 +162,6 @@ export function fetchComments(area, category) {
     })
       .then(res => res.json())
       .then(comments => {
-        console.log(comments)
         dispatch(gotComments(area, category, comments))
       })
   }
@@ -197,7 +188,6 @@ export function addComment(area, category, title, description, parentId) {
     })
     .then(res => res.json())
     .then(res => {
-      console.log(res);
       if(res){
         dispatch(addCommentSuccess(area, category, res));
       } else {
@@ -220,7 +210,6 @@ export function deleteComment(area, category, id) {
     })
     .then(res => res.json())
     .then(res => {
-      console.log(res);
       if(res){
         dispatch(deleteCommentSuccess(area, category, id));
       } else {
@@ -258,7 +247,6 @@ export function vote(area, category, id, up) {
     })
     .then(res => res.json())
     .then(res => {
-      console.log(res);
       if(res){
         dispatch(voteSuccess(area, category, id, up));
       } else {

@@ -1,6 +1,5 @@
 const CategoryReducer = (state = {}, action) => {
   if(action.type === "addCategorySuccess"){
-    console.log(state, action)
     var categories;
     if(state)
       categories = JSON.parse(JSON.stringify(state));

@@ -4,14 +4,14 @@ import { Link } from 'react-router';
 var HeaderButton = props => {
     const { logged_in } = props;
     const style = {
-      background: "grey",
+      background: "#FAFAFA",
       float: "right",
       height: "100%",
     }
 
     return (
-      <div className="col-2" style={style}>
-        {props.children}
+      <div className="col btn btn-primary navbar-btn" style={style}>
+          {props.children}
       </div>
     )
 }

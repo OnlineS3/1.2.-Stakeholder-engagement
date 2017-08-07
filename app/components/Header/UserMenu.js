@@ -13,7 +13,7 @@ var LoginMenu = props => {
     }
 
     return (
-      <div style={style}>
+      <div style={{}}>
         <DropdownMenu menu_id={id} title={props.user.username}>
           <DropdownMenuItem>
             <a href="/logout"> Logout </a>

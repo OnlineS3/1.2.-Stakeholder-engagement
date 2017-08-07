@@ -30,15 +30,15 @@ class DropdownMenu extends React.Component {
       marginTop: "40px"
     }
     const absolute = {
-      position: "absolute",
+      //position: "absolute",
       "zIndex": 100
     }
     if(this.props.open(this.props.menu_id)){
       return (
         <div className="row">
           <div style={absolute} className="col">
-            <div className="row"  onClick={toggle}>
-              <div className="col">
+            <div className="row" onClick={toggle}>
+              <div className="col btn btn-primary navbar-btn">
                 {this.props.title}
               </div>
             </div>
@@ -48,7 +48,7 @@ class DropdownMenu extends React.Component {
       )
     } else {
       return (
-        <div style={style} onClick={toggle}>
+        <div className="col btn btn-primary navbar-btn" onClick={toggle}>
           {this.props.title}
         </div>
       )

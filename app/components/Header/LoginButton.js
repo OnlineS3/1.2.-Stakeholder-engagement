@@ -11,7 +11,7 @@ var LoginButton = props => {
     }
 
     return (
-      <div style={style}>
+      <div style={{}}>
         <a href="/login"> Login </a>
       </div>
     )

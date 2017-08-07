@@ -14,8 +14,8 @@ var Header = props => {
     var element;
     if(user.logged_in){
       element = (
-        <div className="col-2 push-2">
-          <UserMenu user={user}/>;
+        <div className="">
+          <UserMenu user={user}/>
         </div>
       )
     } else {

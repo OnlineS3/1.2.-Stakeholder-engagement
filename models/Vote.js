@@ -34,8 +34,10 @@ module.exports = function(sequelize, DataTypes) {
       ]
     }).then(comment => {
       return Vote.find({
-        user_id: user,
-        CommentUuid: comment.uuid
+        where: {
+          user_id: user,
+          CommentUuid: comment.uuid
+        }
       }).then(vote => {
         if(vote){
           Vote.upsert({

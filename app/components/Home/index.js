@@ -24,6 +24,7 @@ class Home extends React.Component {
     } else {
       return(
         <div>
+          Please begin by logging in.
         </div>
       )
     }

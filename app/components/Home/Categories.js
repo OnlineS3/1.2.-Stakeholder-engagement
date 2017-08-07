@@ -49,7 +49,7 @@ class Categories extends React.Component {
       header = (
         <div className="row">
           <div className="col">
-            <h2></h2>
+            <h2>No area selected. Please select or create an area from the area menu.</h2>
           </div>
         </div>
       )

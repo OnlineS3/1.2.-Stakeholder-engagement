@@ -23,11 +23,11 @@ const CommentElement = ({
   sortby
 }) => {
   const style = {
-    background: depth%2 === 0 ? "#CCCCCC" : "#F4F4F4",
+  //  background: depth%2 === 0 ? "#CCCCCC" : "#F4F4F4",
     "margin-left": "10px",
     "margin-right": "5px",
-    "margin-top": "5px",
-    "margin-bottom": "3px",
+   // "margin-top": "5px",
+  //  "margin-bottom": "3px",
     flex: "0 1 auto"
   }
 
@@ -63,19 +63,20 @@ const CommentElement = ({
 
   return (
     <div className="row">
+    <div className="col" style={style}>
 
-    <div style={style} className="col-12">
-      <div style={headerStyle} className="row">
-        <div className="col col-4">{title}</div>
-        <div className="col col-4 push-4">
-          <div className="row">
-            <div className="col">
+    <div className="card">
+      <div className="card-header">
+        <div className="">{title}</div>
+        <div className="">
+          <div className="">
+            <div className="">
               <span className="float-right"> {author} </span>
             </div>
           </div>
-          <div className="row">
-            <div className="col">
-              <span className="float-right">{new Date(time).toLocaleString()}</span>
+          <div className="">
+            <div className="">
+              <span className="">{new Date(time).toLocaleString()}</span>
             </div>
           </div>
         </div>
@@ -119,21 +120,24 @@ const CommentElement = ({
             >
           </CommentContainer>
       })}
-      <div style={headerStyle} className="row">
-        <div className="col-2" onClick={showReply}> { replyVisible ? "Cancel" : "Reply" } </div>
-        { (user.nickname === author) &&
-          <div className="col-2 push-8" onClick={deleteComment}> Delete comment </div>
-        }
+      <div className="card-footer">
+        <div className="row">
+          <div className="card-link col" onClick={showReply}> { replyVisible ? "Cancel" : "Reply" } </div>
+          { (user.nickname === author) &&
+            <div className="card-link col" onClick={deleteComment}> Delete comment </div>
+          }
+        </div>
       </div>
       {replyVisible &&
         <div>
-          <div className="row">
-            <div className="col">
+          <div className="">
+            <div className="">
               <AddCommentContainer parentId={id} id={id} area={area} category={category}></AddCommentContainer>
             </div>
           </div>
         </div>
       }
+    </div>
     </div>
     </div>
   )

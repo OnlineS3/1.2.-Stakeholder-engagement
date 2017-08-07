@@ -21,8 +21,8 @@ router.post('/new', function(req, res, next) {
       area: {
         name: result.area.dataValues.name,
         admin: true,
-        inviteLink: encrypter.encrypt('user|'+result.area.dataValues.uuid),
-        adminInviteLink: encrypter.encrypt('admin|'+result.area.dataValues.uuid)
+        inviteLink: encrypter.encrypt('user|'+result.area.dataValues.name),
+        adminInviteLink: encrypter.encrypt('admin|'+result.area.dataValues.name)
       }
     });
   });
@@ -36,8 +36,8 @@ router.get('/all', function(req, res, next) {
         return {
           name: permission.dataValues.AreaName,
           admin: permission.dataValues.admin,
-          inviteLink: encrypter.encrypt('user|'+permission.Area.dataValues.uuid),
-          adminInviteLink: encrypter.encrypt('admin|'+permission.Area.dataValues.uuid)
+          inviteLink: encrypter.encrypt('user|'+permission.Area.dataValues.name),
+          adminInviteLink: encrypter.encrypt('admin|'+permission.Area.dataValues.name)
         };
       } else {
         return {
@@ -54,8 +54,8 @@ router.get('/all', function(req, res, next) {
 router.post('/join', function(req, res, next) {
   var string = encrypter.decrypt(req.body.key).split('|');
   var admin = string[0] === 'admin';
-  var uuid = string[1];
-  db.Area.find({where: {uuid: uuid}}).then(area => {
+  var name = string[1];
+  db.Area.find({where: {name}}).then(area => {
     if(area){
         db.Permission.find({
           where: {
@@ -91,8 +91,8 @@ router.post('/join', function(req, res, next) {
               area: {
                 name: results.permission.dataValues.AreaName,
                 admin: results.permission.dataValues.admin,
-                inviteLink: encrypter.encrypt('user|'+results.area.dataValues.uuid),
-                adminInviteLink: encrypter.encrypt('admin|'+results.area.dataValues.uuid)
+                inviteLink: encrypter.encrypt('user|'+results.area.dataValues.name),
+                adminInviteLink: encrypter.encrypt('admin|'+results.area.dataValues.name)
               }
             };
           } else {

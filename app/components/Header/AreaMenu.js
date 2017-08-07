@@ -33,7 +33,7 @@ class AreaMenu extends React.Component{
        if(this.props.areas)
          area = this.props.areas[this.props.params.areaName]
     }
-    else title = "Select area";
+    else title = "Access an area";
 
     return (
       <div style={{}}>
@@ -64,7 +64,7 @@ class AreaMenu extends React.Component{
             <p> {area.adminInviteLink}</p>
           </Modal>
         }
-        <DropdownMenu menu_id={id} title={<h4>{title}</h4>} justify={"left"}>
+        <DropdownMenu menu_id={id} title={<div>{title}</div>} justify={"left"}>
           {areas}
           <DropdownMenuItem onClick={this.props.openAddModal}>
             Create a new area

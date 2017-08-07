@@ -255,6 +255,15 @@ export function vote(area, category, id, up) {
     })
   }
 }
+export const voteSuccess = (area, category, id, up) => {
+  return {
+    type: 'voteSuccess',
+    area,
+    category,
+    id,
+    up
+  }
+}
 
 export const addAreaSuccess = (area) => {
   return {

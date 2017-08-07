@@ -56,6 +56,22 @@ const CommentReducer = (state = {}, action) => {
       }
     }
     return comments;
+  } else if(action.type === "voteSuccess") {
+    if(state)
+      comments = JSON.parse(JSON.stringify(state));
+    else {
+      comments = {};
+    }
+    if(comments[action.area] && comments[action.area][action.category]){
+      var comment = comments[action.area][action.category][action.id];
+      if(comment){
+        if(comment.own) comment.score -= comment.own;
+        comment.score += action.up?1:-1;
+        comment.own = action.up?1:-1;
+        console.log(comment.score)
+      }
+    }
+    return comments;
   } else {
     return state;
   }

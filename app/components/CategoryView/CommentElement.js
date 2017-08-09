@@ -98,15 +98,17 @@ const CommentElement = ({
           </div>
         </div>
         <div className="col col-10">
-          <p> {description} </p>
+          {description.split('\n').map(text => {
+              return <p> {text} </p>
+          })}
         </div>
       </div>
 
       <div className="card-footer">
         <div className="row">
-          <div className="card-link col" onClick={showReply}> { replyVisible ? "Cancel" : "Reply" } </div>
+          <div className="card-link col" style={pointer} onClick={showReply}> { replyVisible ? "Cancel" : "Reply" } </div>
           { (user.nickname === author) &&
-            <div className="card-link col" onClick={deleteComment}>
+            <div className="card-link col" style={pointer} onClick={deleteComment}>
               <span className="float-right">
                Delete comment
               </span>

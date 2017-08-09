@@ -56,7 +56,12 @@ const CommentReducer = (state = {}, action) => {
     if(comments[action.area] && comments[action.area][action.category]){
       var comment = comments[action.area][action.category][action.id];
       if(comment){
-        comment.replyVisible = !comment.replyVisible;
+        var visible = comment.replyVisible;
+        comments[action.area][action.category].forEach(comment => {
+          if(comment)
+            comment.replyVisible = false;
+        })
+        comment.replyVisible = !visible;
       }
     }
     return comments;

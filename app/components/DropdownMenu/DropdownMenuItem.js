@@ -11,11 +11,11 @@ var DropdownMenuItem = props => {
     */
     const style = {
       "z-index": 100,
-      background: "grey",
+      cursor:"pointer"
     }
 
     return (
-      <div style={style} className="row" onClick={props.onClick}>
+      <div style={style} className="row menu-item" onClick={props.onClick}>
         <div className="col">
           {props.children}
         </div>

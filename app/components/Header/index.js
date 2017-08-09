@@ -8,7 +8,7 @@ var Header = props => {
     const { user, params } = props;
     const style = {
       width: '100%',
-      background: "blue",
+      background: "#004494",
       height: "40px"
     }
     var element;

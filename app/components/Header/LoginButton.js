@@ -5,7 +5,6 @@ var LoginButton = props => {
     const { logged_in } = props;
     const style = {
       background: "grey",
-      fontFamily: "sans",
       float: "right",
       height: "100%",
     }

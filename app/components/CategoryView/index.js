@@ -45,7 +45,7 @@ class CategoryView extends React.Component {
             <h2>{id} {category && category.title}</h2>
             <p> {category && category.description} </p>
           </div>
-        <div className="col-8">
+        <div className="col">
           <div className="row">
             <div className="col">
               <h3> Comments and suggestions related to this area </h3>

@@ -34,6 +34,9 @@ const CommentElement = ({
   const headerStyle = {
     background: "#888888"
   }
+  const pointer = {
+    cursor:'pointer'
+  }
   var reply;
   if(replyVisible){
     reply = (
@@ -84,7 +87,7 @@ const CommentElement = ({
       <div className="row">
         <div className="col col-2">
           <div className="row" onClick={voteUp}>
-            <div className="col">
+            <div className="col" style={pointer}>
               Up
             </div>
           </div>
@@ -94,7 +97,7 @@ const CommentElement = ({
             </div>
           </div>
           <div className="row" onClick={voteDown}>
-            <div className="col">
+            <div className="col" style={pointer}>
               Down
             </div>
           </div>

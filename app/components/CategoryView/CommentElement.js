@@ -118,7 +118,7 @@ const CommentElement = ({
         {replyVisible &&
             <div className="">
               <div className="">
-                <AddCommentContainer parentId={id} id={id} area={area} category={category}></AddCommentContainer>
+                <AddCommentContainer parentId={id} submitText={"Reply"} id={id} area={area} category={category}></AddCommentContainer>
               </div>
             </div>
         }

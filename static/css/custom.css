@@ -1,0 +1,48 @@
+h,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #333333;
+}
+
+body {
+  font-family: 'Amiri', serif;
+  color: #333333;
+}
+
+.menu-item{
+    background: #f4f4f4;
+    color: #333333;
+}
+.menu-item a{
+    color: #333333;
+}
+.menu-item:hover{
+    background: #006fb4;
+    color: #f4f4f4;
+}
+.menu-item:hover a{
+    color: #f4f4f4;
+}
+
+.card-footer {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+}
+.card-header {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+}
+
+.card-normal > .card-header,
+.card-normal > .card-footer {
+  background: #ededed;
+}
+.card-secondary > .card-header,
+.card-secondary > .card-footer {
+  background: #c5c6c8;
+}

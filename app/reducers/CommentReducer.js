@@ -17,6 +17,10 @@ const CommentReducer = (state = {}, action) => {
     addIfMissing(comments, action.AreaName, action.CategoryId);
 
     comments[action.AreaName][action.CategoryId][action.comment.id] = action.comment;
+    if(action.comment.parentId !== 0){
+      comments[action.AreaName][action.CategoryId][action.comment.parentId].replyVisible = false;
+    }
+
     return comments;
   } else if(action.type === "deleteCommentSuccess"){
     var comments;

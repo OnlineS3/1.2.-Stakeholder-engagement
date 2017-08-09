@@ -15,6 +15,11 @@ import { Provider } from 'react-redux';
 import store, { history } from './store';
 
 import values from 'object.values';
+import Promise from 'promise-polyfill';
+
+if (!window.Promise) {
+  window.Promise = Promise;
+}
 if (!Object.values) {
     values.shim();
 }

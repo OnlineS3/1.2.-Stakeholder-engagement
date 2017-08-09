@@ -16,7 +16,7 @@ import store, { history } from './store';
 
 import values from 'object.values';
 import Promise from 'promise-polyfill';
-var assign = require('object.assign');
+import assign from 'object.assign';
 
 if (!window.Promise) {
   window.Promise = Promise;

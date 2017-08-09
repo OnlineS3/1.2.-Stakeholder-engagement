@@ -27,7 +27,7 @@ const CommentElement = ({
     "margin-left": "10px",
     "margin-right": "5px",
    // "margin-top": "5px",
-  //  "margin-bottom": "3px",
+    "margin-bottom": "3px",
     flex: "0 1 auto"
   }
 
@@ -70,21 +70,16 @@ const CommentElement = ({
 
     <div className="card">
       <div className="card-header">
-        <div className="">{title}</div>
-        <div className="">
-          <div className="">
-            <div className="">
-              <span className="float-right"> {author} </span>
-            </div>
+        <div className="row">
+          <div className="col">
+            <h4 className="">{title}</h4>
           </div>
-          <div className="">
-            <div className="">
-              <span className="">{new Date(time).toLocaleString()}</span>
-            </div>
+          <div className="col">
+              <span className="float-right"> {author} {new Date(time).toLocaleString()}</span>
           </div>
         </div>
       </div>
-      <div className="row">
+      <div className="row card-block">
         <div className="col col-2">
           <div className="row" onClick={voteUp}>
             <div className="col" style={pointer}>
@@ -106,40 +101,44 @@ const CommentElement = ({
           <p> {description} </p>
         </div>
       </div>
-      { comments && comments.filter(comment => comment && comment.parentId && (comment.parentId === id)).sort(sortFunction).map((comment) => {
-        return <CommentContainer
-            key={comment.id}
-            id={comment.id}
-            title={comment.title}
-            description={comment.description}
-            depth={depth+1}
-            area={area}
-            category={category}
-            author={comment.user}
-            time={comment.time}
-            score={comment.score}
-            comments={comments}
-            replyVisible={comment.replyVisible}
-            >
-          </CommentContainer>
-      })}
+
       <div className="card-footer">
         <div className="row">
           <div className="card-link col" onClick={showReply}> { replyVisible ? "Cancel" : "Reply" } </div>
           { (user.nickname === author) &&
-            <div className="card-link col" onClick={deleteComment}> Delete comment </div>
+            <div className="card-link col" onClick={deleteComment}>
+              <span className="float-right">
+               Delete comment
+              </span>
+             </div>
           }
         </div>
-      </div>
-      {replyVisible &&
-        <div>
-          <div className="">
+        {replyVisible &&
             <div className="">
-              <AddCommentContainer parentId={id} id={id} area={area} category={category}></AddCommentContainer>
+              <div className="">
+                <AddCommentContainer parentId={id} id={id} area={area} category={category}></AddCommentContainer>
+              </div>
             </div>
-          </div>
-        </div>
-      }
+        }
+        { comments && comments.filter(comment => comment && comment.parentId && (comment.parentId === id)).sort(sortFunction).map((comment) => {
+          return <CommentContainer
+              key={comment.id}
+              id={comment.id}
+              title={comment.title}
+              description={comment.description}
+              depth={depth+1}
+              area={area}
+              category={category}
+              author={comment.user}
+              time={comment.time}
+              score={comment.score}
+              comments={comments}
+              replyVisible={comment.replyVisible}
+              >
+            </CommentContainer>
+        })}
+      </div>
+
     </div>
     </div>
     </div>

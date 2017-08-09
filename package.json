@@ -62,7 +62,8 @@
     "stylus-loader": "3.0.1",
     "webpack": "3.0.0",
     "webpack-dev-middleware": "1.11.0",
-    "webpack-hot-middleware": "2.18.0"
+    "webpack-hot-middleware": "2.18.0",
+    "whatwg-fetch": "^2.0.3"
   },
   "proxy": "http://localhost:3000"
 }

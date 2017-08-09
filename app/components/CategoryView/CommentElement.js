@@ -68,7 +68,7 @@ const CommentElement = ({
     <div className="row">
     <div className="col" style={style}>
 
-    <div className="card">
+    <div className={`card card-${depth%2 === 0 ? 'normal' : 'secondary'}`}>
       <div className="card-header">
         <div className="row">
           <div className="col">

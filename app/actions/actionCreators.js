@@ -12,6 +12,12 @@ export const toggleMenu = (id) => {
     id
   }
 }
+export const closeMenu = (id) => {
+  return {
+    type: 'CLOSE_MENU',
+    id
+  }
+}
 export const changeArea = (area) => {
   return {
     type: 'TOGGLE_AREA',

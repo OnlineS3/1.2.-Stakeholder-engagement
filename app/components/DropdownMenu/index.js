@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect, dispatch } from 'react-redux';
 import * as actionCreators from 'app/actions/actionCreators';
+import onClickOutside from 'react-onclickoutside'
 
 class DropdownMenu extends React.Component {
   toggle(e){
@@ -13,11 +14,16 @@ class DropdownMenu extends React.Component {
     super(props);
     this.props.handleClick.bind(this);
   }
+  handleClickOutside(){
+    if(this.props.open(this.props.menu_id))
+      this.props.closeMenu(this.props.menu_id);
+  }
 
   render() {
     function toggle(){
       this.props.handleClick(this.props.menu_id);
     }
+
     toggle = toggle.bind(this);
     const style = {
       background: "grey",
@@ -68,7 +74,10 @@ function mapDispatchToProps(dispatch) {
   return {
     handleClick: (menu_id) => {
       dispatch(actionCreators.toggleMenu(menu_id));
+    },
+    closeMenu: (menu_id) => {
+      dispatch(actionCreators.closeMenu(menu_id));
     }
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(DropdownMenu);
+export default connect(mapStateToProps, mapDispatchToProps)(onClickOutside(DropdownMenu));

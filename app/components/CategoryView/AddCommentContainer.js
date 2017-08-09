@@ -12,7 +12,7 @@ class AddCommentContainer extends React.Component {
     }
     submit = submit.bind(this);
     return (
-      <AddComment key={this.props.id} form={`addComment[${this.props.id}]`} onSubmit={submit}></AddComment>
+      <AddComment key={this.props.id} form={`addComment[${this.props.id}]`} submitText={this.props.submitText} onSubmit={submit}></AddComment>
     )
   }
 }

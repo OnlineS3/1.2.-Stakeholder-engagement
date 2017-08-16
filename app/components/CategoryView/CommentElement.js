@@ -106,10 +106,10 @@ const CommentElement = ({
 
       <div className="card-footer">
         <div className="row">
-          <div className="card-link col" style={pointer} onClick={showReply}> { replyVisible ? "Cancel" : "Reply" } </div>
+          <div className="card-link col btn btn-secondary" style={pointer} onClick={showReply}> { replyVisible ? "Cancel" : "Reply" } </div>
           { (user.nickname === author) &&
-            <div className="card-link col" style={pointer} onClick={deleteComment}>
-              <span className="float-right">
+            <div className="card-link col  btn btn-secondary" style={pointer} onClick={deleteComment}>
+              <span className="">
                Delete comment
               </span>
              </div>

@@ -19,7 +19,7 @@ var AddComment = props => {
               <Field style={fieldStyle} name="title" placeholder="Subject" component="input" type="text"/>
             </div>
             <div className="col-2">
-              <button style={fieldStyle} type="submit"> {props.submitText} </button>
+              <button className="btn btn-secondary" style={fieldStyle} type="submit"> {props.submitText} </button>
             </div>
           </div>
           <div className="row">

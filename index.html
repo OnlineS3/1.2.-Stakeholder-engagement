@@ -6,9 +6,105 @@
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
     <link href="https://fonts.googleapis.com/css?family=Amiri|Source+Sans+Pro" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/font-awesome/css/font-awesome.min.css">
+  	<!--link rel="stylesheet" type="text/css" href="/static/css/layout.css"-->
+  	<link rel="stylesheet" type="text/css" href="/static/css/header.css">
+  	<link rel="stylesheet" type="text/css" href="/static/css/footer.css">
   </head>
   <body style="margin: 0px;">
+
+    <header id='site-header'>
+
+	<nav id='top-menu'>
+		<ul>
+			<li><a href='http://www.onlines3.eu/'>Online S3 Project</a></li>
+			<li class="active"><a href='#'><i class="fa fa-lightbulb-o" aria-hidden="true"></i>Applications</a></li>
+			<li><a href='#'/><i class="fa fa-cog" aria-hidden="true"></i>Toolbox</a></li>
+			<li><a href='#'/><i class="fa fa-bar-chart" aria-hidden="true"></i>Analytics</a></li>
+			<li><a href='#'/><i class="fa fa-life-ring" aria-hidden="true"></i></i>Support</a></li>
+			<li><a href='#'/><i class="fa fa-envelope-o" aria-hidden="true"></i>Contact</a></li>
+		</ul>
+	</nav>
+
+  	<div id='header-main'>
+
+  		<div class='top-section'>
+  			<div class='headers'>
+  				<img class='logo-img' src='/static/img/logo.png' width='77'>
+  				<div>
+  					<p class="heading"><a href='#'>Online S3 Platform</a></p>
+  					<p class="sub-heading">Scenario Building</p>
+  				</div>
+  			</div>
+
+  			<div class="social-links">
+  				<a href="https://twitter.com/online_s3" title="Twitter" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+  				<a href="https://plus.google.com/102042915278982824881" title="Google+" target="_blank"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a>
+  				<a href="https://www.youtube.com/channel/UCuYNnd9rdrN_EbF5_P0Nmog" title="YouTube" target="_blank"><i class="fa fa-youtube-square" aria-hidden="true"></i></a>
+
+  				<!-- <a href="https://twitter.com/online_s3" title="Twitter" target="_blank">L</a>  -->
+  				<!-- <a href="https://plus.google.com/102042915278982824881" title="Google+" target="_blank">G</a>  -->
+  				<!-- <a href="https://www.youtube.com/channel/UCuYNnd9rdrN_EbF5_P0Nmog" title="YouTube" target="_blank">X</a>  -->
+  				<!-- <a href="http://www.onlines3.eu/feed/" title="Newsfeed" target="_blank">R</a> -->
+  			</div>
+  		</div>
+
+  		<div class='bottom-section'>
+  			<div class="menu">
+  				<ul>
+  					<li><a href="/about">About</a></li>
+  					<li><a href="/guideline1">Guideline 1</a></li>
+  					<li><a href="/guideline2">Guideline 2</a></li>
+  					<li><a href="/guideline3">Guideline 3</a></li>
+            <li><a href="/related_documents">Related documents</a></li>
+  					<li><a id='tool' href='/applications'>Access to application</a></li>
+  				</ul>
+  			</div>
+
+  			<div class='user-btns' id='login-handlers'></div>
+  		</div>
+
+  	</div>
+
+  	<div id='breadcrumb'>
+  		<ul>
+  			<li><a href='http://www.s3platform.eu'>Online S3 Platform</a></li>
+  			<li><a href='http://www.s3platform.eu/3-strategy-formulation'>Stragegy formulation</a></li>
+  			<li><span>Scenario Building</span></li>
+  		</ul>
+  	</div>
+
+  </header>
+
     <div id="root"></div>
     <script src="/static/bundle.js"></script>
+
+    <!-- site footer -->
+    <footer id='site-footer'>
+
+    	<div id="footer-links">
+            <ul>
+                <li><a href="http://www.s3platform.eu"><span>Online S3 Project</span></a></li>
+                <li class="active"><a href="#"><span>Applications</span></a></li>
+                <li><a href="#"><span>Toolbox</span></a></li>
+                <li><a href="#"><span>Analytics</span></a></li>
+                <li><a href="#">Support</span></a></li>
+                <li><a href="#"><span>Contact</span></a></li>
+            </ul>
+            <div id='copyright'>
+                <img src="/static/img/logo.png" width="30" alt="online logo">
+                <p>Copyright &copy; 2016-2017 OnlineS3 Project</p>
+            </div>
+        </div>
+
+        <div id="european">
+            <img src="/static/img/eu_logo.png" width="85" alt="Co-funded by the European Union">
+
+            <p>
+                Funded by the Horizon 2020 Framework Programme of the European Union.
+            </p>
+        </div>
+
+    </footer>
   </body>
 </html>

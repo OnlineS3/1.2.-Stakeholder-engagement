@@ -93,9 +93,10 @@ app.get(
 
 app.get('/static/*',
   function(req, res) {
-    res.sendFile(path.join(__dirname, req.url));
+    res.sendFile(path.join(__dirname, req.path));
   }
 );
+
 app.get('/css',
   function(req, res) {
     res.sendFile(path.join(__dirname, '/css/bootstrap.min.css'));

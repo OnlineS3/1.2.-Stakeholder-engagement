@@ -57,7 +57,7 @@ class CategoryView extends React.Component {
               <SortByButton></SortByButton>
             </div>
           </div>
-          { this.props.comments && comments.filter(comment => comment && comment.parentId === 0).sort(sortFunction).map((comment) => {
+          { comments && comments.filter(comment => comment && comment.parentId === 0).sort(sortFunction).map((comment) => {
             return <CommentContainer
                 key={comment.id}
                 id={comment.id}

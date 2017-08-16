@@ -82,17 +82,17 @@ const CommentElement = ({
       <div className="row card-block">
         <div className="col col-2">
           <div className="row" onClick={voteUp}>
-            <div className="col" style={pointer}>
+            <div className="col btn btn-secondary" style={pointer}>
               Up
             </div>
           </div>
           <div className="row">
-            <div className="col">
+            <div className="col text-center">
               {score?score:0}
             </div>
           </div>
           <div className="row" onClick={voteDown}>
-            <div className="col" style={pointer}>
+            <div className="col btn btn-secondary" style={pointer}>
               Down
             </div>
           </div>

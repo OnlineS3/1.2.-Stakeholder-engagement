@@ -11,18 +11,7 @@ var Header = props => {
       background: "#004494",
       height: "40px"
     }
-    var element;
-    if(user.logged_in){
-      element = (
-        <div className="">
-          <UserMenu user={user}/>
-        </div>
-      )
-    } else {
-      element = <HeaderButton style={{width: "100%"}}>
-                  <a href="/login"> Login </a>
-                </HeaderButton>;
-    }
+
 
     return (
       <div className="row" style={style}>
@@ -30,23 +19,6 @@ var Header = props => {
           <AreaMenu params={params}/>
         </div>
 
-        <HeaderButton>
-          <Link to="/about">
-            About
-          </Link>
-        </HeaderButton>
-        <HeaderButton>
-          <Link to="/guide">
-            Guide
-          </Link>
-        </HeaderButton>
-        <HeaderButton>
-          <Link to="/">
-            Access to application
-          </Link>
-        </HeaderButton>
-
-          {element}
       </div>
     )
 }

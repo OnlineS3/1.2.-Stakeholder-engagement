@@ -5,6 +5,7 @@ import CommentContainer from './CommentContainer.js';
 import AddCommentContainer from './AddCommentContainer.js';
 import * as actionCreators from '../../actions/actionCreators';
 import SortByButton from './SortByButton.js';
+import Header from '../Header';
 
 
 class CategoryView extends React.Component {
@@ -41,6 +42,7 @@ class CategoryView extends React.Component {
 
       return (
       <div className="row">
+          <Header params={this.props.params}/>
           <div className="col-12">
             <h2>{id} {category && category.title}</h2>
             <p> {category && category.description} </p>

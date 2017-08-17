@@ -23,6 +23,17 @@ p {
 	padding: 3px 16px;
 }
 
+h1 {
+    font-family: Verdana;
+    font-size: 21px;
+    font-weight: 400;
+    color: #DE1515;
+    margin-top: 20px;
+    padding-left: 16px;
+    font-style: normal;
+    clear: both;
+}
+
 button {
 	line-height: 1;
 }

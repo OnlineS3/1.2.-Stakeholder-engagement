@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { render } from 'react-dom';
 import { Link } from 'react-router';
 import Header from './Header'
 import * as actionCreators from '../actions/actionCreators';
@@ -8,6 +9,20 @@ class Main extends React.Component {
 
   componentDidMount() {
     this.props.onMount();
+  }
+
+  componentDidUpdate() {
+    const loginHandlers = <div>
+      {(this.props.user.logged_in) ?
+        <a href="/logout"><button className='login-btn'>Logout</button></a>
+        :
+        <div>
+          <a href="/login"><button className='login-btn'>Log in</button></a>
+          <a href="/login"><button className='register-btn'>Register</button></a>
+        </div>
+      }
+    </div>
+    render(loginHandlers, document.getElementById('login-handlers'));
   }
 
   render() {

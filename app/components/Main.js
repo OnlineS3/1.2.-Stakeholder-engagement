@@ -14,7 +14,10 @@ class Main extends React.Component {
   componentDidUpdate() {
     const loginHandlers = <div>
       {(this.props.user.logged_in) ?
-        <a href="/logout"><button className='login-btn'>Logout</button></a>
+        <div>
+          <span className="header-text">{this.props.user.username}</span>
+          <a href="/logout"><button className='login-btn'>Logout</button></a>
+        </div>
         :
         <div>
           <a href="/login"><button className='login-btn'>Log in</button></a>

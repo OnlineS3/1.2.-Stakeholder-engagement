@@ -7,7 +7,7 @@ import * as actionCreators from '../actions/actionCreators';
 class About extends React.Component {
 
   componentDidMount() {
-    th1is.props.onMount();
+    this.props.onMount();
   }
 
   render() {
@@ -17,45 +17,45 @@ class About extends React.Component {
         <h1>LOGGING IN</h1>
           <img src="/static/img/fig1.png"></img>
         <ol>
-          <li> Select Login from th1e upper corner, and enter your login details or create a new account from th1e prompt th1at opens. </li>
+          <li> Select Login from the upper corner, and enter your login details or create a new account from the prompt that opens. </li>
         </ol>
         <h1> JOINING AN AREA WITH AN INVITE CODE </h1>
         <ol>
-          <li> From th1e area menu select “Join an area” </li>
+          <li> From the area menu select “Join an area” </li>
             <img src="/static/img/fig2.png"></img>
-          <li> Enter th1e invitation key you h1ave received from an administrator of th1e area. You will be granted access to contribute to th1e conversation in th1e area. </li>
+          <li> Enter the invitation key you have received from an administrator of the area. You will be granted access to contribute to the conversation in the area. </li>
         </ol>
         <h1> PARTICIPATING IN DISCUSSION </h1>
         <ol>
-          <li> Select an area to participate in from th1e area menu </li>
-          <li> Select a category you want to comment on from th1e available options </li>
+          <li> Select an area to participate in from the area menu </li>
+          <li> Select a category you want to comment on from the available options </li>
             <img src="/static/img/fig3.png"></img>
-          <li> Post a new comment from th1e input fields at th1e bottom of th1e page, or reply to an existing comment </li>
+          <li> Post a new comment from the input fields at the bottom of the page, or reply to an existing comment </li>
             <img src="/static/img/fig5.png"></img>
-          <li> Vote comments you find to be of particular quality up, and vote down comments you don’t feel contribute to th1e conversation </li>
+          <li> Vote comments you find to be of particular quality up, and vote down comments you don’t feel contribute to the conversation </li>
         </ol>
         <h1> CREATING AN AREA FOR A REGION </h1>
         <ol>
-          <li> Click th1e area menu from th1e upper left corner, and from th1e menu select “Create a new area”. Th1ese areas are meant for th1e use of individual regions or smaller interest areas. </li>
+          <li> Click the area menu from the upper left corner, and from the menu select “Create a new area”. These areas are meant for the use of individual regions or smaller interest areas. </li>
             <img src="/static/img/fig6.png"></img>
-          <li> Enter th1e name for your area in th1e popup th1at opens, and click Add </li>
+          <li> Enter the name for your area in the popup that opens, and click Add </li>
         </ol>
         <h1> INVITING USERS AND ADMINISTRATORS TO COLLABORATE IN AN AREA </h1>
         <ol>
-          <li> From th1e area menu select “Invite users to [YOUR AREA NAME]” </li>
+          <li> From the area menu select “Invite users to [YOUR AREA NAME]” </li>
         <img src="/static/img/fig7.png"></img>
-          <li> Copy th1e invite code for users from th1e popup, and sh1are it with1 your target audience, for example by e-mail. </li>
-          <li> Copy th1e invite code for administrators of your area, and sh1are it with1 people you trust to govern th1e discussion in your area. </li>
+          <li> Copy the invite code for users from the popup, and share it with your target audience, for example by e-mail. </li>
+          <li> Copy the invite code for administrators of your area, and share it with people you trust to govern the discussion in your area. </li>
             <img src="/static/img/fig8.png"></img>
         </ol>
         <h1> CREATING CATEGORIES OF DISCUSSION TOPICS </h1>
         <ol>
-          <li> Select an area you are an administrator of from th1e area menu </li>
-          <li> Fill in th1e title of th1e category and a description of th1e kind of discussion you want to h1appen in th1e category </li>
+          <li> Select an area you are an administrator of from the area menu </li>
+          <li> Fill in the title of the category and a description of the kind of discussion you want to happen in the category </li>
             <img src="/static/img/fig9.png"></img>
         </ol>
 
-        <a h1ref="/static/S3_Guideline_Stakeh1older_Engagement.docx"> DOWNLOAD GUIDE DOCUMENT </a>
+        <a href="/static/S3_Guideline_Stakeholder_Engagement.docx"> DOWNLOAD GUIDE DOCUMENT </a>
 
       </article>
       </div>
@@ -68,11 +68,11 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatch1ToProps(dispatch1) {
+function mapDispatchToProps(dispatch) {
   return {
     onMount() {
     }
   }
 }
 
-export default connect(mapStateToProps, mapDispatch1ToProps)(About);
+export default connect(mapStateToProps, mapDispatchToProps)(About);

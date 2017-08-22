@@ -12,7 +12,7 @@ class About extends React.Component {
 
   render() {
     return (
-      <div class="site-content">
+      <div className="site-content">
         <article id="main-content">
         <h1>Background and rationale</h1>
           <p>

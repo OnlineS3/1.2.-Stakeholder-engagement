@@ -33,21 +33,21 @@ class AreaMenu extends React.Component{
        if(this.props.areas)
          area = this.props.areas[this.props.params.areaName]
     }
-    else title = "Access an area";
+    else title = "Access a region";
 
     return (
       <div style={{}}>
         <Modal
           isOpen={this.props.addModalOpen}
           onRequestClose={this.props.closeAddModal}
-          contentLabel="Create a new area"
+          contentLabel="Create a new region"
         >
           <AddAreaContainer></AddAreaContainer>
         </Modal>
         <Modal
           isOpen={this.props.joinModalOpen}
           onRequestClose={this.props.closeJoinModal}
-          contentLabel="Join area"
+          contentLabel="Join a region"
         >
           <JoinAreaContainer></JoinAreaContainer>
         </Modal>
@@ -57,20 +57,20 @@ class AreaMenu extends React.Component{
             onRequestClose={this.props.closeInviteModal}
             contentLabel="Invite users"
           >
-            <p> Share this invitation code with users you want to participate in the area: </p>
+            <p> Share this invitation code with users you want to participate in the region: </p>
             <p> {area.inviteLink}</p>
             <br/>
-            <p> Share this invitation code with admins you want to help manage the area: </p>
+            <p> Share this invitation code with admins you want to help manage the region: </p>
             <p> {area.adminInviteLink}</p>
           </Modal>
         }
         <DropdownMenu menu_id={id} title={<div>{title}</div>} justify={"left"}>
           {areas}
           <DropdownMenuItem onClick={this.props.openAddModal}>
-            Create a new area
+            Create a new region
           </DropdownMenuItem>
           <DropdownMenuItem onClick={this.props.openJoinModal}>
-            Join an area
+            Join an existing region
           </DropdownMenuItem>
           {area && area.admin &&
             <DropdownMenuItem onClick={this.props.openInviteModal}>

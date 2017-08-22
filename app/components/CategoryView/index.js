@@ -50,7 +50,7 @@ class CategoryView extends React.Component {
         <div className="col">
           <div className="row">
             <div className="col">
-              <h3> Comments and suggestions related to this area </h3>
+              <h3> Comments and suggestions related to this priority </h3>
             </div>
           </div>
           <AddCommentContainer id={0} parentId={0} submitText={"Add suggestion"} area={this.props.params.areaName} category={this.props.params.categoryId}></AddCommentContainer>

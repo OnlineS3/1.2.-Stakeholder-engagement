@@ -41,13 +41,13 @@ const router = (
         </Route>
         <Route path="/guide" component={Guide}>
         </Route>
-        <Route path="/area/:areaName" component={Home}>
+        <Route path="/region/:areaName" component={Home}>
           <IndexRoute name="area" component={Home}></IndexRoute>
         </Route>
         <Route path="/application" component={Home}>
         </Route>
         <IndexRoute name="home" component={Home}></IndexRoute>
-        <Route path="/area/:areaName/:categoryId" component={CategoryView}></Route>
+        <Route path="/region/:areaName/:categoryId" component={CategoryView}></Route>
       </Route>
 
     </Router>

@@ -12,46 +12,46 @@ class About extends React.Component {
 
   render() {
     return (
-      <div class="site-content">
+      <div className="site-content">
         <article id="main-content">
         <h1>LOGGING IN</h1>
           <img src="/static/img/fig1.png"></img>
         <ol>
           <li> Select Login from the upper corner, and enter your login details or create a new account from the prompt that opens. </li>
         </ol>
-        <h1> JOINING AN AREA WITH AN INVITE CODE </h1>
+        <h1> JOINING A REGION WITH AN INVITE CODE </h1>
         <ol>
-          <li> From the area menu select “Join an area” </li>
+          <li> From the region menu select “Join a region" </li>
             <img src="/static/img/fig2.png"></img>
-          <li> Enter the invitation key you have received from an administrator of the area. You will be granted access to contribute to the conversation in the area. </li>
+          <li> Enter the invitation key you have received from an administrator of the region. You will be granted access to contribute to the conversation in the region. </li>
         </ol>
         <h1> PARTICIPATING IN DISCUSSION </h1>
         <ol>
-          <li> Select an area to participate in from the area menu </li>
-          <li> Select a category you want to comment on from the available options </li>
+          <li> Select a region to participate in from the region menu </li>
+          <li> Select a priority you want to comment on from the available options </li>
             <img src="/static/img/fig3.png"></img>
           <li> Post a new comment from the input fields at the bottom of the page, or reply to an existing comment </li>
             <img src="/static/img/fig5.png"></img>
           <li> Vote comments you find to be of particular quality up, and vote down comments you don’t feel contribute to the conversation </li>
         </ol>
-        <h1> CREATING AN AREA FOR A REGION </h1>
+        <h1> CREATING A REGION </h1>
         <ol>
-          <li> Click the area menu from the upper left corner, and from the menu select “Create a new area”. These areas are meant for the use of individual regions or smaller interest areas. </li>
+          <li> Click the region menu from the upper left corner, and from the menu select “Create a new region". These regions are meant for the use of individual regions or nations. </li>
             <img src="/static/img/fig6.png"></img>
-          <li> Enter the name for your area in the popup that opens, and click Add </li>
+          <li> Enter the name for your region in the popup that opens, and click Add </li>
         </ol>
-        <h1> INVITING USERS AND ADMINISTRATORS TO COLLABORATE IN AN AREA </h1>
+        <h1> INVITING USERS AND ADMINISTRATORS TO COLLABORATE IN A REGION </h1>
         <ol>
-          <li> From the area menu select “Invite users to [YOUR AREA NAME]” </li>
+          <li> From the region menu select “Invite users to [YOUR REGION NAME]” </li>
         <img src="/static/img/fig7.png"></img>
           <li> Copy the invite code for users from the popup, and share it with your target audience, for example by e-mail. </li>
-          <li> Copy the invite code for administrators of your area, and share it with people you trust to govern the discussion in your area. </li>
+          <li> Copy the invite code for administrators of your region, and share it with people you trust to govern the discussion in your region. </li>
             <img src="/static/img/fig8.png"></img>
         </ol>
-        <h1> CREATING CATEGORIES OF DISCUSSION TOPICS </h1>
+        <h1> CREATING PRIORITIES FOR DISCUSSION </h1>
         <ol>
-          <li> Select an area you are an administrator of from the area menu </li>
-          <li> Fill in the title of the category and a description of the kind of discussion you want to happen in the category </li>
+          <li> Select a region you are an administrator of from the region menu </li>
+          <li> Fill in the title of the priority and a description of the kind of discussion you want to happen related to the priority in question </li>
             <img src="/static/img/fig9.png"></img>
         </ol>
 

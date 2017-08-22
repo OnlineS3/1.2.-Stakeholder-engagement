@@ -9,6 +9,7 @@ import Home from './components/Home';
 import CategoryView from './components/CategoryView';
 import About from './components/About.js';
 import Guide from './components/Guide.js';
+import Related from './components/Related.js';
 
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
@@ -40,6 +41,8 @@ const router = (
         <Route path="/about" component={About}>
         </Route>
         <Route path="/guide" component={Guide}>
+        </Route>
+        <Route path="/related_documents" component={Related}>
         </Route>
         <Route path="/region/:areaName" component={Home}>
           <IndexRoute name="area" component={Home}></IndexRoute>

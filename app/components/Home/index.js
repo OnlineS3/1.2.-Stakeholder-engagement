@@ -15,9 +15,12 @@ import Header from '../Header';
 
 class Home extends React.Component {
   render() {
+    const style = {
+      "min-height": "36rem"
+    }
     if(this.props.logged_in){
       return(
-        <div>
+        <div style={style}>
           <Header params={this.props.params}/>
 
           <Categories params={this.props.params}/>
@@ -25,7 +28,7 @@ class Home extends React.Component {
       )
     } else {
       return(
-        <div>
+        <div style={style}>
           Please begin by logging in.
         </div>
       )

@@ -29,7 +29,7 @@ class Home extends React.Component {
     } else {
       return(
         <div style={style}>
-          Please begin by logging in.
+          Please begin by <a href="/login">logging in</a>.
         </div>
       )
     }

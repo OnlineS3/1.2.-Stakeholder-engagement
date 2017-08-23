@@ -5,7 +5,7 @@ import { Field, reduxForm } from 'redux-form'
 
 var AddCategory = props => {
     const { handleSubmit } = props;
-  
+
     const fieldStyle = {
       width: "100%"
     }
@@ -20,7 +20,7 @@ var AddCategory = props => {
               <Field style={fieldStyle} name="title" placeholder="Subject" component="input" type="text"/>
             </div>
             <div className="col-2">
-              <button style={fieldStyle} type="submit"> Add Category </button>
+              <button style={fieldStyle} type="submit"> Add Priority </button>
             </div>
           </div>
           <div className="row">

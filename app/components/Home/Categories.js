@@ -30,7 +30,7 @@ class Categories extends React.Component {
     var header = (
       <div className="row">
         <div className="col">
-          <h2>Categories</h2>
+          <h2>Priorities</h2>
         </div>
       </div>
     )
@@ -40,7 +40,7 @@ class Categories extends React.Component {
         header = (
           <div className="row">
             <div className="col">
-              <h2>No categories in selected area</h2>
+              <h2>No priorities defined in selected region</h2>
             </div>
           </div>
         )
@@ -62,9 +62,8 @@ class Categories extends React.Component {
           {admin &&
             <div className="row">
               <div className="col">
-                <p>These categories let you divide issues to discuss with shareholders into concrete sub-areas. <br/>
-                  For example transportation, urban planning, or education
-                </p>
+                <p>These priorities let you divide issues to discuss with shareholders into concrete topics related to the development priorities in the area. <br/>
+                  For example Public health & security, Service innovation, or Resource efficiency </p>
               </div>
             </div>
           }

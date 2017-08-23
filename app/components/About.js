@@ -24,7 +24,7 @@ class About extends React.Component {
           <p>
           Stakeholder engagement tool enables widely inviting stakeholders to collaborate and letting them share and comment on regional issues. This way, stakeholders may participate proactively and bring forward their specific viewpoints.
           </p>
-          <img src="/static/img/background.png"/>
+          <img src="/static/img/application_background.png"/>
 
         <h1>The application</h1>
           <p>

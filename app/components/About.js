@@ -28,22 +28,22 @@ class About extends React.Component {
 
         <h1>The application</h1>
           <p>
-          The Stakeholder Engagement tool enables regional RIS3 facilitators to engage stakeholders and get feedback on the RIS3 process from them. The tool allows registered users to set up regional folders and upload documents for online deliberation with the region’s stakeholders.
+          The Stakeholder Engagement tool enables regional RIS3 facilitators to engage stakeholders and get feedback on the RIS3 process from them. The tool allows registered users to set up regional folders and set up discussion areas related to the RIS priorities of the region, for online deliberation with the region’s stakeholders.
           </p>
           <p>
-          Beside the comments and input from stakeholders, there is also a voting mechanism in the application. Thus, stakeholders may vote up and down the ideas and documents, which provides the facilitators also a quick way to see which posts have gotten most interest from the stakeholders.
+          Beside the comments and input from stakeholders, there is also a voting mechanism in the application. Thus, stakeholders may vote up and down the ideas and suggestions, which provides the facilitators a quick way to see which posts have gotten most interest from the stakeholders.
           </p>
           <img src="/static/img/application.png"/>
 
         <h1>Benefits to stakeholders</h1>
         <p>
-        Figure 3 illustrates the key benefits Stakeholder engagement tool provides to stakeholders of a region conducting the RIS3 process. Firstly, it facilitates greater stakeholder engagement and enables greater and more open stakeholder engagement. Secondly, the tool allows stakeholders and facilitators to deliberate issues and ideas together. Thus, stakeholders’ opinions matter and they get the feeling of having impact on regional policy-making. Lastly, the Stakeholder engagement tool promotes long term collaboration and refinement of regional issues and ideas. At its best, this establishes a long term relationship and collaboration between stakeholders and policy-makers.
+        Figure 3 illustrates the key benefits Stakeholder engagement tool provides to stakeholders of a region conducting the RIS3 process. Firstly, it facilitates greater stakeholder engagement and enables a more open stakeholder engagement process. Secondly, the tool allows stakeholders and facilitators to deliberate issues and ideas together. Thus, stakeholders’ opinions matter and they get the feeling of having impact on regional policy-making. Lastly, the Stakeholder engagement tool promotes long term collaboration and refinement of regional issues and ideas. At its best, this establishes a long term relationship and collaboration between stakeholders and policy-makers.
         </p>
           <img src="/static/img/benefits.png"/>
 
         <h1>Key issues and requirements</h1>
         <p>
-          The tool enables users to create discussion boards and upload ideas and documents to be commented and voted on.
+          The tool enables users to create discussion boards and post ideas and suggestions to be commented and voted on.
         </p>
           <img src="/static/img/issues.png"/>
 

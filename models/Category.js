@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     title: DataTypes.STRING,
-    description: DataTypes.STRING
+    description: DataTypes.TEXT
   });
   Category.associate = function(models) {
     // Using additional options like CASCADE etc for demonstration

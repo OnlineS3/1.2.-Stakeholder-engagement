@@ -40,7 +40,7 @@ class About extends React.Component {
         </ol>
         <h1> CREATING A REGION </h1>
         <ol>
-          <li> Click the region menu from the upper left corner, and from the menu select “Create a new region". These regions are meant for the use of individual regions or nations. </li>
+          <li> Click the region menu from the upper left corner, and from the menu select “Create a new region". These regions are meant for the use of individual regions or nations, on the level the RIS3 strategy is formed. </li>
             <img style={imgStyle} src="/static/img/fig6.png"></img>
           <li> Enter the name for your region in the popup that opens, and click Add </li>
         </ol>

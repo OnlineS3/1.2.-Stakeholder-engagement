@@ -28,10 +28,14 @@ class About extends React.Component {
 
         <h1>The application</h1>
           <p>
-          The Stakeholder Engagement tool enables regional RIS3 facilitators to engage stakeholders and get feedback on the RIS3 process from them. The tool allows registered users to set up regional folders and set up discussion areas related to the RIS priorities of the region, for online deliberation with the region’s stakeholders.
+          The Stakeholder Engagement tool enables regional RIS3 facilitators to engage stakeholders and get feedback on the RIS3 process from them. The tool allows registered users to set up regional platforms and set up discussion areas related to the RIS priorities of the region, for online deliberation with the region’s stakeholders.
           </p>
           <p>
           Beside the comments and input from stakeholders, there is also a voting mechanism in the application. Thus, stakeholders may vote up and down the ideas and suggestions, which provides the facilitators a quick way to see which posts have gotten most interest from the stakeholders.
+          </p>
+          <p>
+          Within each region, any number of different priorities can be created to guide the discussion into issues concerning each individual priority of the area.
+            Each region can have any number of stakeholders and administrators.
           </p>
           <img src="/static/img/application.png"/>
 

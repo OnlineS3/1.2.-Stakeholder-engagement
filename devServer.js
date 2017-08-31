@@ -120,8 +120,9 @@ app.listen(8888, 'localhost', function(err) {
 
 //TODO: REMOVE THIS IN PRODUCTION
 
-if(!true){
+if(true){
   db.sequelize.sync({force: true})
+  /*
   .then(() => {
     db.Area.create({
       name: "Uusimaa"
@@ -163,4 +164,5 @@ if(!true){
       user_id: "auth0|5936949e71a6ab763a62ad62"
     })
   });
+  */
 }

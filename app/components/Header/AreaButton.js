@@ -19,7 +19,9 @@ class AreaButton extends React.Component{
     return (
       <DropdownMenuItem onClick={clicked}>
         <Link to={`/region/${this.props.area}`}>
-          {this.props.area}
+          <div style={{width: "100%"}}>
+            {this.props.area}
+          </div>
         </Link>
       </DropdownMenuItem>
     )

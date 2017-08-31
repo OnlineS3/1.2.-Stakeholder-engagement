@@ -11,7 +11,8 @@ var DropdownMenuItem = props => {
     */
     const style = {
       "z-index": 100,
-      cursor:"pointer"
+      cursor:"pointer",
+      width: "100%"
     }
 
     return (

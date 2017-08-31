@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: DataTypes.UUIDV1,
       primaryKey: true
     },
-    description: DataTypes.STRING
+    description: DataTypes.TEXT
   });
   Area.associate = function(models) {
     // Using additional options like CASCADE etc for demonstration

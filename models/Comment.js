@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     title: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT,
     parent: DataTypes.INTEGER
   });
 

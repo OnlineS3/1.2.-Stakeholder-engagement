@@ -17,7 +17,7 @@ var AddCategory = props => {
         <form form={props.form} key={props.id} onSubmit={handleSubmit}>
           <div className="row">
             <div className="col-10">
-              <Field style={fieldStyle} name="title" placeholder="Subject" component="input" type="text"/>
+              <Field style={fieldStyle} name="title" placeholder="Name of priority area" component="input" type="text"/>
             </div>
             <div className="col-2">
               <button style={fieldStyle} type="submit"> Add Priority </button>
@@ -25,7 +25,7 @@ var AddCategory = props => {
           </div>
           <div className="row">
             <div className="col-12">
-              <Field style={fieldStyle} name="description" placeholder="Comment" component="textarea" type="text"/>
+              <Field style={fieldStyle} name="description" placeholder="Description" component="textarea" type="text"/>
             </div>
           </div>
           <div className="row">

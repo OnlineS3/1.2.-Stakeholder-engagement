@@ -32,6 +32,7 @@ router.post('/edit', function(req, res, next) {
   }).then(permission => {
     if(permission){
       db.Category.edit( req.body.area, req.body.category, req.body.title, req.body.description ).then((category) => {
+        console.log(category)
         res.send({
           status:"200 Category edited",
           category,

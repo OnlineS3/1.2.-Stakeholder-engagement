@@ -42,7 +42,7 @@ const CategoryReducer = (state = {}, action) => {
       categories = {};
     }
     if(categories[action.area]){
-      var category = categories[action.area].filter(category => category.id === action.category)[0];
+      var category = categories[action.area].filter(category => category.id === action.category.id)[0];
       if(category){
         categories[action.area].forEach(category => {
           if(category)

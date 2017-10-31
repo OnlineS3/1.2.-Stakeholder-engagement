@@ -48,11 +48,17 @@ module.exports = function(sequelize, DataTypes) {
         }
       }).then(category => {
         if(category){
-          Category.upsert({
+          return Category.upsert({
             id: category.id,
             uuid: category.uuid,
             title,
             description
+          }).then(() => {
+            return {
+              id: category.id,
+              title,
+              description
+            }
           })
         }
       })

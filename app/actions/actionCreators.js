@@ -73,6 +73,44 @@ export const addCategorySuccess = (category, area) => {
     area
   }
 }
+export const editCategory = (category, area) => {
+  return {
+    type: 'editCategory',
+    category,
+    area
+  }
+}
+export function editCategorySubmit(title, description, area, category){
+  return function (dispatch, getState){
+    fetch("/api/category/edit", {
+      headers: {
+        "content-type": "application/json"
+      },
+      method: "POST",
+      credentials: 'include',
+      body: JSON.stringify({title, description, area, category})
+    })
+    .then(res => res.json())
+    .then(res => {
+      if(res.category){
+        dispatch(editCategorySuccess(res.category, res.area, res.title, res.description));
+      } else {
+        //TODO: display error
+      }
+    }).then(() => {
+      dispatch(reset('editCategory'));
+    })
+  }
+}
+export const editCategorySuccess = (category, area, title, description) => {
+  return {
+    type: 'editCategorySuccess',
+    category,
+    area,
+    title,
+    description
+  }
+}
 
 export const requestCategories = () => {
   return {

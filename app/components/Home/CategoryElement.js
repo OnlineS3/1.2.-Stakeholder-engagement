@@ -1,17 +1,44 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { connect, dispatch } from 'react-redux';
+import * as actionCreators from '../../actions/actionCreators';
 
-const Category = ({id, title, description, url}) => {
-  return (
-    <div className="row">
-      <div className="col">
-        <Link to={url}>
-          <h2>{id} {title}</h2>
-        </Link>
-        <p> {description} </p>
+
+class Category extends React.Component {
+
+  render(){
+    function edit(){
+      this.props.edit(this.props.id, this.props.area)
+    }
+    edit = edit.bind(this);
+    return (
+      <div className="row">
+        <div className="col-10">
+          <Link to={this.props.url}>
+            <h2>{this.props.id} {this.props.title}</h2>
+          </Link>
+          <p> {this.props.description} </p>
+        </div>
+        <div className="col-2" onClick={edit}>
+          <div className="btn">
+            Edit
+          </div>
+        </div>
       </div>
-    </div>
-  )
+      )
+  }
 }
 
-export default Category;
+function mapStateToProps(state) {
+  return {
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    edit(category, area){
+      dispatch(actionCreators.editCategory(category, area));
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Category);

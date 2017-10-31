@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import CategoryElement from './CategoryElement.js';
+import EditCategoryContainer from './EditCategoryContainer.js';
 import AddCategoryContainer from './AddCategoryContainer.js';
 import * as actionCreators from '../../actions/actionCreators';
 
@@ -69,13 +70,25 @@ class Categories extends React.Component {
           }
 
         { categories && categories.sort((category1, category2) => category1.id - category2.id).map((category) => {
-          return <CategoryElement
+          if(!category.editing){
+            return <CategoryElement
               key={category.id}
+              area={this.props.params.areaName}
               id={category.id}
               title={category.title}
               description={category.description}
               url={`/region/${this.props.params.areaName}/${category.id}`}>
-              </CategoryElement>
+            </CategoryElement>
+          } else {
+            return <EditCategoryContainer
+              key={category.id}
+              area={this.props.params.areaName}
+              id={category.id}
+              title={category.title}
+              description={category.description}
+              url={`/region/${this.props.params.areaName}/${category.id}`}>
+            </EditCategoryContainer>
+          }
         })}
         {admin &&
           <AddCategoryContainer params={this.props.params} update={this.addNew}></AddCategoryContainer>

@@ -15,6 +15,44 @@ const CategoryReducer = (state = {}, action) => {
   } else if(action.type === "gotCategories") {
     var categories = Object.assign({}, action.categories);
     return categories;
+  } else if(action.type === "editCategory") {
+    var categories;
+    if(state)
+      categories = JSON.parse(JSON.stringify(state));
+    else {
+      categories = {};
+    }
+    if(categories[action.area]){
+      var category = categories[action.area].filter(category => category.id === action.category)[0];
+      if(category){
+        var editing = category.editing;
+        categories[action.area].forEach(category => {
+          if(category)
+            category.editing = false;
+        })
+        category.editing = !editing;
+      }
+    }
+    return categories;
+  } else if(action.type === "editCategorySuccess"){
+    var categories;
+    if(state)
+      categories = JSON.parse(JSON.stringify(state));
+    else {
+      categories = {};
+    }
+    if(categories[action.area]){
+      var category = categories[action.area].filter(category => category.id === action.category)[0];
+      if(category){
+        categories[action.area].forEach(category => {
+          if(category)
+            category.editing = false;
+        })
+        category.title = action.title;
+        category.description = action.description;
+      }
+    }
+    return categories;
   } else {
     return state;
   }

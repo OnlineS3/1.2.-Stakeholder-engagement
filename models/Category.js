@@ -63,6 +63,16 @@ module.exports = function(sequelize, DataTypes) {
         }
       })
   }
+  Category.delete = function(area, id){
+      return Category.destroy({
+        where: {
+          id: id,
+          areaName: area
+        }
+      }).then(() => {
+        return {area, id};
+      })
+  }
 
   return Category;
 };

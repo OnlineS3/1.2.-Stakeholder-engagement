@@ -53,6 +53,22 @@ const CategoryReducer = (state = {}, action) => {
       }
     }
     return categories;
+  } else if(action.type === "deleteCategorySuccess"){
+    var categories;
+    if(state)
+      categories = JSON.parse(JSON.stringify(state));
+    else {
+      categories = {};
+      return categories;
+    }
+    if(categories[action.area]){
+      for(var i = 0; i < categories[action.area].length; i++){
+        if(categories[action.area][i] && categories[action.area][i].id === action.category.id){
+          categories[action.area][i] = null;
+        }
+      }
+    }
+    return categories;
   } else {
     return state;
   }

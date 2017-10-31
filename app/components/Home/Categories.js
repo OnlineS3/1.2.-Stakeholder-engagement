@@ -69,7 +69,7 @@ class Categories extends React.Component {
             </div>
           }
 
-        { categories && categories.sort((category1, category2) => category1.id - category2.id).map((category) => {
+        { categories && categories.filter(category => {return category !== null}).sort((category1, category2) => category1.id - category2.id).map((category) => {
           if(!category.editing){
             return <CategoryElement
               key={category.id}

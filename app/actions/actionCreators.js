@@ -102,6 +102,26 @@ export function editCategorySubmit(title, description, area, category){
     })
   }
 }
+export function deleteCategory(category, area){
+  return function (dispatch, getState){
+    fetch("/api/category/delete", {
+      headers: {
+        "content-type": "application/json"
+      },
+      method: "POST",
+      credentials: 'include',
+      body: JSON.stringify({area, category})
+    })
+    .then(res => res.json())
+    .then(res => {
+      if(res.category){
+        dispatch(deleteCategorySuccess(res.category, res.area));
+      } else {
+        //TODO: display error
+      }
+    })
+  }
+}
 export const editCategorySuccess = (category, area, title, description) => {
   return {
     type: 'editCategorySuccess',
@@ -109,6 +129,13 @@ export const editCategorySuccess = (category, area, title, description) => {
     area,
     title,
     description
+  }
+}
+export const deleteCategorySuccess = (category, area, title, description) => {
+  return {
+    type: 'deleteCategorySuccess',
+    category,
+    area,
   }
 }
 

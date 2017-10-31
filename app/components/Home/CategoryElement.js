@@ -11,6 +11,10 @@ class Category extends React.Component {
       this.props.edit(this.props.id, this.props.area)
     }
     edit = edit.bind(this);
+    function del(){
+      this.props.delete(this.props.id, this.props.area)
+    }
+    del = del.bind(this);
     return (
       <div className="row">
         <div className="col-10">
@@ -19,9 +23,14 @@ class Category extends React.Component {
           </Link>
           <p> {this.props.description} </p>
         </div>
-        <div className="col-2" onClick={edit}>
+        <div className="col-1" onClick={edit}>
           <div className="btn">
             Edit
+          </div>
+        </div>
+        <div className="col-1" onClick={del}>
+          <div className="btn">
+            Delete
           </div>
         </div>
       </div>
@@ -38,6 +47,9 @@ function mapDispatchToProps(dispatch) {
   return {
     edit(category, area){
       dispatch(actionCreators.editCategory(category, area));
+    },
+    delete(category, area){
+      dispatch(actionCreators.deleteCategory(category, area));
     }
   }
 }

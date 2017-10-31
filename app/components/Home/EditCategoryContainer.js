@@ -20,6 +20,10 @@ class EditCategoryContainer extends React.Component {
         title={this.props.title}
         description={this.props.description}
         url={this.props.url}
+        initialValues={{
+          title: this.props.title,
+          description: this.props.description
+        }}
       ></EditCategoryElement>
     )
   }

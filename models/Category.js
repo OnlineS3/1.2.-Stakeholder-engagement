@@ -40,6 +40,23 @@ module.exports = function(sequelize, DataTypes) {
         })
       });
   }
+  Category.edit = function(area, id, title, description){
+      return Category.find({
+        where: {
+          id: id,
+          areaName: area
+        }
+      }).then(category => {
+        if(category){
+          Category.upsert({
+            id: category.id,
+            uuid: category.uuid,
+            title,
+            description
+          })
+        }
+      })
+  }
 
   return Category;
 };

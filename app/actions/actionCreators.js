@@ -93,7 +93,7 @@ export function editCategorySubmit(title, description, area, category){
     .then(res => res.json())
     .then(res => {
       if(res.category){
-        dispatch(editCategorySuccess(res.category, res.area, res.title, res.description));
+        dispatch(editCategorySuccess(res.category, res.area));
       } else {
         //TODO: display error
       }

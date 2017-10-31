@@ -26,6 +26,26 @@ router.post('/new', function(req, res, next) {
   })
 });
 
+router.post('/edit', function(req, res, next) {
+  db.Permission.find({
+    where: {user_id: req.session.passport.user._json.sub, AreaName: req.body.area, admin: true},
+  }).then(permission => {
+    if(permission){
+      db.Category.edit( req.body.area, req.body.category, req.body.title, req.body.description ).then((category) => {
+        res.send({
+          status:"200 Category edited",
+          category,
+          area: req.body.area
+        });
+      });
+    } else {
+      res.send({
+        status:"403 Forbidden",
+      });
+    }
+  })
+});
+
 router.get('/all', function(req, res, next) {
   db.Permission.findAll({
     where: {user_id: req.session.passport.user._json.sub},

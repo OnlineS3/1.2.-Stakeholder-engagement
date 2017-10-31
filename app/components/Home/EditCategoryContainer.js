@@ -7,7 +7,7 @@ import EditCategoryElement from './EditCategoryElement.js'
 class EditCategoryContainer extends React.Component {
   render() {
     var onSubmit = (values) => {
-      this.props.onSubmit(values, this.props.area, this.props.category);
+      this.props.onSubmit(values, this.props.area, this.props.id);
     }
     onSubmit = onSubmit.bind();
     console.log(onSubmit)
@@ -33,7 +33,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     onSubmit: (values, areaName, category) => {
-      dispatch(actionCreators.editCategory(values.title, values.description, areaName, category));
+      dispatch(actionCreators.editCategorySubmit(values.title, values.description, areaName, category));
     }
   }
 }

@@ -48,8 +48,8 @@ const CategoryReducer = (state = {}, action) => {
           if(category)
             category.editing = false;
         })
-        category.title = action.title;
-        category.description = action.description;
+        category.title = action.category.title;
+        category.description = action.category.description;
       }
     }
     return categories;

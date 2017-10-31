@@ -98,7 +98,7 @@ router.post('/category', function(req, res, next) {
     if(permission){
       db.Comment.findAll({
         attributes: [
-          'id', 'title', 'description', 'updatedAt', 'parent',
+          'id', 'title', 'description', 'updatedAt', 'parent', 'uuid',
             [db.sequelize.fn('SUM', db.sequelize.col('Votes.up')), 'numUp'],
             [db.sequelize.fn('COUNT', db.sequelize.col('Votes.id')), 'totalVotes']
         ],
@@ -125,19 +125,27 @@ router.post('/category', function(req, res, next) {
         ],
 
       }).then(comments => {
-        res.send(comments.map(comment => {
-          return {
-            id: comment.id,
-            title: comment.title,
-            description: comment.description,
-            category: comment.Category.id,
-            area: comment.Category.Area.name,
-            parentId: comment.parent,
-            user: comment.User.username,
-            time: comment.updatedAt,
-            score: Number(comment.dataValues.numUp) * 2 - Number(comment.dataValues.totalVotes)
-          }
-        }));
+        Promise.all(comments.map(comment => {
+          return db.Vote.find({
+            where: {user_id: req.session.passport.user._json.sub, CommentUuid: comment.uuid}
+          }).then(found => {
+            console.log(found)
+            return {
+              id: comment.id,
+              title: comment.title,
+              description: comment.description,
+              category: comment.Category.id,
+              area: comment.Category.Area.name,
+              parentId: comment.parent,
+              user: comment.User.username,
+              time: comment.updatedAt,
+              score: Number(comment.dataValues.numUp) * 2 - Number(comment.dataValues.totalVotes),
+              own: found ? (found.up ? 1 : -1) : 0
+            }
+          })
+        })).then(comments => {
+          res.send(comments);
+        })
       })
     } else {
       res.send({

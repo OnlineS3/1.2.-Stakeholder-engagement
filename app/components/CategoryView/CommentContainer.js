@@ -11,6 +11,10 @@ class CommentContainer extends React.Component {
       this.props.toggleReplybox(this.props.area, this.props.category, this.props.id);
     }
     showReply = showReply.bind(this);
+    function collapse() {
+      this.props.toggleCollapse(this.props.area, this.props.category, this.props.id);
+    }
+    collapse = collapse.bind(this);
     function deleteComment() {
       this.props.deleteComment(this.props.area, this.props.category, this.props.id);
     }
@@ -34,8 +38,10 @@ class CommentContainer extends React.Component {
         area={this.props.area}
         category={this.props.category}
         author={this.props.author}
+        collapsed={this.props.collapsed}
         replyVisible={this.props.replyVisible}
         showReply={showReply}
+        collapse={collapse}
         user={this.props.user}
         time={this.props.time}
         score={this.props.score}
@@ -60,6 +66,9 @@ function mapDispatchToProps(dispatch) {
   return {
     toggleReplybox(area, category, id) {
       dispatch(actionCreators.toggleReplybox(area, category, id));
+    },
+    toggleCollapse(area, category, id) {
+      dispatch(actionCreators.toggleCollapse(area, category, id));
     },
     deleteComment(area, category, id) {
       dispatch(actionCreators.deleteComment(area, category, id));

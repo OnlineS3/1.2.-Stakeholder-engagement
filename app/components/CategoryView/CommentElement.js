@@ -12,7 +12,9 @@ const CommentElement = ({
   category,
   comments,
   author,
+  collapsed,
   showReply,
+  collapse,
   replyVisible,
   user,
   deleteComment,
@@ -63,6 +65,31 @@ const CommentElement = ({
       return new Date(comment2.time).getTime() - new Date(comment1.time).getTime()
     }
   }
+  if(collapsed){
+
+    return (
+    <div className="row">
+    <div className="col" style={style}>
+
+    <div className={`card card-${depth%2 === 0 ? 'normal' : 'secondary'}`}>
+      <div className="card-header">
+        <div className="row">
+          <button type="button" onClick={collapse}>
+            <i className="fa fa-chevron-right" aria-hidden="true"></i>
+          </button>
+          <div className="col">
+            <h4 className="">{title}</h4>
+          </div>
+          <div className="col">
+              <span className="float-right"> {author} {new Date(time).toLocaleString()}</span>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      )
+  } else {
 
   return (
     <div className="row">
@@ -71,6 +98,9 @@ const CommentElement = ({
     <div className={`card card-${depth%2 === 0 ? 'normal' : 'secondary'}`}>
       <div className="card-header">
         <div className="row">
+          <button type="button" onClick={collapse}>
+            <i className="fa fa-chevron-down" aria-hidden="true"></i>
+          </button>
           <div className="col">
             <h4 className="">{title}</h4>
           </div>
@@ -136,15 +166,18 @@ const CommentElement = ({
               score={comment.score}
               comments={comments}
               replyVisible={comment.replyVisible}
+              collapsed={comment.collapsed}
               >
             </CommentContainer>
         })}
       </div>
 
-    </div>
-    </div>
-    </div>
-  )
+      </div>
+      </div>
+      </div>
+    )
+  }
+
 }
 
 export default CommentElement;

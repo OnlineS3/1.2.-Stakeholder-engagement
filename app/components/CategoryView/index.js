@@ -73,6 +73,7 @@ class CategoryView extends React.Component {
                 score={comment.score}
                 comments={comments}
                 replyVisible={comment.replyVisible}
+                collapsed={comment.collapsed}
                 >
               </CommentContainer>
           })}

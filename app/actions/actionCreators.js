@@ -369,6 +369,14 @@ export const toggleReplybox = (area, category, id) => {
     id
   }
 }
+export const toggleCollapse = (area, category, id) => {
+  return {
+    type: 'toggleCollapse',
+    area,
+    category,
+    id
+  }
+}
 
 export const sortBy = (type) => {
   return {

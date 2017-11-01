@@ -26,7 +26,7 @@ const CommentElement = ({
   //  background: depth%2 === 0 ? "#CCCCCC" : "#F4F4F4",
     "margin-left": "10px",
     "margin-right": "5px",
-   // "margin-top": "5px",
+    "margin-top": "5px",
     "margin-bottom": "3px",
     flex: "0 1 auto"
   }

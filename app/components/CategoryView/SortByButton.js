@@ -14,7 +14,9 @@ class SortByButton extends React.Component {
     ];
     const defaultOption = options[0];
     return (
+      <div className="btn btn-secondary">
       <Dropdown options={options} onChange={this.props.select} value={defaultOption} placeholder="Sort by time added" />
+    </div>
     /*<DropdownMenu menu_id={"sortbymenu"} title={`Sort by ${this.props.sortby}`}>
       <DropdownMenuItem onClick={this.props.time}>
         Sort by time added

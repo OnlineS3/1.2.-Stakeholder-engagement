@@ -56,6 +56,26 @@ h2 {
 	font-family: tahoma
 }
 
+
+
+.h3 {
+    color: #de1515;
+	font-style: normal;
+	font-size: 18px;
+	font-family: tahoma;
+	font-weight: 400;
+}
+h3 {
+    margin: 0;
+    color: #de1515;
+    padding: 1rem 0 0rem 1rem;
+	font-style: normal;
+	font-weight: 400;
+	clear: both;
+	font-size: 18px;
+	font-family: tahoma
+}
+
 #page {
 	background: #e5e8e8;
 	background-image: url(../img/background.png), url(../img/background.png);

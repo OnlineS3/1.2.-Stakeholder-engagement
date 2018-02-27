@@ -11,10 +11,15 @@ class Related extends React.Component {
   }
 
   render() {
+    var style = {color: "#8300e9"};
     return (
       <div className="site-content">
         <article id="main-content">
-        <h1>Related documents will be added later</h1>
+        <h1>Related documents</h1>
+        <p>Selected use cases using the Debate at a glance tool of the Online-S3 platform:</p>
+        <p className=""><strong><span style={style}>Will be uploaded soon</span></strong></p>
+        <p>Selected RIS3 strategies including Debate at a glance method in their implementation process:</p>
+        <p className=""><strong><span style={style}>Will be uploaded soon</span></strong></p>
         </article>
       </div>
     )

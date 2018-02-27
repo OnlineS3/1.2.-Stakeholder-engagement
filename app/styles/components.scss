@@ -1,0 +1,100 @@
+@import 'bourbon/bourbon';
+
+
+.button {
+  background-color: $blue;
+  color: $white;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 1em;
+  padding: 0.6em 1.5em;
+  margin: 0.5em;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $white;
+    color: $blue;
+    @include transition(all 300ms ease-out);
+  }
+
+  &--basic {
+    color: $white;
+    background-color: $blue;
+  }
+
+  &--create {
+    background-color: $green;
+
+    &:hover {
+      color: $green;
+    }
+  }
+
+  &--menu {
+    border: none;
+    background-color: $blue;
+    color: $white;
+    height: 10em;
+    width: 90%;
+    margin: 1em;
+  }
+
+  &--alt {
+    background-color: $red;
+
+    &:hover {
+      color: $red;
+    }
+  }
+}
+
+.input {
+  min-width: 90%;
+  max-width: 10em;
+}
+
+
+.Collapsible__trigger {
+  width: 100%;
+	background-color: #eee;
+	color: #444;
+	cursor: pointer;
+	padding: 18px;
+	text-align: left;
+  display: block;
+  font-family: Tahoma;
+  font-weight: 800;
+  font-size: 0.8em;
+  color:black;
+
+  &:hover {
+    background-color: #ddd;
+  }
+  &.is-closed {
+    &:after {
+    	content: '\02795';
+    	font-size: 13px;
+    	color: #777;
+    	float: right;
+    	margin-left: 5px;
+    }
+  }
+  &.is-open {
+    &:after {
+    	content: "\2796";
+      float: right;
+    }
+  }
+}
+
+.Collapsible {
+  margin: 0 auto;
+  margin: 20px;
+  background-color: white;
+}
+
+.Collapsible__contentInner {
+  border: 3px solid #eeeeee;
+  text-align: left;
+}

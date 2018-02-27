@@ -5,6 +5,7 @@ import { render } from 'react-dom';
 import './styles/main.scss';
 
 import App from './components/App';
+import ApplicationMenu from './components/ApplicationMenu';
 import Home from './components/Home';
 import CategoryView from './components/CategoryView';
 import About from './components/About.js';
@@ -47,7 +48,9 @@ const router = (
         <Route path="/region/:areaName" component={Home}>
           <IndexRoute name="area" component={Home}></IndexRoute>
         </Route>
-        <Route path="/application" component={Home}>
+        <Route path="/application/" component={ApplicationMenu}>
+        </Route>
+        <Route path="/application/S3engagement" component={Home}>
         </Route>
         <IndexRoute name="home" component={Home}></IndexRoute>
         <Route path="/region/:areaName/:categoryId" component={CategoryView}></Route>

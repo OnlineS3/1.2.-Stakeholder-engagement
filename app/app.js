@@ -52,7 +52,7 @@ const router = (
         </Route>
         <Route path="/application/S3engagement" component={Home}>
         </Route>
-        <IndexRoute name="home" component={Home}></IndexRoute>
+        <IndexRoute name="home" component={About}></IndexRoute>
         <Route path="/region/:areaName/:categoryId" component={CategoryView}></Route>
       </Route>
 

@@ -21,6 +21,11 @@ class Related extends React.Component {
         <p>Selected RIS3 strategies including Debate at a glance method in their implementation process:</p>
         <p className=""><strong><span style={style}>Will be uploaded soon</span></strong></p>
         </article>
+
+        <aside id='sidebar'>
+            <div className="button alt"> <a href="http://www.s3platform.eu/wp-content/uploads/2017/06/Guideline_Tool_RIS3_Debate_at_a_glance.pdf" > Download Guide  <i class="fa fa-file-pdf-o" aria-hidden="true"></i> </a></div>
+            <div className="button">  <a href="/application"> Access to application  <img src="img/access-icon.png" width="20"/> </a></div>
+        </aside>
       </div>
     )
   }

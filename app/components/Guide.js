@@ -152,6 +152,11 @@ class About extends React.Component {
           <li> Fill in the title of the priority and a description of the kind of discussion you want to happen related to the priority in question </li>
             <img style={imgStyle} src="/static/img/fig9.png"></img>
         </ol>
+
+        <aside id='sidebar'>
+            <div className="sidebar-button alt"> <a href="http://www.s3platform.eu/wp-content/uploads/2017/06/Guideline_Tool_RIS3_Debate_at_a_glance.pdf" > Download Guide  <i className="fa fa-file-pdf-o" aria-hidden="true"></i> </a></div>
+            <div className="sidebar-button">  <a href="/application"> Access to application  <img src="/static/img/access-icon.png" width="20"/> </a></div>
+        </aside>
       </div>
     )
   }

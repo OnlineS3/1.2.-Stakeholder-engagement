@@ -48,7 +48,7 @@ const router = (
         <Route path="/region/:areaName" component={Home}>
           <IndexRoute name="area" component={Home}></IndexRoute>
         </Route>
-        <Route path="/application/" component={ApplicationMenu}>
+        <Route path="/application" component={ApplicationMenu}>
         </Route>
         <Route path="/application/S3engagement" component={Home}>
         </Route>

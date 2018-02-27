@@ -127,8 +127,8 @@ class About extends React.Component {
         </article>
 
         <aside id='sidebar'>
-            <div className="button alt"> <a href="http://www.s3platform.eu/wp-content/uploads/2017/06/Guideline_Tool_RIS3_Debate_at_a_glance.pdf" > Download Guide  <i class="fa fa-file-pdf-o" aria-hidden="true"></i> </a></div>
-            <div className="button">  <a href="/application"> Access to application  <img src="img/access-icon.png" width="20"/> </a></div>
+            <div className="sidebar-button alt"> <a href="http://www.s3platform.eu/wp-content/uploads/2017/06/Guideline_Tool_RIS3_Debate_at_a_glance.pdf" > Download Guide  <i className="fa fa-file-pdf-o" aria-hidden="true"></i> </a></div>
+            <div className="sidebar-button">  <a href="/application"> Access to application  <img src="/static/img/access-icon.png" width="20"/> </a></div>
         </aside>
       </div>
 

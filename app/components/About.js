@@ -102,8 +102,6 @@ class About extends React.Component {
           </p>
           <p style={pStyle}>DebateGraph is a completely free online service.</p>
 
-          <img src="/static/img/application_background.png"/>
-
           <h2 style={pStyle}>S3Engagement</h2>
           <p>
           S3Engagement tool enables inviting stakeholders to collaborate and letting them share and comment on regional issues. This way, stakeholders may participate proactively and bring forward their specific viewpoints.
@@ -121,7 +119,7 @@ class About extends React.Component {
 
         <h1>Benefits to stakeholders</h1>
         <p>
-         Firstly, the applicationS facilitate greater stakeholder engagement and enable a more open stakeholder engagement process. Secondly, the tools allow stakeholders and facilitators to deliberate issues and ideas together. Thus, stakeholders’ opinions matter and they get the feeling of having impact on regional policy-making. Lastly, the tools promote long term collaboration and refinement of regional issues and ideas. At its best, this establishes a long term relationship and collaboration between stakeholders and policy-makers.
+         Firstly, the applications facilitate greater stakeholder engagement and enable a more open stakeholder engagement process. Secondly, the tools allow stakeholders and facilitators to deliberate issues and ideas together. Thus, stakeholders’ opinions matter and they can influence regional policy-making. Lastly, the tools promote long term collaboration and refinement of regional issues and ideas. At its best, this establishes a long term relationship and collaboration between stakeholders and policy-makers.
         </p>
 
         </article>

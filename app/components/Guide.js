@@ -97,7 +97,7 @@ class About extends React.Component {
         <p>
         	6. Discuss the challenge and the ideas with stakeholders in to reach a resolution.
         </p>
-        <p> A short introductory video can be viewed <a href"https://www.youtube.com/watch?v=32InMNjO4tQ">here</a> to further clarify the usage of Debategraph.</p>
+        <p> A short introductory video can be viewed <a href="https://www.youtube.com/watch?v=32InMNjO4tQ">here</a> to further clarify the usage of Debategraph.</p>
         <h1>S3Engagement OVERVIEW</h1>
         <p>
           This application is meant for discussion about the priorities of a RIS3 facilitating governal nation or region. In the application, the facilitator of the RIS3 process creates their own workspace that will be visible only for the stakeholders they invite to collaborate. This workspace is referred in the application as a "region", matching to the geographical area responsible for the RIS3 process.
